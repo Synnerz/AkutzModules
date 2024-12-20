@@ -30,78 +30,142 @@ export class Image extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.rende
 
 declare global {
   /**
-   * com.chattriggers.ctjs.minecraft.libs.ChatLib
+   * * A library that provides Chat utilities
    */
-  class ChatLib extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.ChatLib'> {
+  class ChatLib extends JavaClass<"com.github.synnerz.akutz.api.libs.ChatLib"> {
+    /**
+     * * Sends an action bar "message" with the given string
+     * * NOTE: ActionBar is the text above your hotbar that appears sometimes
+     */
     static actionBar(str: string): void;
     static actionBar(msg: Message): void;
     static actionBar(textComponent: TextComponent): void;
     static actionBar(obj: any): void;
     /**
-     * replaces & with §
+     * * Replaces the formatting for color codes from `&` to `§`
      */
     static addColor(message: string): string;
-    static addToSentMessageHistory(message: string): void;
+    // static addToMessageHistory(message: string): void;
     /**
      * Adds a message to the player's chat history. This allows the message to show up for the player when pressing the up/down keys while in the chat gui
      */
-    static addToSentMessageHistory(index: number, message: string): void;
+    static addToMessageHistory(index: number, message: string): void;
+    /**
+     * * Sends a chat message to the player's chat
+     */
     static chat(str: string): void;
     static chat(msg: Message): void;
     static chat(textComponent: TextComponent): void;
     static chat(obj: any): void;
+    /**
+     * * Clears the player's chat
+     */
     static clearChat(): void;
     /**
-     * clears specific message ids
+     * * Clears chat messages that have the given [chatLineIDs]
      */
     static clearChat(...chatLineIDs: number[]): void;
     /**
-     * executes a command (not client side)
+     * * Executes a command
+     * @param text The command (without `/`)
+     * @param clientSide Whether the command should be executed client side or not (`false` by default)
+     */
+    static command(text: string, clientSide: boolean): void;
+    /**
+     * * Executes a command (not client side)
+     * @param text The command (without `/`)
      */
     static command(text: string): void;
-    static command(text: string, clientSide: boolean): void;
-    static deleteChat(message: Message): void;
-    static deleteChat(chatLineId: number): void;
-    static deleteChat(str: string): void;
-    static deleteChat(regexp: RegExp): void;
-    static editChat(message: Message, ...newMessages: Message[]): void;
-    static editChat(chatLineId: number, ...newMessages: Message[]): void;
-    static editChat(str: string, ...newMessages: Message[]): void;
-    static editChat(regexp: RegExp, ...newMessages: Message[]): void;
-    static getCenteredText(text: string): string;
+    /**
+     * * Deletes a chat message that matches with the given param.
+     */
+    static deleteMessage(message: Message): void;
+    static deleteMessage(chatLineId: number): void;
+    static deleteMessage(str: string): void;
+    /**
+     * * Deletes all chat messages where the callback function returns `true`
+     */
+    static deleteMessage(cb: (message: Message) => boolean): void;
+    // static deleteMessage(regexp: RegExp): void;
+    /**
+     * * Edits a message that matches the given param
+     * * Changes the main message with the given second param(s)
+     */
+    static editMessage(message: Message, ...newMessages: Message[]): void;
+    static editMessage(chatLineId: number, ...newMessages: Message[]): void;
+    static editMessage(str: string, ...newMessages: Message[]): void;
+    // static editMessage(regexp: RegExp, ...newMessages: Message[]): void;
+    /**
+     * * Centers the given message in the player's chat
+     * @returns The centered message
+     */
+    static centerMessage(text: string): string;
     /**
      * Get a message that will be perfectly one line of chat, the separator repeated as many times as necessary. The separator defaults to '-'
      */
     static getChatBreak(): string;
     static getChatBreak(separator: string): string;
-    /**
-     * Gets the previous 1000 lines of chat
-     */
-    static getChatLines(): string[];
+    // static getChatLines(): string[];
     static getChatMessage(event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>): string;
     static getChatMessage(
       event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>,
       formatted: boolean
     ): string;
     static getChatWidth(): number;
+    // static isPlayer(errorMessage: string): boolean;
     /**
-     * checks if player exists
-     * @param errorMessage error message to be printed out if no player is found
+     * * Removes the formatting color codes from the given string
+     * * E.g if the string is `"&aTest"` it will return `"Test"`
      */
-    static isPlayer(errorMessage: string): boolean;
     static removeFormatting(text: string): string;
     /**
-     * replaces § with &
+     * * Replaces the formatting for color codes from `§` to `&`
      */
     static replaceFormatting(text: string): string;
     /**
-     * says chat message (not client side)
+     * * Sends a chat message as if the player typed it and hit enter
+     * * NOTE: This is completely different from `ChatLib.chat()`
      */
     static say(text: string): void;
+    /**
+     * * Simulates a chat message as if the player had just recieved that message
+     * * This is useful for whenever you are trying to test a feature with chat messages
+     */
     static simulateChat(message: Message): void;
     static simulateChat(chatLineId: number): void;
     static simulateChat(str: string): void;
-    static simulateChat(regexp: RegExp): void;
+    // static simulateChat(regexp: RegExp): void;
+    /**
+     * * Gets the command handler instance
+     */
+    static getCommandHandler(): JavaClass<"net.minecraftforge.client.ClientCommandHandler">;
+    /**
+     * * Gets a list (Map) of commands
+     */
+    static getCommands(): Map<string, JavaClass<"net.minecraft.command.ICommand">>;
+    /**
+     * * Check whether the given command is a client command or not
+     * @returns `true` if it is otherwise `false`
+     */
+    static isClientCmd(command: string): boolean;
+    /**
+     * * Converts the given time into human readable format
+     * * (`5s`, `2m 5s`, `17m`, `3h 47m`, `1d 4h`, `2w 5d`, `6y 18w 6d`)
+     * @param time Time in milliseconds
+     */
+    static relativeTimeToString(time: number): string;
+    /**
+     * * Adds commas to the given number
+     * @param value The number to add commas to
+     * @param dp The amount of decimal points (`0` default)
+     */
+    static addCommas(value: number, dp: number): string;
+    /**
+     * * Gets the color code for the value based off of the maxmimum value
+     * @param max The maximum threshold to use for the equation
+     * @returns The color code. (e.g: `"§4"`)
+     */
+    static colorForNumber(value: number, max: number): string;
   }
   /**
    * com.chattriggers.ctjs.minecraft.libs.EventLib
