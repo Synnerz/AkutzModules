@@ -74,12 +74,113 @@ declare global {
     toString(): string
   }
   class BlockType {}
-  class Sign {}
-  class Chunk {}
+  /**
+   * * A library that provides useful utilities for Sign
+   */
+  class Sign extends Block implements JavaClass<"com.github.synnerz.akutz.api.wrappers.world.block.Sign"> {
+    constructor(block: Block)
+    /**
+     * * The underlying minecraft TileEntitySign
+     */
+    sign: JavaClass<"net.minecraft.tileentity.TileEntitySign">
+    /**
+     * * Gets the lines that are in the sign
+     */
+    getLines(): Message[]
+    /**
+     * * Gets the lines that are in the sign by their formatted text
+     */
+    getFormattedLines(): string[]
+    /**
+     * * Gets the lines that are in the sign by their unformatted text
+     */
+    getUnformattedLines(): string[]
+    toString(): string
+  }
+  /**
+   *  A library that provides useful utilities for Chunk
+   */
+  class Chunk extends JavaClass<"com.github.synnerz.akutz.api.wrappers.world.Chunk"> {
+    constructor(chunk: JavaClass<"net.minecraft.world.chunk.Chunk">)
+    /**
+     * * The underlying minecraft Chunk
+     */
+    chunk: JavaClass<"net.minecraft.world.chunk.Chunk">
+    /**
+     * * Gets the chunk's X position
+     */
+    getX(): number
+    /**
+     * * Gets the chunk's Z position
+     */
+    getZ(): number
+    /**
+     * * Gets the chunk's minimum X position
+     * * Note: this is calculated by `getX() * 16`
+     */
+    getMinBlockX(): number
+    /**
+     * * Gets the chunk's minimum Z position
+     * * Note: this is calculated by `getZ() * 16`
+     */
+    getMinBlockZ(): number
+    /**
+     * * Gets all of the loaded entities that are inside [this] chunk
+     */
+    getAllEntities(): Entity[]
+    /**
+     * * Gets all of the loaded entities that are inside [this] chunk that match the specified class
+     */
+    getAllEntitiesOfType(clazz: JavaClass<"java.lang.Class">): Entity[]
+    /**
+     * * Gets all of the loaded tileEntities that are inside [this] chunk
+     */
+    getAllTileEntities(): TileEntity[]
+    /**
+     * * Gets all of the loaded tileEntities that are inside [this] chunk that match the specified class
+     */
+    getAllTileEntitiesOfType(clazz: JavaClass<"java.lang.Class">): TileEntity[]
+    /**
+     * * Gets the underlying minecraft [chunk]
+     */
+    toMC(): JavaClass<"net.minecraft.world.chunk.Chunk">
+  }
 
   /**
-   * com.chattriggers.ctjs.minecraft.wrappers.world.PotionEffect
+   *  A library that provides useful utilities for PotionEffect
    */
-  class PotionEffect extends JavaClass<"com.chattriggers.ctjs.minecraft.wrappers.world.PotionEffect"> {}
+  class PotionEffect extends JavaClass<"com.github.synnerz.akutz.api.wrappers.PotionEffect"> {
+    constructor(effect: JavaClass<"net.minecraft.potion.PotionEffect">)
+    /**
+     * * The underlying minecraft PotionEffect
+     */
+    effect: JavaClass<"net.minecraft.potion.PotionEffect">
+    /**
+     * * Gets [this] potion effect's name
+     * * e.g: `potion.poison`
+     */
+    getName(): string
+    /**
+     * * Gets [this] potion effect's localized name
+     * * e.g: `poison`
+     */
+    getLocalizedName(): string
+    /**
+     * * Gets [this] potion effect's amplifier
+     */
+    getAmplifier(): number
+    /**
+     * * Gets [this] potion effect's ID
+     */
+    getID(): number
+    /**
+     * * Checks whether [this] potion effect is at maximum duration
+     */
+    isDurationMax(): boolean
+    /**
+     * - Checks whether [this] potion effect displays particles
+     */
+    showsParticles(): boolean
+  }
 }
 export {}
