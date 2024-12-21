@@ -46,7 +46,7 @@ export class AkutzImage extends JavaClass<'com.github.synnerz.akutz.api.objects.
 declare global {
   class Image extends AkutzImage {}
   /**
-   * * A library that provides Chat utilities
+   * * A library that provides useful utilities for Chat
    */
   class ChatLib extends JavaClass<"com.github.synnerz.akutz.api.libs.ChatLib"> {
     /**
@@ -183,96 +183,129 @@ declare global {
      */
     static colorForNumber(value: number, max: number): string;
   }
+  function cancel(event: CTEvent): boolean;
   /**
-   * com.chattriggers.ctjs.minecraft.libs.EventLib
+   * * A library that provides useful utilities for Files
    */
-  class EventLib extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.EventLib'> {
-    static cancel(event: CTEvent): void;
-    static getMessage(
-      event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>
-    ): JavaClass<'net.minecraft.util.IChatComponent'>;
-    static getName(event: JavaClass<'net.minecraftforge.client.event.sound.PlaySoundEvent'>): string;
-    static getType(event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>): number;
-  }
-  const cancel: typeof EventLib.cancel;
-  /**
-   * com.chattriggers.ctjs.minecraft.libs.FileLib
-   */
-  class FileLib extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.FileLib'> {
+  class FileLib extends JavaClass<'com.github.synnerz.akutz.api.libs.FileLib'> {
     /**
-     * Appends a file to anywhere on the system. Use './' for the '.minecraft' folder.
+     * * Provides useful utilities for Base64 related tasks
+     */
+    static base64: {
+      /**
+       * * Encodes the string to Base64 format
+       */
+      encode(str: string): string,
+      /**
+       * * Decodes the Base64 format string
+       */
+      decode(str: string): string
+    };
+    /**
+     * * Appends the data to the specified file location
+     * * NOTE: You can use `./` for the `.minecraft` folder
      */
     static append(fileLocation: string, data: string): void;
     /**
-     * relative to ct modules folder
+     * * Appends the data to the module location with file name specified (`ModuleName/FileName`)
      */
     static append(moduleName: string, fileName: string, data: string): void;
-    static decodeBase64(b64: string): string;
+    // static decodeBase64(b64: string): string;
     /**
-     * Deletes a file from anywhere on the system. Use './' for the '.minecraft' folder.
+     * * Deletes the file that is in the specified file location
+     * * NOTE: You can use `./` for the `.minecraft` folder
      */
     static delete(fileLocation: string): boolean;
     /**
-     * relative to ct modules folder
+     * * Deletes the file that is located at `ModuleName/FileName`
      */
     static delete(moduleName: string, fileName: string): boolean;
-    static deleteDirectory(file: JavaClass<'java.io.File'>): boolean;
+    /**
+     * * Deletes the directory that was specified by the file param
+     */
+    static deleteDir(file: JavaClass<'java.io.File'>): boolean;
     /**
      * Deletes a folder from anywhere on the system. Use './' for the '.minecraft' folder.
+     * * Deletes the specified directory
+     * * NOTE: You can use `./` for the `.minecraft` folder
      */
-    static deleteDirectory(directory: string): boolean;
-    static encodeBase64(data: string): string;
+    static deleteDir(directory: string): boolean;
+    // static encodeBase64(data: string): string;
     /**
-     * Determines if a file or directly exists at the specified location. Use './' for the '.minecraft' folder.
+     * * Checks whether the file or directory exists at the specified location
+     * NOTE: You can use `./` for the `.minecraft` folder
      */
     static exists(fileLocation: string): boolean;
     /**
-     * relative to ct modules folder
+     * * Checks whether a module or a file exists in the modules directory
      */
     static exists(moduleName: string, fileName: string): boolean;
-    static getUrlContent(url: string): string;
+    // static getUrlContent(url: string): string;
     /**
      * Gets the content of a url as a string
      * note: user agent (at current ct version of writing) is not used
      */
-    static getUrlContent(url: string, userAgent: string): string;
+    // static getUrlContent(url: string, userAgent: string): string;
     /**
-     * Determines if the assumed to exist path is a directory. Use './' for the '.minecraft' folder.
+     * * Checks whether the specified directory location exists
+     * * NOTE: You can use `./` for the `.minecraft` folder
      */
     static isDirectory(dirLocation: string): boolean;
     /**
-     * relative to ct modules folder
+     * * Checks whether the specified directory exists inside a module
      */
     static isDirectory(moduleName: string, dirName: string): boolean;
+    /**
+     * * Reads the file from the provided file
+     */
     static read(file: JavaClass<'java.io.file'>): string | null;
     /**
      * Reads a file from anywhere on the system. Use './' for the '.minecraft' folder.
+     * * Reads the specified file location and returns it's value as string or null
+     * * NOTE: You can use `./` for the `.minecraft` folder
      */
     static read(fileLocation: string): string | null;
     /**
      * relative to ct modules folder
+     * * Reads the specified file from a module directory and returns it's value as string or null
+     * * NOTE: You can use `./` for the `.minecraft` folder
      */
     static read(moduleName: string, fileName: string): string | null;
     /**
-     * Extracts a zip file specified by the zipFilePath to a directory specified by destDirectory (will be created if does not exist).
+     * * Extracts a zip file specified by the zipFilePath to a directory specified by destDirectory
+     * * NOTE: The destDirectory is created if it does not exist
      */
     static unzip(zipFilePath: string, destDirectory: string): void;
     /**
-     * Writes a file to anywhere on the system. Use './' for the '.minecraft' folder.
-     */
-    static write(fileLocation: string, data: string): void;
-    /**
-     * Writes a file to anywhere on the system. Use './' for the '.minecraft' folder.
+     * * Writes the data to a file that is located at the specified location
+     * * NOTE: You can use `./` for the `.minecraft` folder
+     * @param recursive Whether the directories should be created if they do not exist or not (`false` by default)
      */
     static write(fileLocation: string, data: string, recursive: boolean): void;
     /**
+     * * Writes the data to a file that is located at the specified location
+     * * NOTE: You can use `./` for the `.minecraft` folder
+     */
+    static write(fileLocation: string, data: string): void;
+    /**
      * relative to ct modules folder
+     * * Writes the data to the file specified to be located at a module directory
+     * @param recursive Whether the directories should be created if they do not exist or not (`false` by default)
+     */
+    static write(moduleName: string, fileName: string, data: string, recursive: boolean): void;
+    /**
+     * * Writes the data to the file specified to be located at a module directory
      */
     static write(moduleName: string, fileName: string, data: string): void;
     /**
-     * relative to ct modules folder
+     * * Gets the absolute location of the [Akutz Module Path] + [moduleName] + [location]
+     * @returns The path as string
      */
-    static write(moduleName: string, fileName: string, data: string, recursive: boolean): void;
+    static absoluteLocation(moduleName: string, location: string): string;
+    /**
+     * * Reads a resource from Akutz's resources and returns it's contents as a string
+     */
+    static readFromResource(resourceName: string): string;
   }
   /**
    * com.chattriggers.ctjs.minecraft.libs.MathLib
