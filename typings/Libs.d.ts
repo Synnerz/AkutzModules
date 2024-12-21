@@ -307,13 +307,83 @@ declare global {
      */
     static readFromResource(resourceName: string): string;
   }
+  class DataStats extends JavaClass<"com.github.synnerz.akutz.api.libs.MathLib::DataStats"> {
+    constructor(
+      min: number,
+      max: number,
+      median: number,
+      Q1: number,
+      Q3: number,
+      IQR: number,
+      mean: number,
+      stddev: number,
+      range: number
+    );
+    getMin(): number
+    getMax(): number
+    getMedian(): number
+    getQ1(): number
+    getQ3(): number
+    getIQR(): number
+    getMean(): number
+    getStddev(): number
+    getRange(): number
+  }
   /**
-   * com.chattriggers.ctjs.minecraft.libs.MathLib
+   * * A library that provides useful utilities for Math
    */
-  class MathLib extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.MathLib'> {
-    static clamp(number: number, min: number, max: number): number;
-    static clampFloat(number: number, min: number, max: number): number;
-    static map(number: number, in_min: number, in_max: number, out_min: number, out_max: number): number;
+  class MathLib extends JavaClass<"com.github.synnerz.akutz.api.libs.MathLib"> {
+    static compareFloat(f1: number, f2: number): number;
+    static compareFloat(f1: number, f2: number, epsilon: number): number;
+    static rescale(n: number, oldMin: number, oldMax: number, newMin: number, newMax: number): number;
+    static lerp(oldValue: number, newValue: number, mult: number): number;
+    static linearLeastSquares(points: number[][]): number[];
+    static calcStats(data: number[]): DataStats;
+    static fastDistance(dx: number, dy: number): number;
+    static vector3D: {
+      intersectPlaneLine(
+        dx: number, dy: number, dz: number,
+        x: number, y: number, z: number,
+        nx: number, ny: number, nz: number,
+        px: number, py: number, pz: number
+      ): number[]
+
+      getNormal(
+        x1: number, y1: number, z1: number,
+        x2: number, y2: number, z2: number,
+        x3: number, y3: number, z3: number
+      ): number[]
+
+      getAngle(
+        x1: number, y1: number, z1: number,
+        x2: number, y2: number, z2: number
+      ): number
+
+      getAngle(
+        x1: number, y1: number, z1: number,
+        x2: number, y2: number, z2: number,
+        smallesst: number
+      ): number
+
+      rotate(
+        x: number, y: number, z: number,
+        t: number, p: number, r: number
+      ): number[]
+
+      dot(
+        ux: number, uy: number, uz: number,
+        vx: number, vy: number, vz: number
+      ): number
+
+      cross(
+        ux: number, uy: number, uz: number,
+        vx: number, vy: number, vz: number
+      ): number[]
+
+      normalize(x: number, y: number, z: number): number[]
+
+      normalize(x: number, y: number, z: number, newLength: number): number[]
+    }
   }
   /**
    * com.chattriggers.ctjs.minecraft.libs.Tessellator
