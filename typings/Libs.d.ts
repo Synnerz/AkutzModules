@@ -2,26 +2,41 @@ import { JavaClass, JavaEnumValueE, StringOrJavaEnumValueE, Vector2f, Vector3f }
 import { CTEvent } from './IRegister';
 
 /**
- * com.chattriggers.ctjs.minecraft.libs.renderer.Image
+ * * A library that provides useful utilities for Image
  */
-export class Image extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Image'> {
+export class AkutzImage extends JavaClass<'com.github.synnerz.akutz.api.objects.render.Image'> {
   constructor(image: JavaClass<'java.awt.image.BufferedImage'>);
+  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number)
+  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number, height: number)
 
   /**
-   * Clears the image from GPU memory and removes its references CT side that way it can be garbage collected if not referenced in js code.
+   * Clears the image from GPU memory and removes its references that way it can be garbage collected if not referenced in js code.
    */
   destroy(): void;
   draw(x: number, y: number): this;
   draw(x: number, y: number, width: number): this;
   draw(x: number, y: number, width: number, height: number): this;
+  draw(x: number, y: number, width: number, height: number, u: number): this;
+  draw(x: number, y: number, width: number, height: number, u: number, v: number): this;
+  draw(x: number, y: number, width: number, height: number, u: number, v: number, uw: number): this;
+  draw(x: number, y: number, width: number, height: number, u: number, v: number, uw: number, vh: number): this;
+  /**
+   * * Gets the underlying texture of this instance
+   */
   getTexture(): JavaClass<'net.minecraft.client.renderer.texture.DynamicTexture'>;
   getTextureHeight(): number;
   getTextureWidth(): number;
-  onRender(event: JavaClass<'net.minecraftforge.client.event.RenderGameOverlayEvent::Pre'>): void;
+  getWidth(): number;
+  getHeight(): number;
+  /**
+   * * Updates (edits) the BufferedImage with another BufferedImage passed in as a param
+   */
+  update(image: JavaClass<'java.awt.image.BufferedImage'>): this;
+  // onRender(event: JavaClass<'net.minecraftforge.client.event.RenderGameOverlayEvent::Pre'>): void;
 
-  image: JavaClass<'java.awt.image.BufferedImage'>;
+  // image: JavaClass<'java.awt.image.BufferedImage'>;
 
-  static fromAsset(file: string): Image;
+  // static fromAsset(file: string): Image;
   static fromFile(file: JavaClass<'java.io.File'>): Image;
   static fromFile(file: string): Image;
   static fromUrl(url: string): Image;
@@ -29,12 +44,13 @@ export class Image extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.rende
 }
 
 declare global {
+  class Image extends AkutzImage {}
   /**
    * * A library that provides Chat utilities
    */
   class ChatLib extends JavaClass<"com.github.synnerz.akutz.api.libs.ChatLib"> {
     /**
-     * * Sends an action bar "message" with the given string
+     * * Sends an action bar "message" with the given param
      * * NOTE: ActionBar is the text above your hotbar that appears sometimes
      */
     static actionBar(str: string): void;
@@ -346,7 +362,7 @@ declare global {
     static partialTicks: number;
   }
   // @ts-expect-error
-  const Image: Image;
+  // const Image: Image;
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle
    */
