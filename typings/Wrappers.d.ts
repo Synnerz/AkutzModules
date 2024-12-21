@@ -364,29 +364,56 @@ declare global {
     static Score: typeof Score
   }
   /**
-   * com.chattriggers.ctjs.minecraft.wrappers.Server
+   * * A library with useful utilities for TabList
    */
-  class Server extends JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.Server'> {
-    static getIP(): 'localhost' | (string & {});
-    static getMOTD(): 'SinglePlayer' | (string & {});
-    static getName(): 'SinglePlayer' | (string & {});
-    static getPing(): 5 | (number & {});
-  }
-  /**
-   * com.chattriggers.ctjs.minecraft.wrappers.TabList
-   */
-  class TabList extends JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.TabList'> {
-    static clearFooter(): void;
-    static clearHeader(): void;
-    static getFooter(): string | null;
-    static getFooterMessage(): Message | null;
-    static getHeader(): string | null;
-    static getHeaderMessage(): Message | null;
-    static getNames(): string[];
-    static getNamesByObjectives(): string[];
-    static getUnformattedNames(): string[];
-    static setFooter(footer: string | Message | JavaClass<'net.minecraft.util.IChatComponent'> | null): void;
-    static setHeader(footer: string | Message | JavaClass<'net.minecraft.util.IChatComponent'> | null): void;
+  class TabList extends JavaClass<"com.github.synnerz.akutz.api.wrappers.TabList"> {
+    /**
+     * * Gets all of the names by objectives
+     */
+    static getNamesByObjectives(): string[]
+    /**
+     * * Gets all of the names in the tablist or empty array if none (or tablist was `null`)
+     */
+    static getNames(): string[]
+    /**
+     * * Gets all of the names unformatted (removes the color codes)
+     * * Note: this does not use the `getNames` method under the hood and can lead to unexpected results
+     */
+    static getUnformattedNames(): string[]
+    /**
+     * * Gets the tablist's header message
+     */
+    static getHeaderMessage(): Message | null
+    /**
+     * * Gets the tablist's header or `null`
+     */
+    static getHeader(): string | null
+    /**
+     * * Sets the tablist's header
+     * * Note: if `null` is passed it'll clear it (same behavior as `TabList.clearHeader()`)
+     */
+    static setHeader(header: string | Message | JavaClass<"net.minecraft.util.IChatComponent"> | null): void
+    /**
+     * * Clears the tablist's header
+     */
+    static clearHeader(): void
+    /**
+     * * Gets the footer's message
+     */
+    static getFooterMessage(): Message | null
+    /**
+     * * Gets the tablist's footer or `null`
+     */
+    static getFooter(): string | null
+    /**
+     * * Sets the tablist's footer
+     * * Note: if `null` is passed it'll clear it (same behavior as `TabList.clearFooter()`)
+     */
+    static setFooter(footer: string | Message | JavaClass<"net.minecraft.util.IChatComponent"> | null): void
+    /**
+     * * Clears the tablist's footer
+     */
+    static clearFooter(): void
   }
   /**
    * com.chattriggers.ctjs.minecraft.wrappers.World
