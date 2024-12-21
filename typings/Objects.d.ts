@@ -3,68 +3,80 @@ import './NBT';
 import { RegularTrigger } from './IRegister';
 
 /**
- * com.chattriggers.ctjs.minecraft.objects.gui.GuiHandler
+ * * A library that provides useful utilities for GuiHandler
  */
-declare class GuiHandler extends JavaClass<'com.chattriggers.ctjs.minecraft.objects.gui.GuiHandler'> {
+declare class GuiHandler extends JavaClass<"com.github.synnerz.akutz.api.objects.gui.GuiHandler"> {
   onTick(event: JavaClass<'net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent'>): void;
+  /**
+   * * Sets the specified Gui to be opened
+   */
   openGui(gui: JavaClass<'net.minecraft.client.gui.GuiScreen'>): void;
 }
 
 declare global {
   /**
-   * com.chattriggers.ctjs.minecraft.objects.Book
+   * * A library that provides useful utilities for Sound
    */
-  class Book extends JavaClass<'com.chattriggers.ctjs.minecraft.objects.Book'> {
-    constructor(bookName: string);
-
-    addPage(message: Message): this;
-    addPage(message: string): this;
-    display(): void;
-    display(pageIndex: number): void;
-    getCurrentPage(): number;
-    isOpen(): boolean;
-    setPage(pageIndex: number, message: Message): this;
-    updateBookScreen(pages: NBTTagList): void;
-
-    bookName: string;
-  }
-  /**
-   * com.chattriggers.ctjs.minecraft.objects.Sound
-   */
-  class Sound extends JavaClass<'com.chattriggers.ctjs.minecraft.objects.Sound'> {
+  class Sound extends JavaClass<"com.github.synnerz.akutz.api.objects.sound.Sound"> {
     constructor(config: {
-      source: string;
-      priority?: boolean;
-      loop?: boolean;
-      stream?: boolean;
-      category: 'master' | 'music' | 'record' | 'weather' | 'block' | 'hostile' | 'neutral' | 'player' | 'ambient';
-      volume: number;
-      pitch: number;
-      x: number;
-      y: number;
-      z: number;
-      attenuation: 0 | 1 | 2;
-    });
-
-    getPitch(): number;
-    getVolume(): number;
-    onWorldLoad(): void;
-    pause(): void;
-    play(): void;
-    rewind(): void;
+      source: string
+      priority?: boolean
+      loop?: boolean
+      stream?: boolean
+      category: 'master' | 'music' | 'record' | 'weather' | 'block' | 'hostile' | 'neutral' | 'player' | 'ambient'
+      volume: number
+      pitch: number
+      x: number
+      y: number
+      z: number
+      attenuation: 0 | 1 | 2
+    })
     /**
-     * Sets the attenuation (fade out over space) of the song. Models are: NONE(0) - no fade ROLLOFF(1) - this is the default, meant to be somewhat realistic LINEAR(2) - fades out linearly, as the name implies
+     * * Plays [this] sound
      */
-    setAttenuation(model: 0 | 1 | 2): this;
+    play(): void
     /**
-     * Sets the category of this sound, making it respect the Player's sound volume sliders.
+     * * Pauses [this] sound
+     */
+    pause(): void
+    /**
+     * * Stops [this] sound
+     */
+    stop(): void
+    /**
+     * * Rewinds [this] sound
+     */
+    rewind(): void
+    /**
+     * * Sets the attenuation (fade out over space) of the song. Models are: NONE(0) - no fade ROLLOFF(1) - this is the default, meant to be somewhat realistic LINEAR(2) - fades out linearly, as the name implies
+     */
+    setAttenuation(model: number): this
+    /**
+     * * Gets [this] sound's pitch
+     */
+    getPitch(): number
+    /**
+     * * Sets [this] sound's pitch
+     */
+    setPitch(pitch: number): this
+    /**
+     * * Sets [this] sound's position
+     */
+    setPosition(x: number, y: number, z: number): this
+    /**
+     * * Gets [this] sound's volume
+     */
+    getVolume(): number
+    /**
+     * * Sets [this] sound's volume
+     */
+    setVolume(vol: number): this
+    /**
+     * * Sets the category of this sound, making it respect the Player's sound volume sliders
      */
     setCategory(
       category: 'master' | 'music' | 'record' | 'weather' | 'block' | 'hostile' | 'neutral' | 'player' | 'ambient'
-    ): this;
-    setPitch(pitch: number): this;
-    setPosition(x: number, y: number, z: number): this;
-    stop(): void;
+    ): this
   }
   /**
    * com.chattriggers.ctjs.engine.langs.js.JSDisplay
