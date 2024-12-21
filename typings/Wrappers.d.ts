@@ -1,18 +1,18 @@
-import { JavaClass } from './External';
-import './World';
+import { JavaClass } from "./External"
+import "./World"
 
-declare class Score extends JavaClass<'internal'> {
-  constructor(score: JavaClass<'net.minecraft.scoreboard.Score'>);
+declare class Score extends JavaClass<"internal"> {
+  constructor(score: JavaClass<"net.minecraft.scoreboard.Score">)
 
   /**
    * * Gets the [mcScore] team points
    */
-  getPoints(): number;
+  getPoints(): number
   /**
    * * Gets the [mcScore] team name
    */
-  getName(): string;
-  toString(): string;
+  getName(): string
+  toString(): string
 }
 
 declare global {
@@ -89,7 +89,7 @@ declare global {
      */
     static disconnect(): void
     /**
-     * * Connects the player to the given server [IP]
+     * * Connects the player to the specified server [IP]
      * * e.g: `Client.connect("hypixel.net")`
      */
     static connect(ip: string): void
@@ -98,7 +98,7 @@ declare global {
      */
     static reconnect(): void
     /**
-     * * Reconnects the player into the given server [IP]
+     * * Reconnects the player into the specified server [IP]
      */
     static reconnect(ip: string): void
     /**
@@ -132,7 +132,7 @@ declare global {
        * * Gets the current gui's class name
        * * Note: if the gui is none it'll return `"null"` as string
        */
-      getClassName(): string;
+      getClassName(): string
       /**
        * * Gets the slot under the current mouse position
        */
@@ -167,11 +167,11 @@ declare global {
       /**
        * * Gets the current clipboard's data as string
        */
-      get(): string;
+      get(): string
       /**
        * * Sets the current clipboard's data
        */
-      set(value: string): void;
+      set(value: string): void
     }
   }
   /**
@@ -336,7 +336,7 @@ declare global {
      */
     static getLineByIndex(index: number): Score
     /**
-     * * Gets all of the scores that match the given score
+     * * Gets all of the scores that match the specified score
      */
     static getLinesByScore(score: number): Score[]
     /**
@@ -416,11 +416,115 @@ declare global {
     static clearFooter(): void
   }
   /**
-   * com.chattriggers.ctjs.minecraft.wrappers.World
+   * * A library that provides useful utilities for the World
    */
-  class World extends JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.World'> {
-    static getAllEntities(): Entity[];
+  class World extends JavaClass<"com.github.synnerz.akutz.api.wrappers.World"> {
+    /**
+     * * Gets the current minecraft world instance
+     */
+    static getWorld(): JavaClass<"net.minecraft.client.multiplayer.WorldClient"> | null
+    /**
+     * * Checks whether the world is loaded
+     */
+    static isLoaded(): boolean
+    /**
+     * * Gets the current world time
+     */
+    static getTime(): number
+    /**
+     * * Gets the block at the specified position
+     */
+    static getBlockAt(x: number, y: number, z: number): Block
+    static getBlockAt(pos: JavaClass<"net.minecraft.util.BlockPos">): Block
+    /**
+     * * Gets the block state at the specified position
+     */
+    static getBlockStateAt(pos: JavaClass<"net.minecraft.util.BlockPos">): JavaClass<"net.minecraft.block.state.IBlockState">
+    /**
+     * * Gets the chunk at the specified position
+     */
+    static getChunkAt(x: number, y: number, z: number): Chunk
+    /**
+     * * Gets all of the loaded entities of the world
+     */
+    static getAllEntities(): Entity[]
+    /**
+     * * Gets all of the world entities that match with the specified class
+     * * Class example: `Java.type("net.minecraft.entity.passive.EntitySheep")`
+     */
+    static getAllEntitiesOfType(clazz: JavaClass<"java.lang.Class">): Entity[]
+    /**
+     * * Gets all of the loaded tile entities of the world
+     */
+    static getAllTileEntities(): TileEntity[]
+    /**
+     * * Gets all of the loaded tile entities of the world that match with the specified class
+     * * Class example: `Java.type("net.minecraft.tileentity.TileEntityChest")`
+     */
+    static getAllTileEntitiesOfType(clazz: JavaClass<"java.lang.Class">): TileEntity[]
+    /**
+     * * Gets all of the entities that are within the bounds of the specified position
+     */
+    static getAllEntitiesInAABB(clazz: JavaClass<"java.lang.Class">, bb: JavaClass<"net.minecraft.util.AxisAlignedBB">): Entity[]
+    static getAllEntitiesInAABB(clazz: JavaClass<"java.lang.Class">, bb: number[]): Entity[]
+    static getAllEntitiesInAABB(clazz: JavaClass<"java.lang.Class">, min: JavaClass<"net.minecraft.util.BlockPos">, max: JavaClass<"net.minecraft.util.BlockPos">): Entity[]
+    static getEntitiesWithinAABB(clazz: JavaClass<"java.lang.Class">, bb: JavaClass<"net.minecraft.util.AxisAlignedBB">): Entity[]
+    static getEntitiesWithinAABB(clazz: JavaClass<"java.lang.Class">, bb: number[]): Entity[]
+    static getEntitiesWithinAABB(clazz: JavaClass<"java.lang.Class">, min: JavaClass<"net.minecraft.util.BlockPos">, max: JavaClass<"net.minecraft.util.BlockPos">): Entity[]
+    /**
+     * * Plays a normal minecraft sound with the specified volume and pitch
+     */
+    static playSound(name: string, volume: number, pitch: number): void
+    /**
+     * * Plays a record with the specified name in the specified position
+     */
+    static playRecord(name: string, x: number, y: number, z: number): void
+    /**
+     * * Stops all of the sounds
+     */
+    static stopAllSounds(): void
+    /**
+     * * Gets all the blocks that are within the specified position
+     * * Note: this is mostly for internal use
+     */
+    static getAllBlocksInBox(start: JavaClass<"net.minecraft.util.BlockPos">, end: JavaClass<"net.minecraft.util.BlockPos">): Block[]
+    /**
+     * * Gets all the blocks that are within the specified position
+     */
+    static getBlocksIn(start: JavaClass<"net.minecraft.util.BlockPos">, end: JavaClass<"net.minecraft.util.BlockPos">): Block[]
+    static getBlocksIn(start: number[], end: number[]): Block[]
+    static getBlocksIn(corners: number[][]): Block[]
+    /**
+     * * A field with useful utilities for border
+     */
+    static border: {
+      /**
+       * * Gets the center X of the border
+       */
+      getCenterX(): number
+      /**
+       * * Gets the center Z of the border
+       */
+      getCenterZ(): number
+    }
+    /**
+     * * A field with useful utilities for spawn
+     */
+    static spawn: {
+      /**
+       * * Gets the spawn X position
+       */
+      getX(): number
+      /**
+       * * Gets the spawn Y position
+       */
+      getY(): number
+      /**
+       * * Gets the spawn Z position
+       */
+      getZ(): number
+    }
   }
 }
 
-export {};
+export {}
