@@ -169,105 +169,128 @@ declare global {
     }
   }
   /**
-   * com.chattriggers.ctjs.minecraft.wrappers.Player
+   * * A library with useful utilities for the Player
    */
-  class Player extends JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.Player'> {
-    static asPlayerMP(): PlayerMP | null;
-    static draw(x: number, y: number): typeof Player;
-    static draw(x: number, y: number, rotate: boolean): typeof Player;
-    static draw(x: number, y: number, rotate: boolean, showNametag: boolean): typeof Player;
-    static draw(x: number, y: number, rotate: boolean, showNametag: boolean, showArmor: boolean): typeof Player;
-    static draw(
-      x: number,
-      y: number,
-      rotate: boolean,
-      showNametag: boolean,
-      showArmor: boolean,
-      showCape: boolean
-    ): typeof Player;
-    static draw(
-      x: number,
-      y: number,
-      rotate: boolean,
-      showNametag: boolean,
-      showArmor: boolean,
-      showCape: boolean,
-      showHeldItem: boolean
-    ): typeof Player;
-    static draw(
-      x: number,
-      y: number,
-      rotate: boolean,
-      showNametag: boolean,
-      showArmor: boolean,
-      showCape: boolean,
-      showHeldItem: boolean,
-      showArrows: boolean
-    ): typeof Player;
-    static facing():
-      | ''
-      | 'South'
-      | 'South West'
-      | 'West'
-      | 'North West'
-      | 'North'
-      | 'North East'
-      | 'East'
-      | 'South East';
-    static getActivePotionEffects(): PotionEffect[];
-    static getAirLevel(): number;
-    static getArmorPoints(): number;
-    static getBiome(): string;
-    static getContainer(): Inventory | null;
-    static getDisplayName(): TextComponent;
-    static getHeldItem(): Item | null;
-    static getHeldItemIndex(): number;
-    static getHP(): number;
-    static getHunger(): number;
-    static getInventory(): Inventory | null;
-    static getLastX(): number;
-    static getLastY(): number;
-    static getLastZ(): number;
-    static getLightLevel(): number;
-    static getMotionX(): number;
-    static getMotionY(): number;
-    static getMotionZ(): number;
-    static getName(): string;
-    static getPitch(): number;
-    static getPlayer(): JavaClass<'net.minecraft.client.entity.EntityPlayerSP'> | null;
-    static getRawYaw(): number;
-    static getRenderX(): number;
-    static getRenderY(): number;
-    static getRenderZ(): number;
-    static getSaturation(): number;
-    static getTeam(): Team | null;
-    static getUUID(): `${string}-${string}-${string}-${string}-${string}`;
-    static getUUIDObj(): JavaClass<'java.util.UUID'>;
-    static getX(): number;
-    static getXPLevel(): number;
-    static getXPProgress(): number;
-    static getY(): number;
-    static getYaw(): number;
-    static getZ(): number;
-    static isFlying(): boolean;
-    static isMoving(): boolean;
-    static isSleeping(): boolean;
-    static isSneaking(): boolean;
-    static isSprinting(): boolean;
+  class Player extends JavaClass<"com.github.synnerz.akutz.api.wrappers.Player"> {
     /**
-     * Gets the current object that the player is looking at, whether that be a block or an entity. Returns an air BlockType when not looking at anything.
+     * * Gets the current minecraft entity of the player
      */
-    static lookingAt(): BlockType | Sign | Block | Entity;
-    static setHeldItemIndex(index: number): void;
-    static setNametagName(textComponent: TextComponent): void;
-    static setTabDisplayName(textComponent: TextComponent): void;
-
+    static getPlayer(): JavaClass<"net.minecraft.client.entity.EntityPlayerSP">
+    /**
+     * * Gets the current player entity as a PlayerMP one
+     */
+    static asPlayerMP(): PlayerMP | null
+    /**
+     * * Gets the current X position of the player
+     */
+    static getX(): number
+    /**
+     * * Gets the current Y position of the player
+     */
+    static getY(): number
+    /**
+     * * Gets the current Z position of the player
+     */
+    static getZ(): number
+    /**
+     * * Gets the last X position of the player
+     */
+    static getLastX(): number
+    /**
+     * * Gets the last Y position of the player
+     */
+    static getLastY(): number
+    /**
+     * * Gets the last Z position of the player
+     */
+    static getLastZ(): number
+    /**
+     * * Gets the X rendering position of the player
+     * * Note: this is the lerp value between last position and current position multiplied by the partialTicks
+     */
+    static getRenderX(): number
+    /**
+     * * Gets the Y rendering position of the player
+     * * Note: this is the lerp value between last position and current position multiplied by the partialTicks
+     */
+    static getRenderY(): number
+    /**
+     * * Gets the Z rendering position of the player
+     * * Note: this is the lerp value between last position and current position multiplied by the partialTicks
+     */
+    static getRenderZ(): number
+    /**
+     * * Gets the name of the player
+     */
+    static getName(): string
+    /**
+     * * Gets the UUID of the player in string
+     */
+    static getUUID(): `${string}-${string}-${string}-${string}-${string}`
+    /**
+     * * Gets the UUID java object
+     */
+    static getUUIDObj(): JavaClass<"java.util.UUID">
+    /**
+     * * Gets the player's current Health
+     */
+    static getHP(): number
+    /**
+     * * Checks whether the player is moving
+     */
+    static isMoving(): boolean
+    /**
+     * * Checks whether the player is sneaking
+     */
+    static isSneaking(): boolean
+    /**
+     * * Checks whether the player is sprinting
+     */
+    static isSprinting(): boolean
+    /**
+     * * Checks whether the player is flying
+     */
+    static isFlying(): boolean
+    /**
+     * * Gets the [Entity/Block/Sign] that the player is currently looking at
+     * * This returns `null` if it's not looking at anything
+     * * Note: the reach for this is about 6 blocks
+     */
+    static lookingAt(): null | Block | Entity | Sign
+    /**
+     * * Gets the player's current active potion effects
+     */
+    static getActivePotionEffects(): PotionEffect[]
+    /**
+     * * Gets the current container the player is in
+     */
+    static getContainer(): Inventory | null
+    /**
+     * * Gets the player's inventory
+     * * Note: the same inventory that can be accessed by pressing `e`
+     */
+    static getInventory(): Inventory | null
+    /**
+     * * A field with useful utilities for armor
+     */
     static armor: {
-      getBoots(): Item | null;
-      getChestplate(): Item | null;
-      getHelmet(): Item | null;
-      getLeggings(): Item | null;
-    };
+      /**
+       * * Gets the current helmet the player is wearing
+       */
+      getHelmet(): Item | null
+      /**
+       * * Gets the current chestplate the player is wearing
+       */
+      getChestplate(): Item | null
+      /**
+       * * Gets the current leggings the player is wearing
+       */
+      getLeggings(): Item | null
+      /**
+       * * Gets the current boots the player is wearing
+       */
+      getBoots(): Item | null
+    }
   }
   /**
    * com.chattriggers.ctjs.minecraft.wrappers.Scoreboard
