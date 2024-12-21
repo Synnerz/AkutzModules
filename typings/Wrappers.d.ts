@@ -4,7 +4,13 @@ import './World';
 declare class Score extends JavaClass<'internal'> {
   constructor(score: JavaClass<'net.minecraft.scoreboard.Score'>);
 
+  /**
+   * * Gets the [mcScore] team points
+   */
   getPoints(): number;
+  /**
+   * * Gets the [mcScore] team name
+   */
   getName(): string;
   toString(): string;
 }
@@ -293,24 +299,69 @@ declare global {
     }
   }
   /**
-   * com.chattriggers.ctjs.minecraft.wrappers.Scoreboard
+   * * A library that provides useful utilities for Scoreboard
    */
-  class Scoreboard extends JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.Scoreboard'> {
-    static getLineByIndex(index: number): Score;
-    static getLines(): Score[];
-    static getLines(descending: boolean): Score[];
-    static getLinesByScore(score: number): Score[];
-    static getScoreboard(): JavaClass<'net.minecraft.scoreboard.Scoreboard'> | null;
-    static getScoreboardTitle(): string;
-    static getShouldRender(): boolean;
-    static getSidebar(): JavaClass<'net.minecraft.scoreboard.ScoreObjective'>;
-    static getTitle(): string;
-    static resetCache(): void;
-    static setLine(score: number, line: string, override: boolean): void;
-    static setShouldRender(shouldRender: boolean): void;
-    static setTitle(title: string): void;
-
-    static Score: typeof Score;
+  class Scoreboard extends JavaClass<"com.github.synnerz.akutz.api.wrappers.Scoreboard"> {
+    /**
+     * * Gets the current Scoreboard
+     */
+    static getScoreboard(): JavaClass<"net.minecraft.scoreboard.Scoreboard"> | null
+    /**
+     * * Gets the current Sidebar
+     */
+    static getSidebar(): JavaClass<"net.minecraft.scoreboard.ScoreObjective"> | null
+    /**
+     * * Gets the current scoreboard title
+     */
+    static getScoreboardTitle(): string
+    /**
+     * * Gets the current scoreboard title
+     * * Alias for `#getScoreboardTitle`
+     */
+    static getTitle(): string
+    /**
+     * * Sets the current scoreboard title
+     */
+    static setTitle(name: string): void
+    /**
+     * * Gets the current scoreboard lines
+     */
+    static getLines(): Score[]
+    /**
+     * * Gets the current scoreboard lines by descending order (`true` by default)
+     */
+    static getLines(descending: boolean): Score[]
+    /**
+     * * Gets the current scoreboard line by the index
+     */
+    static getLineByIndex(index: number): Score
+    /**
+     * * Gets all of the scores that match the given score
+     */
+    static getLinesByScore(score: number): Score[]
+    /**
+     * * Sets a line in the scoreboard to the specified name and score
+     */
+    static setLine(score: number, line: string): void
+    /**
+     * * Sets a line in the scoreboard to the specified name, score
+     * * and whether it should override the current one if there is one or not (`false` by default)
+     */
+    static setLine(score: number, line: string, override: boolean): void
+    /**
+     * * Sets whether the scoreboard should render or not
+     */
+    static setShouldRender(bool: boolean): void
+    /**
+     * * Checks whether the scoreboard should render or not
+     */
+    static getShouldRender(): boolean
+    /**
+     * * Marks the scoreboard as dirty so it can cache new values
+     * * Note: this is mostly used internally
+     */
+    static markDirty(): void
+    static Score: typeof Score
   }
   /**
    * com.chattriggers.ctjs.minecraft.wrappers.Server
