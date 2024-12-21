@@ -1,169 +1,5 @@
-import { JavaClass, JavaEnumValue } from './External';
+import { JavaClass } from './External';
 import './World';
-
-/**
- * com.chattriggers.ctjs.minecraft.wrappers.Settings
- */
-declare class Settings extends JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.Settings'> {
-  getDifficulty(): number;
-  getFOV(): number;
-  getSettings(): JavaClass<'net.minecraft.client.settings.GameSettings'>;
-  setDifficulty(difficulty: number): void;
-  setFOV(fov: number): void;
-
-  chat: {
-    setWidth(width: number): void;
-    setWebLinks(toggled: boolean): void;
-    setVisibility(visibility: 'HIDDEN' | 'SYSTEM' | 'FULL' | (string & {})): void;
-    setUnfocusedHeight(height: number): void;
-    setScale(scale: number): void;
-    setReducedDebugInfo(toggled: boolean): void;
-    setPromptOnWebLinks(toggled: boolean): void;
-    setOpacity(opacity: number): void;
-    setFocusedHeight(height: number): void;
-    setColors(toggled: boolean): void;
-    getWidth(): number;
-    getWebLinks(): boolean;
-    getVisibility(): JavaEnumValue<'FULL' | 'HIDDEN' | 'SYSTEM'>;
-    getUnfocusedHeight(): number;
-    getScale(): number;
-    getReducedDebugInfo(): boolean;
-    getPromptOnWebLinks(): boolean;
-    getOpacity(): boolean;
-    getFocusedHeight(): number;
-    getColors(): boolean;
-  };
-  skin: {
-    getCape(): boolean;
-    getHat(): boolean;
-    getJacket(): boolean;
-    getLeftPantsLeg(): boolean;
-    getLeftSleeve(): boolean;
-    getRightPantsLeg(): boolean;
-    getRightSleeve(): boolean;
-    setCape(toggled: boolean): void;
-    setHat(toggled: boolean): void;
-    setJacket(toggled: boolean): void;
-    setLeftPantsLeg(toggled: boolean): void;
-    setLeftSleeve(toggled: boolean): void;
-    setRightPantsLeg(toggled: boolean): void;
-    setRightSleeve(toggled: boolean): void;
-  };
-  sound: {
-    getAmbient(): number;
-    getBlocks(): number;
-    getFriendlyCreatures(): number;
-    getHostileCreatures(): number;
-    getMasterVolume(): number;
-    getMusicVolume(): number;
-    getNoteblockVolume(): number;
-    getPlayers(): number;
-    getWeather(): number;
-    setAmbient(level: number): void;
-    setBlocks(level: number): void;
-    setFriendlyCreatures(level: number): void;
-    setHostileCreatures(level: number): void;
-    setMasterVolume(level: number): void;
-    setMusicVolume(level: number): void;
-    setNoteblockVolume(level: number): void;
-    setPlayers(level: number): void;
-    setWeather(level: number): void;
-  };
-  video: {
-    get3dAnaglyph(): boolean;
-    getAlternateBlocks(): boolean;
-    getBobbing(): boolean;
-    getBrightness(): number;
-    getClouds(): number;
-    getEntityShadows(): boolean;
-    getFullscreen(): boolean;
-    getGraphics(): boolean;
-    getGuiScale(): number;
-    getMaxFrameRate(): number;
-    getMipmapLevels(): number;
-    getParticles(): number;
-    getRenderDistance(): number;
-    getSmoothLighting(): number;
-    getVBOs(): boolean;
-    getVsync(): boolean;
-    set3dAnaglyph(toggled: boolean): void;
-    setAlternateBlocks(toggled: boolean): void;
-    setBobbing(toggled: boolean): void;
-    setBrightness(brightness: number): void;
-    setClouds(clouds: number): void;
-    setEntityShadows(toggled: boolean): void;
-    setFullscreen(toggled: boolean): void;
-    setGraphics(fancy: boolean): void;
-    setGuiScale(scale: number): void;
-    setMaxFrameRate(frameRate: number): void;
-    setMipmapLevels(mipmapLevels: number): void;
-    setParticles(particles: number): void;
-    setRenderDistance(distance: number): void;
-    setSmoothLighting(level: number): void;
-    setVBOs(toggled: boolean): void;
-    setVsync(toggled: boolean): void;
-  };
-}
-
-/**
- * com.chattriggers.ctjs.engine.langs.js.JSClient
- */
-declare class JSClient extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSClient'> {
-  connect(ip: string): void;
-  disconnect(): void;
-  getChatGUI(): JavaClass<'net.minecraft.client.gui.GuiNewChat'> | null;
-  getConnection(): JavaClass<'net.minecraft.client.network.NetHandlerPlayClient'> | null;
-  getCurrentChatMessage(): string;
-  getFreeMemory(): number;
-  getFPS(): number;
-  getKeyBindFromKey(keyCode: number): KeyBind | null;
-  getKeyBindFromKey(keyCode: number, description: string): KeyBind;
-  getKeyBindFromKey(keyCode: number, description: string, category: string): KeyBind;
-  getKeyBindFromDescription(description: string): KeyBind | null;
-  getMaxMemory(): number;
-  /**
-   * 0 - 100
-   */
-  getMemoryUsage(): number;
-  getMinecraft(): JavaClass<'net.minecraft.client.Minecraft'>;
-  getMouseX(): number;
-  getMouseY(): number;
-  getSystemTime(): number;
-  getTabGui(): JavaClass<'net.minecraft.client.gui.GuiPlayerTabOverlay'> | null;
-  getTotalMemory(): number;
-  getVersion(): string;
-  isAltDown(): boolean;
-  isControlDown(): boolean;
-  isInChat(): boolean;
-  isInGui(): boolean;
-  isInTab(): boolean;
-  isShiftDown(): boolean;
-  isTabbedIn(): boolean;
-  scheduleTask(callback: () => void): boolean;
-  /**
-   * Schedule's a task to run on Minecraft's main thread in [delay] ticks.
-   * Defaults to the next tick.
-   * @param delay The delay in ticks
-   * @param callback The task to run on the main thread
-   */
-  scheduleTask(delay: number, callback: () => void): boolean;
-  sendPacket(packet: JavaClass<'net.minecraft.network.Packet'>): void;
-  setCurrentChatMessage(message: string): void;
-  showTitle(title: string, subtitle: string, fadeIn: number, time: number, fadeOut: number): void;
-
-  camera: {
-    getX(): number;
-    getY(): number;
-    getZ(): number;
-  };
-  currentGui: {
-    get(): JavaClass<'net.minecraft.client.gui.GuiScreen'> | null;
-    getClassName(): 'null' | (string & {});
-    getSlotUnderMouse(): Slot | null;
-    close(): void;
-  };
-  settings: Settings;
-}
 
 declare class Score extends JavaClass<'internal'> {
   constructor(score: JavaClass<'net.minecraft.scoreboard.Score'>);
@@ -174,20 +10,163 @@ declare class Score extends JavaClass<'internal'> {
 }
 
 declare global {
-  const Client: JSClient;
   /**
-   * com.chattriggers.ctjs.minecraft.wrappers.CPS
+   * * A library that provides some useful utilities about the Client
    */
-  class CPS extends JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.CPS'> {
-    static getLeftClicks(): number;
-    static getLeftClicksAverage(): number;
-    static getLeftClicksMax(): number;
-    static getRightClicks(): number;
-    static getRightClicksAverage(): number;
-    static getRightClicksMax(): number;
-
-    click(event: JavaClass<'net.minecraftforge.client.event.MouseEvent'>): void;
-    update(event: JavaClass<'net.minecraftforge.client.event.RenderGameOverlayEvent'>): void;
+  class Client extends JavaClass<"com.github.synnerz.akutz.api.wrappers.Client"> {
+    /**
+     * * Gets the current Minecraft instance
+     */
+    static getMinecraft(): JavaClass<"net.minecraft.client.Minecraft">
+    /**
+     * * Gets the current NetHandlerPlayClient
+     */
+    static getConnection(): JavaClass<"net.minecraft.client.network.NetHandlerPlayClient"> | null
+    /**
+     * * Gets the current ChatGui
+     */
+    static getChatGui(): JavaClass<"net.minecraft.client.gui.GuiNewChat"> | null
+    /**
+     * * Checks whether the player is currently in chat
+     */
+    static isInChat(): boolean
+    /**
+     * * Gets the current Tablist Gui
+     */
+    static getTabGui(): JavaClass<"net.minecraft.client.gui.GuiPlayerTabOverlay"> | null
+    /**
+     * * Checks whether the player is holding the tab key
+     */
+    static isInTab(): boolean
+    /**
+     * * Checks whether the player is currently tabbed into minecraft
+     */
+    static isTabbedIn(): boolean
+    /**
+     * * Checks whether the [control]/[ctrl] key is held down
+     */
+    static isControlDown(): boolean
+    /**
+     * * Checks whether the [shift] key is held down
+     */
+    static isShiftDown(): boolean
+    /**
+     * * Checks whether the [alt] key is held down
+     */
+    static isAltDown(): boolean
+    /**
+     * * Gets the current FPS
+     */
+    static getFPS(): number
+    /**
+     * * Gets the current system time in milliseconds
+     */
+    static getSystemTime(): number
+    /**
+     * * Checks whether the player is currently inside any type of gui
+     */
+    static isInGui(): boolean
+    /**
+     * * Sends a packet
+     */
+    static sendPacket(packet: JavaClass<"net.minecraft.network.Packet">): void
+    /**
+     * * Schedules a task to be ran after 1 tick (default)
+     */
+    static scheduleTask(cb: () => void): void
+    /**
+     * * Schedules a task to be ran after n tick (n being whatever is specified as the `delay` param)
+     */
+    static scheduleTask(delay: number, cb: () => void): void
+    /**
+     * * Disconnects the player from the current world
+     */
+    static disconnect(): void
+    /**
+     * * Connects the player to the given server [IP]
+     * * e.g: `Client.connect("hypixel.net")`
+     */
+    static connect(ip: string): void
+    /**
+     * * Reconnects the player to the current server
+     */
+    static reconnect(): void
+    /**
+     * * Reconnects the player into the given server [IP]
+     */
+    static reconnect(ip: string): void
+    /**
+     * * Shows a title like "alert" in the middle of the player's screen
+     * * Current behavior is: `subtitle = null`, `ticks = 5` and `shadow = true`
+     */
+    static showTitle(title: string): void
+    /**
+     * * Shows a title like "alert" in the middle of the player's screen
+     * * Current behavior is: `ticks = 5` and `shadow = true`
+     */
+    static showTitle(title: string, subtitle: string): void
+    /**
+     * * Shows a title like "alert" in the middle of the player's screen
+     * * Current behavior is: `shadow = true`
+     */
+    static showTitle(title: string, subtitle: string, ticks: number): void
+    /**
+     * * Shows a title like "alert" in the middle of the player's screen
+     */
+    static showTitle(title: string, subtitle: string, ticks: number, shadow: boolean): void
+    /**
+     * * A field that contains some utilities for the current Gui
+     */
+    static currentGui: {
+      /**
+       * * Gets the current [GuiScreen] or null if there is none
+       */
+      get(): JavaClass<"net.minecraft.client.gui.GuiScreen"> | null
+      /**
+       * * Gets the current gui's class name
+       * * Note: if the gui is none it'll return `"null"` as string
+       */
+      getClassName(): string;
+      /**
+       * * Gets the slot under the current mouse position
+       */
+      getSlotUnderMouse(): Slot | null
+      /**
+       * * Closes the current gui
+       * * Note: this closes it on both server side and client side
+       */
+      close(): void
+    }
+    /**
+     * * A field that contains some [camera] utilities
+     */
+    static camera: {
+      /**
+       * * Gets the current RenderX
+       */
+      getX(): number
+      /**
+       * * Gets the current RenderY
+       */
+      getY(): number
+      /**
+       * * Gets the current RenderZ
+       */
+      getZ(): number
+    }
+    /**
+     * * A field that contains clipboard utilities
+     */
+    static clipboard: {
+      /**
+       * * Gets the current clipboard's data as string
+       */
+      get(): string;
+      /**
+       * * Sets the current clipboard's data
+       */
+      set(value: string): void;
+    }
   }
   /**
    * com.chattriggers.ctjs.minecraft.wrappers.Player
