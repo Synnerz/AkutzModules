@@ -1,54 +1,53 @@
-import { JavaClass, JavaEnumValueE, StringOrJavaEnumValueE, Vector2f, Vector3f } from './External';
+import { Class, EmptyClass, JavaClass, JavaEnumValueE, StringOrJavaEnumValueE, Vector2f, Vector3f } from './External';
 import { CTEvent } from './IRegister';
 
-/**
- * * A library that provides useful utilities for Image
- */
-export class AkutzImage extends JavaClass<'com.github.synnerz.akutz.api.objects.render.Image'> {
-  constructor(image: JavaClass<'java.awt.image.BufferedImage'>);
-  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number);
-  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number, height: number);
-
-  /**
-   * Clears the image from GPU memory and removes its references that way it can be garbage collected if not referenced in js code.
-   */
-  destroy(): void;
-  draw(x: number, y: number): this;
-  draw(x: number, y: number, width: number): this;
-  draw(x: number, y: number, width: number, height: number): this;
-  draw(x: number, y: number, width: number, height: number, u: number): this;
-  draw(x: number, y: number, width: number, height: number, u: number, v: number): this;
-  draw(x: number, y: number, width: number, height: number, u: number, v: number, uw: number): this;
-  draw(x: number, y: number, width: number, height: number, u: number, v: number, uw: number, vh: number): this;
-  /**
-   * * Gets the underlying texture of this instance
-   */
-  getTexture(): JavaClass<'net.minecraft.client.renderer.texture.DynamicTexture'>;
-  getTextureHeight(): number;
-  getTextureWidth(): number;
-  getWidth(): number;
-  getHeight(): number;
-  /**
-   * * Updates (edits) the BufferedImage with another BufferedImage passed in as a param
-   */
-  update(image: JavaClass<'java.awt.image.BufferedImage'>): this;
-  // onRender(event: JavaClass<'net.minecraftforge.client.event.RenderGameOverlayEvent::Pre'>): void;
-
-  // image: JavaClass<'java.awt.image.BufferedImage'>;
-
-  // static fromAsset(file: string): Image;
-  static fromFile(file: JavaClass<'java.io.File'>): Image;
-  static fromFile(file: string): Image;
-  static fromUrl(url: string): Image;
-  static fromUrl(url: string, cachedImageName: string): Image;
-}
-
 declare global {
-  class Image extends AkutzImage {}
+  /**
+   * * A library that provides useful utilities for Image
+   */
+  class Image extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.objects.render.Image'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.objects.render.Image'>;
+    constructor(image: JavaClass<'java.awt.image.BufferedImage'>);
+    constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number);
+    constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number, height: number);
+    /**
+     * Clears the image from GPU memory and removes its references that way it can be garbage collected if not referenced in js code.
+     */
+    destroy(): void;
+    draw(x: number, y: number): this;
+    draw(x: number, y: number, width: number): this;
+    draw(x: number, y: number, width: number, height: number): this;
+    draw(x: number, y: number, width: number, height: number, u: number): this;
+    draw(x: number, y: number, width: number, height: number, u: number, v: number): this;
+    draw(x: number, y: number, width: number, height: number, u: number, v: number, uw: number): this;
+    draw(x: number, y: number, width: number, height: number, u: number, v: number, uw: number, vh: number): this;
+    /**
+     * * Gets the underlying texture of this instance
+     */
+    getTexture(): JavaClass<'net.minecraft.client.renderer.texture.DynamicTexture'>;
+    getTextureHeight(): number;
+    getTextureWidth(): number;
+    getWidth(): number;
+    getHeight(): number;
+    /**
+     * * Updates (edits) the BufferedImage with another BufferedImage passed in as a param
+     */
+    update(image: JavaClass<'java.awt.image.BufferedImage'>): this;
+    // onRender(event: JavaClass<'net.minecraftforge.client.event.RenderGameOverlayEvent::Pre'>): void;
+
+    // image: JavaClass<'java.awt.image.BufferedImage'>;
+
+    // static fromAsset(file: string): Image;
+    static fromFile(file: JavaClass<'java.io.File'>): Image;
+    static fromFile(file: string): Image;
+    static fromUrl(url: string): Image;
+    static fromUrl(url: string, cachedImageName: string): Image;
+  }
   /**
    * * A library that provides useful utilities for Chat
    */
-  class ChatLib extends JavaClass<'com.github.synnerz.akutz.api.libs.ChatLib'> {
+  class ChatLib extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.ChatLib'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.libs.ChatLib'>;
     /**
      * * Sends an action bar "message" with the given param
      * * NOTE: ActionBar is the text above your hotbar that appears sometimes
@@ -187,7 +186,8 @@ declare global {
   /**
    * * A library that provides useful utilities for Files
    */
-  class FileLib extends JavaClass<'com.github.synnerz.akutz.api.libs.FileLib'> {
+  class FileLib extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.FileLib'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.libs.FileLib'>;
     /**
      * * Provides useful utilities for Base64 related tasks
      */
@@ -307,7 +307,8 @@ declare global {
      */
     static readFromResource(resourceName: string): string;
   }
-  class DataStats extends JavaClass<'com.github.synnerz.akutz.api.libs.MathLib::DataStats'> {
+  class DataStats extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.MathLib::DataStats'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.libs.MathLib::DataStats'>;
     constructor(
       min: number,
       max: number,
@@ -332,7 +333,8 @@ declare global {
   /**
    * * A library that provides useful utilities for Math
    */
-  class MathLib extends JavaClass<'com.github.synnerz.akutz.api.libs.MathLib'> {
+  class MathLib extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.MathLib'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.libs.MathLib'>;
     static compareFloat(f1: number, f2: number): number;
     static compareFloat(f1: number, f2: number, epsilon: number): number;
     static rescale(n: number, oldMin: number, oldMax: number, newMin: number, newMax: number): number;
@@ -386,7 +388,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.libs.Tessellator
    */
-  class Tessellator extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.Tessellator'> {
+  class Tessellator extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.Tessellator'> {
+    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.Tessellator'>;
     static alphaFunc(func: number, ref: number): typeof Tessellator;
     static begin(): typeof Tessellator;
     static begin(drawMode: number): typeof Tessellator;
@@ -465,7 +468,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle
    */
-  class Rectangle extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'> {
+  class Rectangle extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'> {
+    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'>;
     constructor(color: number, x: number, y: number, width: number, height: number);
 
     draw(): this;
@@ -501,7 +505,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Renderer
    */
-  class Renderer extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'> {
+  class Renderer extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'> {
+    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'>;
     static color(red: number, green: number, blue: number): number;
     static color(red: number, green: number, blue: number, alpha: number): number;
     static colorize(red: number, green: number, blue: number): void;
@@ -633,7 +638,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Shape
    */
-  class Shape extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'> {
+  class Shape extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'> {
+    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'>;
     constructor(color: number);
 
     addVertex(x: number, y: number): this;
@@ -653,7 +659,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Text
    */
-  class Text extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'> {
+  class Text extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'> {
+    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'>;
     constructor(text: string);
     constructor(text: string, x: number);
     constructor(text: string, x: number, y: number);
