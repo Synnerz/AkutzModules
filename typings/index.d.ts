@@ -4,3 +4,4 @@ import './IRegister';
 import './Libs';
 import './Objects';
 import './Wrappers';
+import './Entity';

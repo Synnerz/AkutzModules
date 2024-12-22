@@ -1,11 +1,13 @@
 import { EJavaClass, JavaClass } from './External';
 
 declare global {
+  class Entity {
+    constructor(entity: JavaClass<'net.minecraft.entity.Entity'>);
+  }
   /**
    * * A library that provides useful utilities for Entity
    */
   interface Entity extends JavaClass<'com.github.synnerz.akutz.api.wrappers.entity.Entity'> {
-    constructor(entity: JavaClass<'net.minecraft.entity.Entity'>): Entity;
     /**
      * * The underlying minecraft Entity
      */
@@ -107,12 +109,14 @@ declare global {
      */
     toMC(): JavaClass<'net.minecraft.entity.Entity'>;
   }
+  class EntityLivingBase {
+    constructor(entityLivingBase: JavaClass<'net.minecraft.entity.EntityLivingBase'>);
+  }
   /**
    * * A library that provides useful utilities for EntityLivingBase
    */
   interface EntityLivingBase
     extends EJavaClass<Entity, 'com.github.synnerz.akutz.api.wrappers.entity.EntityLivingBase'> {
-    constructor(entityLivingBase: JavaClass<'net.minecraft.entity.EntityLivingBase'>): EntityLivingBase;
     /**
      * * The underlying minecraft EntityLivingBase
      */
@@ -142,11 +146,13 @@ declare global {
     isPotionActive(potionEffect: PotionEffect): boolean;
     toString(): string;
   }
+  class PlayerMP {
+    constructor(playerMP: JavaClass<'net.minecraft.entity.player.EntityPlayer'>);
+  }
   /**
    * * A library that provides useful utilities for PlayerMP
    */
   interface PlayerMP extends EJavaClass<EntityLivingBase, 'com.github.synnerz.akutz.api.wrappers.entity.PlayerMP'> {
-    constructor(playerMP: JavaClass<'net.minecraft.entity.player.EntityPlayer'>): PlayerMP;
     /**
      * * The underlying minecraft EntityPlayer
      */
@@ -174,11 +180,13 @@ declare global {
      */
     getName(): string;
   }
+  class Particle {
+    constructor(particleEntity: JavaClass<'net.minecraft.client.particle.EntityFX'>);
+  }
   /**
    * * A library that provides useful utilities for Particle
    */
   interface Particle extends EJavaClass<Entity, 'com.github.synnerz.akutz.api.wrappers.entity.Particle'> {
-    constructor(particleEntity: JavaClass<'net.minecraft.client.particle.EntityFX'>): Particle;
     /**
      * * The underlying minecraft EntityFX
      */
@@ -224,11 +232,13 @@ declare global {
     remove(): this;
     toString(): string;
   }
+  class TileEntity {
+    constructor(tileEntity: JavaClass<'net.minecraft.tileentity.TileEntity'>);
+  }
   /**
    * * A library that provides useful utilities for TileEntity
    */
   interface TileEntity extends JavaClass<'com.github.synnerz.akutz.api.wrappers.entity.TileEntity'> {
-    constructor(tileEntity: JavaClass<'net.minecraft.tileentity.TileEntity'>): TileEntity;
     /**
      * * The underlying minecraft TileEntity
      */
@@ -263,11 +273,13 @@ declare global {
     toMC(): JavaClass<'net.minecraft.tileentity.TileEntity'>;
     toString(): string;
   }
+  class Team {
+    constructor(team: JavaClass<'net.minecraft.scoreboard.ScorePlayerTeam'>);
+  }
   /**
    * * A library that provides useful utilities for Team
    */
   interface Team extends JavaClass<'com.github.synnerz.akutz.api.wrappers.Team'> {
-    constructor(team: JavaClass<'net.minecraft.scoreboard.ScorePlayerTeam'>): Team;
     /**
      * * The underlying minecraft ScorePlayerTeam
      */
