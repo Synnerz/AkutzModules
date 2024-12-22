@@ -462,8 +462,6 @@ declare global {
 
     static partialTicks: number;
   }
-  // @ts-expect-error
-  // const Image: Image;
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle
    */
@@ -655,7 +653,6 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Text
    */
-  // @ts-expect-error
   class Text extends JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'> {
     constructor(text: string);
     constructor(text: string, x: number);
