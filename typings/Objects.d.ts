@@ -412,31 +412,87 @@ declare global {
     toString(): string
   }
   /**
-   * com.chattriggers.ctjs.minecraft.objects.message.TextComponent
+   * * A library that provides useful utilities for TextComponent
    */
-  class TextComponent extends JavaClass<'com.chattriggers.ctjs.minecraft.objects.message.TextComponent'> {
-    constructor(text: string);
-    constructor(chatComponent: JavaClass<'net.minecraft.util.IChatComponent'>);
+  class TextComponent extends JavaClass<"com.github.synnerz.akutz.api.wrappers.message.TextComponent"> {
+    constructor(text: string)
+    constructor(chatComponent: JavaClass<"net.minecraft.util.IChatComponent">)
 
-    actionBar(): void;
-    chat(): void;
-    getClickAction(): 'open_url' | 'open_file' | 'run_command' | 'suggest_command' | 'change_page' | null;
-    getClickValue(): string | null;
-    getHoverAction(): 'show_text' | 'show_achievement' | 'show_item' | 'show_entity' | null;
-    getHoverValue(): string | null;
-    getText(): string;
-    isFormatted(): boolean;
-    setClick(action: 'open_url' | 'open_file' | 'run_command' | 'suggest_command' | 'change_page', value: string): this;
-    setClickAction(action: 'open_url' | 'open_file' | 'run_command' | 'suggest_command' | 'change_page'): this;
-    setClickValue(value: string): this;
-    setFormatted(formatted: boolean): this;
-    setHover(action: 'show_text' | 'show_achievement' | 'show_item' | 'show_entity', value: string): this;
-    setHoverAction(action: 'show_text' | 'show_achievement' | 'show_item' | 'show_entity'): this;
-    setHoverValue(value: string): this;
-    setText(text: string): this;
-    toString(): string;
+    /**
+     * * The underlying minecraft IChatComponent
+     */
+    chatComponentText: JavaClass<"net.minecraft.util.IChatComponent">
 
-    chatComponentText: JavaClass<'net.minecraft.util.IChatComponent'>;
+    /**
+     * * Gets [this] textcomponent's text
+     */
+    getText(): string
+    /**
+     * * Sets [this] textcomponent's text
+     */
+    setText(str: string): this
+    /**
+     * * Checks whether [this] textcomponent is formatted
+     */
+    isFormatted(): boolean
+    /**
+     * * Sets [this] textcomponent's formatted state
+     */
+    setFormatted(formatted: boolean): this
+    /**
+     * * Sets [this] textcomponent's click [action] and [value]
+     */
+    setClick(action: "open_url" | "open_file" | "run_command" | "suggest_command" | "change_page", value: string): this
+    /**
+     * * Gets [this] textcomponent's action value
+     */
+    getClickAction(): "open_url" | "open_file" | "run_command" | "suggest_command" | "change_page" | null
+    /**
+     * * Sets [this] textcomponent's action value
+     */
+    setClickAction(action: "open_url" | "open_file" | "run_command" | "suggest_command" | "change_page"): this
+    /**
+     * * Gets [this] textcomponent's click value
+     */
+    getClickValue(): string | null
+    /**
+     * * Sets [this] textcomponent's click value
+     */
+    setClickValue(value: string): this
+    /**
+     * * Sets [this] textcomponent's hover [action] and [value]
+     */
+    setHover(action: "show_text" | "show_achievement" | "show_item" | "show_entity", value: string): this
+    /**
+     * * Gets [this] textcomponent's hover action
+     */
+    getHoverAction(): "show_text" | "show_achievement" | "show_item" | "show_entity" | null
+    /**
+     * * Gets [this] textcomponent's hover action
+     */
+    setHoverAction(action: "show_text" | "show_achievement" | "show_item" | "show_entity"): this
+    /**
+     * * Gets [this] textcomponent's hover value
+     */
+    getHoverValue(): string | null
+    /**
+     * * Sets [this] textcomponent's hover value
+     */
+    setHoverValue(value: string): this
+    /**
+     * * Sends [this] message to the player's chat
+     * * Note: this is only client-side
+     */
+    chat(): void
+    /**
+     * * Sends [this] message to the player's action bar
+     * * Note: this is only client-side
+     */
+    actionBar(): void
+    /**
+     * * Gets [this] textcomponent's underlying IChatComponent
+     */
+    toMC(): JavaClass<"net.minecraft.util.IChatComponent">
   }
 }
 
