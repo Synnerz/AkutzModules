@@ -1,7 +1,9 @@
-import { JavaClass } from './External';
+import { Class, EmptyClass, JavaClass } from './External';
 import './World';
 
-declare class Score extends JavaClass<'internal'> {
+declare class Score extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.Scoreboard.Score'> {
+  static class: Class<'com.github.synnerz.akutz.api.wrappers.Scoreboard.Score'>;
+  getClass(): Class<'com.github.synnerz.akutz.api.wrappers.Scoreboard.Score'>;
   constructor(score: JavaClass<'net.minecraft.scoreboard.Score'>);
 
   /**
@@ -19,7 +21,10 @@ declare global {
   /**
    * * A library that provides some useful utilities about the Client
    */
-  class Client extends JavaClass<'com.github.synnerz.akutz.api.wrappers.Client'> {
+  class Client extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.Client'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.Client'>;
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.Client'>;
+    static getClass(): Class<'com.github.synnerz.akutz.api.wrappers.Client'>;
     /**
      * * Gets the current Minecraft instance
      */
@@ -177,7 +182,9 @@ declare global {
   /**
    * * A library with useful utilities for the Player
    */
-  class Player extends JavaClass<'com.github.synnerz.akutz.api.wrappers.Player'> {
+  class Player extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.Player'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.Player'>;
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.Player'>;
     /**
      * * Gets the current minecraft entity of the player
      */
@@ -301,7 +308,9 @@ declare global {
   /**
    * * A library that provides useful utilities for Scoreboard
    */
-  class Scoreboard extends JavaClass<'com.github.synnerz.akutz.api.wrappers.Scoreboard'> {
+  class Scoreboard extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.Scoreboard'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.Scoreboard'>;
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.Scoreboard'>;
     /**
      * * Gets the current Scoreboard
      */
@@ -366,7 +375,9 @@ declare global {
   /**
    * * A library with useful utilities for TabList
    */
-  class TabList extends JavaClass<'com.github.synnerz.akutz.api.wrappers.TabList'> {
+  class TabList extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.TabList'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.TabList'>;
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.TabList'>;
     /**
      * * Gets all of the names by objectives
      */
@@ -418,7 +429,9 @@ declare global {
   /**
    * * A library that provides useful utilities for the World
    */
-  class World extends JavaClass<'com.github.synnerz.akutz.api.wrappers.World'> {
+  class World extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.World'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.World'>;
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.World'>;
     /**
      * * Gets the current minecraft world instance
      */
@@ -454,7 +467,7 @@ declare global {
      * * Gets all of the world entities that match with the specified class
      * * Class example: `Java.type("net.minecraft.entity.passive.EntitySheep")`
      */
-    static getAllEntitiesOfType(clazz: JavaClass<'java.lang.Class'>): Entity[];
+    static getAllEntitiesOfType(clazz: Class<any>): Entity[];
     /**
      * * Gets all of the loaded tile entities of the world
      */
@@ -463,27 +476,21 @@ declare global {
      * * Gets all of the loaded tile entities of the world that match with the specified class
      * * Class example: `Java.type("net.minecraft.tileentity.TileEntityChest")`
      */
-    static getAllTileEntitiesOfType(clazz: JavaClass<'java.lang.Class'>): TileEntity[];
+    static getAllTileEntitiesOfType(clazz: Class<any>): TileEntity[];
     /**
      * * Gets all of the entities that are within the bounds of the specified position
      */
+    static getAllEntitiesInAABB(clazz: Class<any>, bb: JavaClass<'net.minecraft.util.AxisAlignedBB'>): Entity[];
+    static getAllEntitiesInAABB(clazz: Class<any>, bb: number[]): Entity[];
     static getAllEntitiesInAABB(
-      clazz: JavaClass<'java.lang.Class'>,
-      bb: JavaClass<'net.minecraft.util.AxisAlignedBB'>
-    ): Entity[];
-    static getAllEntitiesInAABB(clazz: JavaClass<'java.lang.Class'>, bb: number[]): Entity[];
-    static getAllEntitiesInAABB(
-      clazz: JavaClass<'java.lang.Class'>,
+      clazz: Class<any>,
       min: JavaClass<'net.minecraft.util.BlockPos'>,
       max: JavaClass<'net.minecraft.util.BlockPos'>
     ): Entity[];
+    static getEntitiesWithinAABB(clazz: Class<any>, bb: JavaClass<'net.minecraft.util.AxisAlignedBB'>): Entity[];
+    static getEntitiesWithinAABB(clazz: Class<any>, bb: number[]): Entity[];
     static getEntitiesWithinAABB(
-      clazz: JavaClass<'java.lang.Class'>,
-      bb: JavaClass<'net.minecraft.util.AxisAlignedBB'>
-    ): Entity[];
-    static getEntitiesWithinAABB(clazz: JavaClass<'java.lang.Class'>, bb: number[]): Entity[];
-    static getEntitiesWithinAABB(
-      clazz: JavaClass<'java.lang.Class'>,
+      clazz: Class<any>,
       min: JavaClass<'net.minecraft.util.BlockPos'>,
       max: JavaClass<'net.minecraft.util.BlockPos'>
     ): Entity[];
