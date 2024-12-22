@@ -311,7 +311,7 @@ declare global {
      */
     isKeyDown(): boolean;
     /**
-     * * Checks whether [this] keybind was pressed
+     * * Checks whether [this] keybind is pressed
      */
     isPressed(): boolean;
   }
