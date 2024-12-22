@@ -1,15 +1,15 @@
-import { JavaClass } from "./External"
+import { JavaClass } from './External';
 
 // Enums and i am too lazy
-declare class TexGen extends JavaClass<"net.minecraft.client.renderer.GlStateManager.TexGen"> {}
-declare class TexGenCoord extends JavaClass<"net.minecraft.client.renderer.GlStateManager.TexGenCoord"> {}
+declare class TexGen extends JavaClass<'net.minecraft.client.renderer.GlStateManager.TexGen'> {}
+declare class TexGenCoord extends JavaClass<'net.minecraft.client.renderer.GlStateManager.TexGenCoord'> {}
 
 interface IState<T> {
-  get(): T
-  set(value: T): void
-  listen(cb: () => void): void
-  listen(cb: (newValue: T) => void): void
-  listen(cb: (newValue: T, oldValue: T) => void): void
+  get(): T;
+  set(value: T): void;
+  listen(cb: () => void): void;
+  listen(cb: (newValue: T) => void): void;
+  listen(cb: (newValue: T, oldValue: T) => void): void;
 }
 
 declare global {
@@ -18,7 +18,7 @@ declare global {
      * * This function provides interoperability between js and java
      * * It returns the specified string as a java class
      */
-    const type: <T extends string>(clazz: T) => JavaClass<T>
+    const type: <T extends string>(clazz: T) => JavaClass<T>;
   }
 
   interface String {
@@ -26,36 +26,26 @@ declare global {
      * * Replaces the formatting for color codes from `&` to `§`
      * * E.g if the string is `"&aTest"` it will return `"§aTest"`
      */
-    addFormatting(): string
+    addFormatting(): string;
     /**
      * * Replaces the formatting for color codes from `&` to `§`
      * * E.g if the string is `"&aTest"` it will return `"§aTest"`
      */
-    addColor(): string
+    addColor(): string;
     /**
      * * Removes the formatting color codes from the specified string
      * * E.g if the string is `"&aTest"` it will return `"Test"`
      * * Note: this also works if the color codes are `§` instead of `&`
      */
-    removeFormatting(): string
+    removeFormatting(): string;
     /**
      * * Replaces the formatting for color codes from `§` to `&`
      * * E.g if the string is `"§aTest"` it will return `"&aTest"`
      */
-    replaceFormatting(): string
+    replaceFormatting(): string;
   }
-  function easeOut(
-    start: number,
-    finish: number,
-    speed: number,
-    jump?: number
-  ): number;
-  function easeColor(
-    start: number,
-    finish: number,
-    speed: number,
-    jump?: number
-  ): number;
+  function easeOut(start: number, finish: number, speed: number, jump?: number): number;
+  function easeColor(start: number, finish: number, speed: number, jump?: number): number;
   interface Number {
     easeOut(finish: number, speed: number, jump?: number): number;
     easeColor(finish: number, speed: number, jump?: number): number;
@@ -307,146 +297,147 @@ declare global {
   /**
    * * A library that provides useful utilities for Color
    */
-  class Color extends JavaClass<"com.github.synnerz.akutz.api.objects.render.Color"> {
-    static fromRGB(color: number): Color
-    static fromRGBA(color: number): Color
+  class Color extends JavaClass<'com.github.synnerz.akutz.api.objects.render.Color'> {
+    static fromRGB(color: number): Color;
+    static fromRGBA(color: number): Color;
     // alpha defaults to 1
-    static fromRGBA(r: number, g: number, b: number, a: number): Color
-    static fromARGB(color: number): Color
-    static fromAWTColor(color: JavaClass<"java.awt.Color">): Color
-    static BLACK: Color
-    static DARK_BLUE: Color
-    static DARK_GREEN: Color
-    static DARK_AQUA: Color
-    static DARK_RED: Color
-    static DARK_PURPLE: Color
-    static DARK_GRAY: Color
-    static GOLD: Color
-    static GRAY: Color
-    static BLUE: Color
-    static GREEN: Color
-    static AQUA: Color
-    static RED: Color
-    static LIGHT_PURPLE: Color
-    static YELLOW: Color
-    static WHITE: Color
-    static EMPTY: Color
+    static fromRGBA(r: number, g: number, b: number, a: number): Color;
+    static fromARGB(color: number): Color;
+    static fromAWTColor(color: JavaClass<'java.awt.Color'>): Color;
+    static BLACK: Color;
+    static DARK_BLUE: Color;
+    static DARK_GREEN: Color;
+    static DARK_AQUA: Color;
+    static DARK_RED: Color;
+    static DARK_PURPLE: Color;
+    static DARK_GRAY: Color;
+    static GOLD: Color;
+    static GRAY: Color;
+    static BLUE: Color;
+    static GREEN: Color;
+    static AQUA: Color;
+    static RED: Color;
+    static LIGHT_PURPLE: Color;
+    static YELLOW: Color;
+    static WHITE: Color;
+    static EMPTY: Color;
     /**
      * * rgba values are 255 by default
      */
-    constructor(r: number, g: number, b: number, a: number)
-    r: number
-    g: number
-    b: number
-    a: number
-    getRf(): number
-    getGf(): number
-    getBf(): number
-    getAf(): number
-    asRGB(): number
-    asRGBA(): number
-    asARGB(): number
-    asRGBf(): number
-    asRGBAf(): number
-    asARGBf(): number
-    asAWTColor(): JavaClass<"java.awt.Color">
-    asShade(amount: number): Color
-    asTint(amount: number): Color
-    getShadow(amount: number): Color
+    constructor(r: number, g: number, b: number, a: number);
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+    getRf(): number;
+    getGf(): number;
+    getBf(): number;
+    getAf(): number;
+    asRGB(): number;
+    asRGBA(): number;
+    asARGB(): number;
+    asRGBf(): number;
+    asRGBAf(): number;
+    asARGBf(): number;
+    asAWTColor(): JavaClass<'java.awt.Color'>;
+    asShade(amount: number): Color;
+    asTint(amount: number): Color;
+    getShadow(amount: number): Color;
   }
-  class StateVar<T> extends JavaClass<"com.github.synnerz.akutz.api.objects.state.StateVar"> implements IState<T> {
-    constructor(initialValue: T)
-    get(): T
-    set(value: T): void
-    listen(cb: () => void): void
-    listen(cb: (newValue: T) => void): void
-    listen(cb: (newValue: T, oldValue: T) => void): void
+  class StateVar<T> extends JavaClass<'com.github.synnerz.akutz.api.objects.state.StateVar'> implements IState<T> {
+    constructor(initialValue: T);
+    get(): T;
+    set(value: T): void;
+    listen(cb: () => void): void;
+    listen(cb: (newValue: T) => void): void;
+    listen(cb: (newValue: T, oldValue: T) => void): void;
   }
   /**
    * * The minecraft GlStateManager class
    */
-  class GlStateManager extends JavaClass<"net.minecraft.client.renderer.GlStateManager"> {
-    static pushAttrib(): void
-    static popAttrib(): void
-    static disableAlpha(): void
-    static enableAlpha(): void
-    static alphaFunc(func: number, ref: number): void
-    static enableLighting(): void
-    static disableLighting(): void
-    static enableLight(light: number): void
-    static disableLight(light: number): void
-    static enableColorMaterial(): void
-    static disableColorMaterial(): void
-    static colorMaterial(face: number, mode: number): void
-    static disableDepth(): void
-    static enableDepth(): void
-    static depthFunc(depthFunc: number): void
-    static depthMask(flagIn: boolean): void
-    static disableBlend(): void
-    static enableBlend(): void
-    static blendFunc(srcFactor: number, dstFactor: number): void
-    static tryBlendFuncSeparate(srcFactor: number, dstFactor: number, srcFactorAlpha: number, dstFactorAlpha: number): void
-    static enableFog(): void
-    static disableFog(): void
-    static setFog(fog: number): void
-    static setFogDensity(density: number): void
-    static setFogStart(startFog: number): void
-    static setFogEnd(endFog: number): void
-    static enableCull(): void
-    static disableCull(): void
-    static cullFace(mode: number): void
-    static enablePolygonOffset(): void
-    static disablePolygonOffset(): void
-    static doPolygonOffset(factor: number, units: null): void
-    static enableColorLogic(): void
-    static disableColorLogic(): void
-    static colorLogicOp(opcode: number): void
-    static enableTexGenCoord(p: TexGen): void
-    static disableTexGenCoord(p: TexGen): void
-    static texGen(p: TexGen, pname: number): void
-    static texGen(p: TexGen, pname: number, params: JavaClass<"java.nio.FloatBuffer">): void
-    static texGenCoord(p: TexGen): TexGenCoord
-    static setActiveTexture(texture: number): void
-    static enableTexture2D(): void
-    static disableTexture2D(): void
-    static generateTexture(): number
-    static deleteTexture(texture: number): void
-    static bindTexture(texture: number): void
-    static enableNormalize(): void
-    static disableNormalize(): void
-    static shadeModel(mode: number): void
-    static enableRescaleNormal(): void
-    static disableRescaleNormal(): void
-    static viewport(x: number, y: number, width: number, height: number): void
-    static colorMask(r: boolean, g: boolean, b: boolean, a: boolean): void
-    static clearDepth(depth: number): void
+  class GlStateManager extends JavaClass<'net.minecraft.client.renderer.GlStateManager'> {
+    static pushAttrib(): void;
+    static popAttrib(): void;
+    static disableAlpha(): void;
+    static enableAlpha(): void;
+    static alphaFunc(func: number, ref: number): void;
+    static enableLighting(): void;
+    static disableLighting(): void;
+    static enableLight(light: number): void;
+    static disableLight(light: number): void;
+    static enableColorMaterial(): void;
+    static disableColorMaterial(): void;
+    static colorMaterial(face: number, mode: number): void;
+    static disableDepth(): void;
+    static enableDepth(): void;
+    static depthFunc(depthFunc: number): void;
+    static depthMask(flagIn: boolean): void;
+    static disableBlend(): void;
+    static enableBlend(): void;
+    static blendFunc(srcFactor: number, dstFactor: number): void;
+    static tryBlendFuncSeparate(
+      srcFactor: number,
+      dstFactor: number,
+      srcFactorAlpha: number,
+      dstFactorAlpha: number
+    ): void;
+    static enableFog(): void;
+    static disableFog(): void;
+    static setFog(fog: number): void;
+    static setFogDensity(density: number): void;
+    static setFogStart(startFog: number): void;
+    static setFogEnd(endFog: number): void;
+    static enableCull(): void;
+    static disableCull(): void;
+    static cullFace(mode: number): void;
+    static enablePolygonOffset(): void;
+    static disablePolygonOffset(): void;
+    static doPolygonOffset(factor: number, units: null): void;
+    static enableColorLogic(): void;
+    static disableColorLogic(): void;
+    static colorLogicOp(opcode: number): void;
+    static enableTexGenCoord(p: TexGen): void;
+    static disableTexGenCoord(p: TexGen): void;
+    static texGen(p: TexGen, pname: number): void;
+    static texGen(p: TexGen, pname: number, params: JavaClass<'java.nio.FloatBuffer'>): void;
+    static texGenCoord(p: TexGen): TexGenCoord;
+    static setActiveTexture(texture: number): void;
+    static enableTexture2D(): void;
+    static disableTexture2D(): void;
+    static generateTexture(): number;
+    static deleteTexture(texture: number): void;
+    static bindTexture(texture: number): void;
+    static enableNormalize(): void;
+    static disableNormalize(): void;
+    static shadeModel(mode: number): void;
+    static enableRescaleNormal(): void;
+    static disableRescaleNormal(): void;
+    static viewport(x: number, y: number, width: number, height: number): void;
+    static colorMask(r: boolean, g: boolean, b: boolean, a: boolean): void;
+    static clearDepth(depth: number): void;
     /**
      * * rgba values `0-1`
      */
-    static clearColor(r: number, g: number, b: number, a: number): void
-    static clear(mask: number): void
-    static matrixMode(mode: number): void
-    static loadIdentity(): void
-    static pushMatrix(): void
-    static popMatrix(): void
-    static getFloat(pname: number, params: JavaClass<"java.nio.FloatBuffer">): void
-    static ortho(
-      left: number, right: number,
-      bottom: number, top: number,
-      zNear: number, zFar: number
-    ): void
-    static rotate(angle: number, x: number, y: number, z: number): void
-    static scale(x: number, y: number, z: number): void
-    static translate(x: number, y: number, z: number): void
-    static multMatrix(matrix: JavaClass<"java.nio.FloatBuffer">): void
+    static clearColor(r: number, g: number, b: number, a: number): void;
+    static clear(mask: number): void;
+    static matrixMode(mode: number): void;
+    static loadIdentity(): void;
+    static pushMatrix(): void;
+    static popMatrix(): void;
+    static getFloat(pname: number, params: JavaClass<'java.nio.FloatBuffer'>): void;
+    static ortho(left: number, right: number, bottom: number, top: number, zNear: number, zFar: number): void;
+    static rotate(angle: number, x: number, y: number, z: number): void;
+    static scale(x: number, y: number, z: number): void;
+    static translate(x: number, y: number, z: number): void;
+    static multMatrix(matrix: JavaClass<'java.nio.FloatBuffer'>): void;
     /**
      * * rgba values `0-1`
      */
-    static color(r: number, g: number, b: number): void
-    static color(r: number, g: number, b: number, a: number): void
-    static resetColor(): void
-    static callList(list: number): void
+    static color(r: number, g: number, b: number): void;
+    static color(r: number, g: number, b: number, a: number): void;
+    static resetColor(): void;
+    static callList(list: number): void;
   }
 }
 
-export {}
+export {};

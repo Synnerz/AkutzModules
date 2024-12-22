@@ -5,7 +5,7 @@ import { RegularTrigger } from './IRegister';
 /**
  * * A library that provides useful utilities for GuiHandler
  */
-declare class GuiHandler extends JavaClass<"com.github.synnerz.akutz.api.objects.gui.GuiHandler"> {
+declare class GuiHandler extends JavaClass<'com.github.synnerz.akutz.api.objects.gui.GuiHandler'> {
   onTick(event: JavaClass<'net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent'>): void;
   /**
    * * Sets the specified Gui to be opened
@@ -17,66 +17,66 @@ declare global {
   /**
    * * A library that provides useful utilities for Sound
    */
-  class Sound extends JavaClass<"com.github.synnerz.akutz.api.objects.sound.Sound"> {
+  class Sound extends JavaClass<'com.github.synnerz.akutz.api.objects.sound.Sound'> {
     constructor(config: {
-      source: string
-      priority?: boolean
-      loop?: boolean
-      stream?: boolean
-      category: 'master' | 'music' | 'record' | 'weather' | 'block' | 'hostile' | 'neutral' | 'player' | 'ambient'
-      volume: number
-      pitch: number
-      x: number
-      y: number
-      z: number
-      attenuation: 0 | 1 | 2
-    })
+      source: string;
+      priority?: boolean;
+      loop?: boolean;
+      stream?: boolean;
+      category: 'master' | 'music' | 'record' | 'weather' | 'block' | 'hostile' | 'neutral' | 'player' | 'ambient';
+      volume: number;
+      pitch: number;
+      x: number;
+      y: number;
+      z: number;
+      attenuation: 0 | 1 | 2;
+    });
     /**
      * * Plays [this] sound
      */
-    play(): void
+    play(): void;
     /**
      * * Pauses [this] sound
      */
-    pause(): void
+    pause(): void;
     /**
      * * Stops [this] sound
      */
-    stop(): void
+    stop(): void;
     /**
      * * Rewinds [this] sound
      */
-    rewind(): void
+    rewind(): void;
     /**
      * * Sets the attenuation (fade out over space) of the song. Models are: NONE(0) - no fade ROLLOFF(1) - this is the default, meant to be somewhat realistic LINEAR(2) - fades out linearly, as the name implies
      */
-    setAttenuation(model: number): this
+    setAttenuation(model: number): this;
     /**
      * * Gets [this] sound's pitch
      */
-    getPitch(): number
+    getPitch(): number;
     /**
      * * Sets [this] sound's pitch
      */
-    setPitch(pitch: number): this
+    setPitch(pitch: number): this;
     /**
      * * Sets [this] sound's position
      */
-    setPosition(x: number, y: number, z: number): this
+    setPosition(x: number, y: number, z: number): this;
     /**
      * * Gets [this] sound's volume
      */
-    getVolume(): number
+    getVolume(): number;
     /**
      * * Sets [this] sound's volume
      */
-    setVolume(vol: number): this
+    setVolume(vol: number): this;
     /**
      * * Sets the category of this sound, making it respect the Player's sound volume sliders
      */
     setCategory(
       category: 'master' | 'music' | 'record' | 'weather' | 'block' | 'hostile' | 'neutral' | 'player' | 'ambient'
-    ): this
+    ): this;
   }
   /**
    * com.chattriggers.ctjs.engine.langs.js.JSDisplay
@@ -264,56 +264,54 @@ declare global {
   /**
    * * A library that provides useful utilities for Keybind
    */
-  class Keybind
-    extends JavaClass<"com.github.synnerz.akutz.api.objects.keybind.Keybind">
-    implements StateVar<boolean> {
-    constructor(keyBinding: JavaClass<"net.minecraft.client.settings.KeyBinding">)
-    constructor(description: string, keyCode: number)
-    constructor(description: string, keyCode: number, category: string)
+  class Keybind extends JavaClass<'com.github.synnerz.akutz.api.objects.keybind.Keybind'> implements StateVar<boolean> {
+    constructor(keyBinding: JavaClass<'net.minecraft.client.settings.KeyBinding'>);
+    constructor(description: string, keyCode: number);
+    constructor(description: string, keyCode: number, category: string);
     /**
      * * Gets the current state value for [this] keybind
      */
-    get(): boolean
+    get(): boolean;
     /**
      * * Disabled.
      */
-    set(value: boolean): Error
+    set(value: boolean): Error;
     /**
      * * The underlying minecraft Keybinding
      */
-    keyBinding: JavaClass<"net.minecraft.client.settings.KeyBinding">
+    keyBinding: JavaClass<'net.minecraft.client.settings.KeyBinding'>;
 
     /**
      * * Removes the specified [Keybind] from the controls settings
      */
-    static removeKeybind(keyBind: Keybind): void
+    static removeKeybind(keyBind: Keybind): void;
     /**
      * * Clears all of the [Keybinds] added by Akutz
      * * Note: this is mostly for internal use.
      */
-    static clearKeybinds(): void
+    static clearKeybinds(): void;
 
     /**
      * * Gets [this] keybind's category
      */
-    getCategory(): string
+    getCategory(): string;
     /**
      * * Gets [this] keybind's description
      */
-    getDescription(): string
+    getDescription(): string;
     /**
      * * Gets [this] keybind's keycode
      */
-    getKeyCode(): number
+    getKeyCode(): number;
     /**
      * * Adds a listener hook to [this] keybind
      * * This triggers any time the [isKeyDown] param changes and isn't the same as the [oldValue]
      */
-    listen(cb: (isKeyDown: boolean, oldValue: boolean) => void): void
+    listen(cb: (isKeyDown: boolean, oldValue: boolean) => void): void;
     /**
      * * Sets [this] keybind's keycode
      */
-    setKeycode(keycode: number): void
+    setKeycode(keycode: number): void;
     /**
      * * Checks whether [this] keybind is being held down
      */
@@ -326,181 +324,181 @@ declare global {
   /**
    * * A library that provides useful utilities for Message
    */
-  class Message extends JavaClass<"com.github.synnerz.akutz.api.wrappers.message.Message"> {
-    constructor(event: JavaClass<"net.minecraftforge.client.event.ClientChatReceivedEvent">)
-    constructor(component: JavaClass<"net.minecraft.util.IChatComponent">)
-    constructor(messageParts: (string | TextComponent | Item)[])
-    constructor(...messageParts: (string | TextComponent | Item)[])
+  class Message extends JavaClass<'com.github.synnerz.akutz.api.wrappers.message.Message'> {
+    constructor(event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>);
+    constructor(component: JavaClass<'net.minecraft.util.IChatComponent'>);
+    constructor(messageParts: (string | TextComponent | Item)[]);
+    constructor(...messageParts: (string | TextComponent | Item)[]);
 
     /**
      * * Gets the underlying IChatComponent after being parsed
      * * Note: "parsed" refers to each message part being set to be a sibling of [this] IChatComponent
      */
-    getChatMessage(): JavaClass<"net.minecraft.util.IChatComponent">
+    getChatMessage(): JavaClass<'net.minecraft.util.IChatComponent'>;
     /**
      * * Gets [this] message's formatted text
      */
-    getFormattedText(): string
+    getFormattedText(): string;
     /**
      * * Gets [this] message's unformatted text
      */
-    getUnformattedText(): string
+    getUnformattedText(): string;
     /**
      * * Gets [this] message's parts
      */
-    getMessageParts(): TextComponent[]
+    getMessageParts(): TextComponent[];
     /**
      * * Gets [this] message's chatline id
      */
-    getChatLineId(): number
+    getChatLineId(): number;
     /**
      * - Sets [this] message's chatline id
      */
-    setChatLineId(id: number): this
+    setChatLineId(id: number): this;
     /**
      * * Checks whether [this] message is recursive
      */
-    isRecursive(): boolean
+    isRecursive(): boolean;
     /**
      * * Sets [this] message's recursive state
      */
-    setRecursive(recursive: boolean): this
+    setRecursive(recursive: boolean): this;
     /**
      * - Checks whether [this] message is formatted
      */
-    isFormatted(): boolean
+    isFormatted(): boolean;
     /**
      * * Sets [this] message's formatted state
      */
-    setFormatted(formatted: boolean): this
+    setFormatted(formatted: boolean): this;
     /**
      * * Sets a [TextComponent] at the specified index
      * * While using the [messageParts] as the array
      * * E.g: `setTextComponent(1, "test")` will be `messageParts[1] = new TextComponent("test")`
      */
-    setTextComponent(index: number, comp: string | TextComponent): this
+    setTextComponent(index: number, comp: string | TextComponent): this;
     /**
      * * Adds a new [TextComponent] to the [messageParts]
      */
-    addTextComponent(comp: string | TextComponent): this
+    addTextComponent(comp: string | TextComponent): this;
     /**
      * * Adds a new [TextComponent] to the [messageParts] using the index
      */
-    addTextComponent(index: number, comp: string | TextComponent): this
+    addTextComponent(index: number, comp: string | TextComponent): this;
     /**
      * * Returns a copy of this [Message]
      * * Note: this sets the `messageParts`, `formatted`, `recursive` and `chatLineId` to be the same values as this [Message]
      */
-    copy(): Message
+    copy(): Message;
     /**
      * * Alias for `copy()`
      * * Note: this sets the `messageParts`, `formatted`, `recursive` and `chatLineId` to be the same values as this [Message]
      */
-    clone(): Message
+    clone(): Message;
     /**
      * * Edits [this] message with the specified replacements
      */
-    edit(replacements: Message[]): void
+    edit(replacements: Message[]): void;
     /**
      * * Sends [this] message to the player's chat
      * * Note: this is only client-side
      */
-    chat(): void
+    chat(): void;
     /**
      * * Sends [this] message to the player's action bar
      * * Note: this is only client-side
      */
-    actionBar(): void
+    actionBar(): void;
     /**
      * * This method is the same as `getChatMessage()` but without parsing the IChatComponent
      * * Note: "parsing" refers to each message part being set to be a sibling of [this] IChatComponent
      * * However if the "parsing" has already occurred it will return the [IChatComponent] parsed
      */
-    toMC(): JavaClass<"net.minecraft.util.IChatComponent">
-    toString(): string
+    toMC(): JavaClass<'net.minecraft.util.IChatComponent'>;
+    toString(): string;
   }
   /**
    * * A library that provides useful utilities for TextComponent
    */
-  class TextComponent extends JavaClass<"com.github.synnerz.akutz.api.wrappers.message.TextComponent"> {
-    constructor(text: string)
-    constructor(chatComponent: JavaClass<"net.minecraft.util.IChatComponent">)
+  class TextComponent extends JavaClass<'com.github.synnerz.akutz.api.wrappers.message.TextComponent'> {
+    constructor(text: string);
+    constructor(chatComponent: JavaClass<'net.minecraft.util.IChatComponent'>);
 
     /**
      * * The underlying minecraft IChatComponent
      */
-    chatComponentText: JavaClass<"net.minecraft.util.IChatComponent">
+    chatComponentText: JavaClass<'net.minecraft.util.IChatComponent'>;
 
     /**
      * * Gets [this] textcomponent's text
      */
-    getText(): string
+    getText(): string;
     /**
      * * Sets [this] textcomponent's text
      */
-    setText(str: string): this
+    setText(str: string): this;
     /**
      * * Checks whether [this] textcomponent is formatted
      */
-    isFormatted(): boolean
+    isFormatted(): boolean;
     /**
      * * Sets [this] textcomponent's formatted state
      */
-    setFormatted(formatted: boolean): this
+    setFormatted(formatted: boolean): this;
     /**
      * * Sets [this] textcomponent's click [action] and [value]
      */
-    setClick(action: "open_url" | "open_file" | "run_command" | "suggest_command" | "change_page", value: string): this
+    setClick(action: 'open_url' | 'open_file' | 'run_command' | 'suggest_command' | 'change_page', value: string): this;
     /**
      * * Gets [this] textcomponent's action value
      */
-    getClickAction(): "open_url" | "open_file" | "run_command" | "suggest_command" | "change_page" | null
+    getClickAction(): 'open_url' | 'open_file' | 'run_command' | 'suggest_command' | 'change_page' | null;
     /**
      * * Sets [this] textcomponent's action value
      */
-    setClickAction(action: "open_url" | "open_file" | "run_command" | "suggest_command" | "change_page"): this
+    setClickAction(action: 'open_url' | 'open_file' | 'run_command' | 'suggest_command' | 'change_page'): this;
     /**
      * * Gets [this] textcomponent's click value
      */
-    getClickValue(): string | null
+    getClickValue(): string | null;
     /**
      * * Sets [this] textcomponent's click value
      */
-    setClickValue(value: string): this
+    setClickValue(value: string): this;
     /**
      * * Sets [this] textcomponent's hover [action] and [value]
      */
-    setHover(action: "show_text" | "show_achievement" | "show_item" | "show_entity", value: string): this
+    setHover(action: 'show_text' | 'show_achievement' | 'show_item' | 'show_entity', value: string): this;
     /**
      * * Gets [this] textcomponent's hover action
      */
-    getHoverAction(): "show_text" | "show_achievement" | "show_item" | "show_entity" | null
+    getHoverAction(): 'show_text' | 'show_achievement' | 'show_item' | 'show_entity' | null;
     /**
      * * Gets [this] textcomponent's hover action
      */
-    setHoverAction(action: "show_text" | "show_achievement" | "show_item" | "show_entity"): this
+    setHoverAction(action: 'show_text' | 'show_achievement' | 'show_item' | 'show_entity'): this;
     /**
      * * Gets [this] textcomponent's hover value
      */
-    getHoverValue(): string | null
+    getHoverValue(): string | null;
     /**
      * * Sets [this] textcomponent's hover value
      */
-    setHoverValue(value: string): this
+    setHoverValue(value: string): this;
     /**
      * * Sends [this] message to the player's chat
      * * Note: this is only client-side
      */
-    chat(): void
+    chat(): void;
     /**
      * * Sends [this] message to the player's action bar
      * * Note: this is only client-side
      */
-    actionBar(): void
+    actionBar(): void;
     /**
      * * Gets [this] textcomponent's underlying IChatComponent
      */
-    toMC(): JavaClass<"net.minecraft.util.IChatComponent">
+    toMC(): JavaClass<'net.minecraft.util.IChatComponent'>;
   }
 }
 

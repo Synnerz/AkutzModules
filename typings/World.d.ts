@@ -1,39 +1,39 @@
-import { JavaClass } from "./External"
+import { JavaClass } from './External';
 
 declare global {
   /**
    * * A library that provides useful utilities for Block
    */
-  class Block extends JavaClass<"com.github.synnerz.akutz.api.wrappers.world.block.Block"> {
-    constructor(mcBlock: JavaClass<"net.minecraft.block.Block">, mcPos: JavaClass<"net.minecraft.util.BlockPos">)
+  class Block extends JavaClass<'com.github.synnerz.akutz.api.wrappers.world.block.Block'> {
+    constructor(mcBlock: JavaClass<'net.minecraft.block.Block'>, mcPos: JavaClass<'net.minecraft.util.BlockPos'>);
     /**
      * * The underlying minecraft block
      */
-    mcBlock: JavaClass<"net.minecraft.block.Block">
+    mcBlock: JavaClass<'net.minecraft.block.Block'>;
     /**
      * * The underlying minecraft BlockPos
      */
-    mcPos: JavaClass<"net.minecraft.util.BlockPos">
+    mcPos: JavaClass<'net.minecraft.util.BlockPos'>;
     /**
      * * The block's X position
      */
-    x: number
+    x: number;
     /**
      * * The block's Y position
      */
-    y: number
+    y: number;
     /**
      * * The block's Z position
      */
-    z: number
+    z: number;
     /**
      * * Gets [this] block's IBlockState
      */
-    getState(): JavaClass<"net.minecraft.block.state.IBlockState">
+    getState(): JavaClass<'net.minecraft.block.state.IBlockState'>;
     /**
      * * Gets [this] block's metadata
      */
-    getMetadata(): number
+    getMetadata(): number;
     /**
      * * A field with useful utilities about the block type
      */
@@ -41,146 +41,146 @@ declare global {
       /**
        * * Gets [this] block's ID
        */
-      getID(): number
+      getID(): number;
       /**
        * * Gets [this] block's RegistryName
        * * e.g: `minecraft:grass`
        */
-      getRegistryName(): string
+      getRegistryName(): string;
       /**
        * * Gets [this] block's UnlocalizedName
        * * e.g: `tile.grass`
        */
-      getUnlocalizedName(): string
+      getUnlocalizedName(): string;
       /**
        * * Gets [this] block's name
        * * e.g: `Grass Block`
        */
-      getName(): string
+      getName(): string;
       /**
        * * Gets [this] block's default IBlockState
        */
-      getDefaultState(): JavaClass<"net.minecraft.block.state.IBlockState">
+      getDefaultState(): JavaClass<'net.minecraft.block.state.IBlockState'>;
       /**
        * * Gets [this] block's default metadata
        */
-      getDefaultStateMetadata(): number
+      getDefaultStateMetadata(): number;
       /**
        * * Checks whether this block is translucent or not
        */
-      isTranslucent(): boolean
-      toString(): string
-    }
-    toString(): string
+      isTranslucent(): boolean;
+      toString(): string;
+    };
+    toString(): string;
   }
   class BlockType {}
   /**
    * * A library that provides useful utilities for Sign
    */
-  class Sign extends Block implements JavaClass<"com.github.synnerz.akutz.api.wrappers.world.block.Sign"> {
-    constructor(block: Block)
+  class Sign extends Block implements JavaClass<'com.github.synnerz.akutz.api.wrappers.world.block.Sign'> {
+    constructor(block: Block);
     /**
      * * The underlying minecraft TileEntitySign
      */
-    sign: JavaClass<"net.minecraft.tileentity.TileEntitySign">
+    sign: JavaClass<'net.minecraft.tileentity.TileEntitySign'>;
     /**
      * * Gets the lines that are in the sign
      */
-    getLines(): Message[]
+    getLines(): Message[];
     /**
      * * Gets the lines that are in the sign by their formatted text
      */
-    getFormattedLines(): string[]
+    getFormattedLines(): string[];
     /**
      * * Gets the lines that are in the sign by their unformatted text
      */
-    getUnformattedLines(): string[]
-    toString(): string
+    getUnformattedLines(): string[];
+    toString(): string;
   }
   /**
    *  A library that provides useful utilities for Chunk
    */
-  class Chunk extends JavaClass<"com.github.synnerz.akutz.api.wrappers.world.Chunk"> {
-    constructor(chunk: JavaClass<"net.minecraft.world.chunk.Chunk">)
+  class Chunk extends JavaClass<'com.github.synnerz.akutz.api.wrappers.world.Chunk'> {
+    constructor(chunk: JavaClass<'net.minecraft.world.chunk.Chunk'>);
     /**
      * * The underlying minecraft Chunk
      */
-    chunk: JavaClass<"net.minecraft.world.chunk.Chunk">
+    chunk: JavaClass<'net.minecraft.world.chunk.Chunk'>;
     /**
      * * Gets the chunk's X position
      */
-    getX(): number
+    getX(): number;
     /**
      * * Gets the chunk's Z position
      */
-    getZ(): number
+    getZ(): number;
     /**
      * * Gets the chunk's minimum X position
      * * Note: this is calculated by `getX() * 16`
      */
-    getMinBlockX(): number
+    getMinBlockX(): number;
     /**
      * * Gets the chunk's minimum Z position
      * * Note: this is calculated by `getZ() * 16`
      */
-    getMinBlockZ(): number
+    getMinBlockZ(): number;
     /**
      * * Gets all of the loaded entities that are inside [this] chunk
      */
-    getAllEntities(): Entity[]
+    getAllEntities(): Entity[];
     /**
      * * Gets all of the loaded entities that are inside [this] chunk that match the specified class
      */
-    getAllEntitiesOfType(clazz: JavaClass<"java.lang.Class">): Entity[]
+    getAllEntitiesOfType(clazz: JavaClass<'java.lang.Class'>): Entity[];
     /**
      * * Gets all of the loaded tileEntities that are inside [this] chunk
      */
-    getAllTileEntities(): TileEntity[]
+    getAllTileEntities(): TileEntity[];
     /**
      * * Gets all of the loaded tileEntities that are inside [this] chunk that match the specified class
      */
-    getAllTileEntitiesOfType(clazz: JavaClass<"java.lang.Class">): TileEntity[]
+    getAllTileEntitiesOfType(clazz: JavaClass<'java.lang.Class'>): TileEntity[];
     /**
      * * Gets the underlying minecraft [chunk]
      */
-    toMC(): JavaClass<"net.minecraft.world.chunk.Chunk">
+    toMC(): JavaClass<'net.minecraft.world.chunk.Chunk'>;
   }
 
   /**
    *  A library that provides useful utilities for PotionEffect
    */
-  class PotionEffect extends JavaClass<"com.github.synnerz.akutz.api.wrappers.PotionEffect"> {
-    constructor(effect: JavaClass<"net.minecraft.potion.PotionEffect">)
+  class PotionEffect extends JavaClass<'com.github.synnerz.akutz.api.wrappers.PotionEffect'> {
+    constructor(effect: JavaClass<'net.minecraft.potion.PotionEffect'>);
     /**
      * * The underlying minecraft PotionEffect
      */
-    effect: JavaClass<"net.minecraft.potion.PotionEffect">
+    effect: JavaClass<'net.minecraft.potion.PotionEffect'>;
     /**
      * * Gets [this] potion effect's name
      * * e.g: `potion.poison`
      */
-    getName(): string
+    getName(): string;
     /**
      * * Gets [this] potion effect's localized name
      * * e.g: `poison`
      */
-    getLocalizedName(): string
+    getLocalizedName(): string;
     /**
      * * Gets [this] potion effect's amplifier
      */
-    getAmplifier(): number
+    getAmplifier(): number;
     /**
      * * Gets [this] potion effect's ID
      */
-    getID(): number
+    getID(): number;
     /**
      * * Checks whether [this] potion effect is at maximum duration
      */
-    isDurationMax(): boolean
+    isDurationMax(): boolean;
     /**
      * - Checks whether [this] potion effect displays particles
      */
-    showsParticles(): boolean
+    showsParticles(): boolean;
   }
 }
-export {}
+export {};

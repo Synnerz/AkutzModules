@@ -6,8 +6,8 @@ import { CTEvent } from './IRegister';
  */
 export class AkutzImage extends JavaClass<'com.github.synnerz.akutz.api.objects.render.Image'> {
   constructor(image: JavaClass<'java.awt.image.BufferedImage'>);
-  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number)
-  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number, height: number)
+  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number);
+  constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number, height: number);
 
   /**
    * Clears the image from GPU memory and removes its references that way it can be garbage collected if not referenced in js code.
@@ -48,7 +48,7 @@ declare global {
   /**
    * * A library that provides useful utilities for Chat
    */
-  class ChatLib extends JavaClass<"com.github.synnerz.akutz.api.libs.ChatLib"> {
+  class ChatLib extends JavaClass<'com.github.synnerz.akutz.api.libs.ChatLib'> {
     /**
      * * Sends an action bar "message" with the given param
      * * NOTE: ActionBar is the text above your hotbar that appears sometimes
@@ -154,11 +154,11 @@ declare global {
     /**
      * * Gets the command handler instance
      */
-    static getCommandHandler(): JavaClass<"net.minecraftforge.client.ClientCommandHandler">;
+    static getCommandHandler(): JavaClass<'net.minecraftforge.client.ClientCommandHandler'>;
     /**
      * * Gets a list (Map) of commands
      */
-    static getCommands(): Map<string, JavaClass<"net.minecraft.command.ICommand">>;
+    static getCommands(): Map<string, JavaClass<'net.minecraft.command.ICommand'>>;
     /**
      * * Check whether the given command is a client command or not
      * @returns `true` if it is otherwise `false`
@@ -195,11 +195,11 @@ declare global {
       /**
        * * Encodes the string to Base64 format
        */
-      encode(str: string): string,
+      encode(str: string): string;
       /**
        * * Decodes the Base64 format string
        */
-      decode(str: string): string
+      decode(str: string): string;
     };
     /**
      * * Appends the data to the specified file location
@@ -307,7 +307,7 @@ declare global {
      */
     static readFromResource(resourceName: string): string;
   }
-  class DataStats extends JavaClass<"com.github.synnerz.akutz.api.libs.MathLib::DataStats"> {
+  class DataStats extends JavaClass<'com.github.synnerz.akutz.api.libs.MathLib::DataStats'> {
     constructor(
       min: number,
       max: number,
@@ -319,20 +319,20 @@ declare global {
       stddev: number,
       range: number
     );
-    getMin(): number
-    getMax(): number
-    getMedian(): number
-    getQ1(): number
-    getQ3(): number
-    getIQR(): number
-    getMean(): number
-    getStddev(): number
-    getRange(): number
+    getMin(): number;
+    getMax(): number;
+    getMedian(): number;
+    getQ1(): number;
+    getQ3(): number;
+    getIQR(): number;
+    getMean(): number;
+    getStddev(): number;
+    getRange(): number;
   }
   /**
    * * A library that provides useful utilities for Math
    */
-  class MathLib extends JavaClass<"com.github.synnerz.akutz.api.libs.MathLib"> {
+  class MathLib extends JavaClass<'com.github.synnerz.akutz.api.libs.MathLib'> {
     static compareFloat(f1: number, f2: number): number;
     static compareFloat(f1: number, f2: number, epsilon: number): number;
     static rescale(n: number, oldMin: number, oldMax: number, newMin: number, newMax: number): number;
@@ -342,48 +342,46 @@ declare global {
     static fastDistance(dx: number, dy: number): number;
     static vector3D: {
       intersectPlaneLine(
-        dx: number, dy: number, dz: number,
-        x: number, y: number, z: number,
-        nx: number, ny: number, nz: number,
-        px: number, py: number, pz: number
-      ): number[]
+        dx: number,
+        dy: number,
+        dz: number,
+        x: number,
+        y: number,
+        z: number,
+        nx: number,
+        ny: number,
+        nz: number,
+        px: number,
+        py: number,
+        pz: number
+      ): number[];
 
       getNormal(
-        x1: number, y1: number, z1: number,
-        x2: number, y2: number, z2: number,
-        x3: number, y3: number, z3: number
-      ): number[]
+        x1: number,
+        y1: number,
+        z1: number,
+        x2: number,
+        y2: number,
+        z2: number,
+        x3: number,
+        y3: number,
+        z3: number
+      ): number[];
 
-      getAngle(
-        x1: number, y1: number, z1: number,
-        x2: number, y2: number, z2: number
-      ): number
+      getAngle(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): number;
 
-      getAngle(
-        x1: number, y1: number, z1: number,
-        x2: number, y2: number, z2: number,
-        smallesst: number
-      ): number
+      getAngle(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, smallesst: number): number;
 
-      rotate(
-        x: number, y: number, z: number,
-        t: number, p: number, r: number
-      ): number[]
+      rotate(x: number, y: number, z: number, t: number, p: number, r: number): number[];
 
-      dot(
-        ux: number, uy: number, uz: number,
-        vx: number, vy: number, vz: number
-      ): number
+      dot(ux: number, uy: number, uz: number, vx: number, vy: number, vz: number): number;
 
-      cross(
-        ux: number, uy: number, uz: number,
-        vx: number, vy: number, vz: number
-      ): number[]
+      cross(ux: number, uy: number, uz: number, vx: number, vy: number, vz: number): number[];
 
-      normalize(x: number, y: number, z: number): number[]
+      normalize(x: number, y: number, z: number): number[];
 
-      normalize(x: number, y: number, z: number, newLength: number): number[]
-    }
+      normalize(x: number, y: number, z: number, newLength: number): number[];
+    };
   }
   /**
    * com.chattriggers.ctjs.minecraft.libs.Tessellator
