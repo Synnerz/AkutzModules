@@ -271,6 +271,8 @@ declare global {
     static poll(): void;
   }
   // TODO: finish
+  class Color {}
+  class StateVar {}
 }
 
 export {};
