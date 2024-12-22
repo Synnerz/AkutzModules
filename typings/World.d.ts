@@ -136,7 +136,7 @@ declare global {
     /**
      * * Gets all of the loaded entities that are inside [this] chunk that match the specified class
      */
-    getAllEntitiesOfType(clazz: JavaClass<'java.lang.Class'>): Entity[];
+    getAllEntitiesOfType(clazz: Class<any>): Entity[];
     /**
      * * Gets all of the loaded tileEntities that are inside [this] chunk
      */
@@ -144,7 +144,7 @@ declare global {
     /**
      * * Gets all of the loaded tileEntities that are inside [this] chunk that match the specified class
      */
-    getAllTileEntitiesOfType(clazz: JavaClass<'java.lang.Class'>): TileEntity[];
+    getAllTileEntitiesOfType(clazz: Class<any>): TileEntity[];
     /**
      * * Gets the underlying minecraft [chunk]
      */
