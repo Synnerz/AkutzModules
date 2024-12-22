@@ -292,7 +292,6 @@ declare global {
    * * A library that provides useful utilities for Keybind
    */
   interface Keybind extends EJavaClass<StateVar<boolean>, 'com.github.synnerz.akutz.api.objects.keybind.Keybind'> {
-    getClass(): Class<'com.github.synnerz.akutz.api.objects.keybind.Keybind'>;
     /**
      * * Gets the current state value for [this] keybind
      */

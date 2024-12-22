@@ -307,8 +307,8 @@ declare global {
      */
     static readFromResource(resourceName: string): string;
   }
-  class DataStats extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.MathLib::DataStats'> {
-    getClass(): Class<'com.github.synnerz.akutz.api.libs.MathLib::DataStats'>;
+  class DataStats extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.MathLib$DataStats'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.libs.MathLib$DataStats'>;
     constructor(
       min: number,
       max: number,
