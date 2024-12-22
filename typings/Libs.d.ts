@@ -6,6 +6,7 @@ declare global {
    * * A library that provides useful utilities for Image
    */
   class Image extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.objects.render.Image'> {
+    static class: Class<'com.github.synnerz.akutz.api.objects.render.Image'>;
     getClass(): Class<'com.github.synnerz.akutz.api.objects.render.Image'>;
     constructor(image: JavaClass<'java.awt.image.BufferedImage'>);
     constructor(image: JavaClass<'java.awt.image.BufferedImage'>, width: number);
@@ -47,6 +48,7 @@ declare global {
    * * A library that provides useful utilities for Chat
    */
   class ChatLib extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.ChatLib'> {
+    static class: Class<'com.github.synnerz.akutz.api.libs.ChatLib'>;
     getClass(): Class<'com.github.synnerz.akutz.api.libs.ChatLib'>;
     /**
      * * Sends an action bar "message" with the given param
@@ -187,6 +189,7 @@ declare global {
    * * A library that provides useful utilities for Files
    */
   class FileLib extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.FileLib'> {
+    static class: Class<'com.github.synnerz.akutz.api.libs.FileLib'>;
     getClass(): Class<'com.github.synnerz.akutz.api.libs.FileLib'>;
     /**
      * * Provides useful utilities for Base64 related tasks
@@ -308,6 +311,7 @@ declare global {
     static readFromResource(resourceName: string): string;
   }
   class DataStats extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.MathLib$DataStats'> {
+    static class: Class<'com.github.synnerz.akutz.api.libs.MathLib$DataStats'>;
     getClass(): Class<'com.github.synnerz.akutz.api.libs.MathLib$DataStats'>;
     constructor(
       min: number,
@@ -334,6 +338,7 @@ declare global {
    * * A library that provides useful utilities for Math
    */
   class MathLib extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.MathLib'> {
+    static class: Class<'com.github.synnerz.akutz.api.libs.MathLib'>;
     getClass(): Class<'com.github.synnerz.akutz.api.libs.MathLib'>;
     static compareFloat(f1: number, f2: number): number;
     static compareFloat(f1: number, f2: number, epsilon: number): number;
@@ -389,6 +394,7 @@ declare global {
    * com.chattriggers.ctjs.minecraft.libs.Tessellator
    */
   class Tessellator extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.Tessellator'> {
+    static class: Class<'com.chattriggers.ctjs.minecraft.libs.Tessellator'>;
     getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.Tessellator'>;
     static alphaFunc(func: number, ref: number): typeof Tessellator;
     static begin(): typeof Tessellator;
@@ -469,6 +475,7 @@ declare global {
    * com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle
    */
   class Rectangle extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'> {
+    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'>;
     getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'>;
     constructor(color: number, x: number, y: number, width: number, height: number);
 
@@ -506,6 +513,7 @@ declare global {
    * com.chattriggers.ctjs.minecraft.libs.renderer.Renderer
    */
   class Renderer extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'> {
+    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'>;
     getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'>;
     static color(red: number, green: number, blue: number): number;
     static color(red: number, green: number, blue: number, alpha: number): number;
@@ -639,6 +647,7 @@ declare global {
    * com.chattriggers.ctjs.minecraft.libs.renderer.Shape
    */
   class Shape extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'> {
+    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'>;
     getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'>;
     constructor(color: number);
 
@@ -660,6 +669,7 @@ declare global {
    * com.chattriggers.ctjs.minecraft.libs.renderer.Text
    */
   class Text extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'> {
+    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'>;
     getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'>;
     constructor(text: string);
     constructor(text: string, x: number);

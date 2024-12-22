@@ -1,7 +1,8 @@
-import { EJavaClass, EmptyClass, JavaClass } from './External';
+import { Class, EJavaClass, EmptyClass, JavaClass } from './External';
 
 declare global {
   class Entity extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.entity.Entity'>;
     constructor(entity: JavaClass<'net.minecraft.entity.Entity'>);
   }
   /**
@@ -110,6 +111,7 @@ declare global {
     toMC(): JavaClass<'net.minecraft.entity.Entity'>;
   }
   class EntityLivingBase extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.entity.EntityLivingBase'>;
     constructor(entityLivingBase: JavaClass<'net.minecraft.entity.EntityLivingBase'>);
   }
   /**
@@ -147,6 +149,7 @@ declare global {
     toString(): string;
   }
   class PlayerMP extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.entity.PlayerMP'>;
     constructor(playerMP: JavaClass<'net.minecraft.entity.player.EntityPlayer'>);
   }
   /**
@@ -181,6 +184,7 @@ declare global {
     getName(): string;
   }
   class Particle extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.entity.Particle'>;
     constructor(particleEntity: JavaClass<'net.minecraft.client.particle.EntityFX'>);
   }
   /**
@@ -233,6 +237,7 @@ declare global {
     toString(): string;
   }
   class TileEntity extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.entity.TileEntity'>;
     constructor(tileEntity: JavaClass<'net.minecraft.tileentity.TileEntity'>);
   }
   /**
@@ -274,6 +279,7 @@ declare global {
     toString(): string;
   }
   class Team extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.Team'>;
     constructor(team: JavaClass<'net.minecraft.scoreboard.ScorePlayerTeam'>);
   }
   /**

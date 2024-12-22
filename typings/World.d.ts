@@ -2,6 +2,7 @@ import { Class, EJavaClass, EmptyClass, JavaClass } from './External';
 
 declare global {
   class Block extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.world.block.Block'>;
     constructor(mcBlock: JavaClass<'net.minecraft.block.Block'>, mcPos: JavaClass<'net.minecraft.util.BlockPos'>);
   }
   /**
@@ -77,6 +78,7 @@ declare global {
     toString(): string;
   }
   class Sign extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.world.block.Sign'>;
     constructor(block: Block);
   }
   /**
@@ -105,6 +107,7 @@ declare global {
    *  A library that provides useful utilities for Chunk
    */
   class Chunk extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.world.Chunk'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.world.Chunk'>;
     getClass(): Class<'com.github.synnerz.akutz.api.wrappers.world.Chunk'>;
     constructor(chunk: JavaClass<'net.minecraft.world.chunk.Chunk'>);
     /**
@@ -155,6 +158,7 @@ declare global {
    *  A library that provides useful utilities for PotionEffect
    */
   class PotionEffect extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.PotionEffect'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.PotionEffect'>;
     getClass(): Class<'com.github.synnerz.akutz.api.wrappers.PotionEffect'>;
     constructor(effect: JavaClass<'net.minecraft.potion.PotionEffect'>);
     /**

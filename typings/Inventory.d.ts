@@ -5,6 +5,7 @@ declare global {
    * * A library that provides useful utilities for Inventory
    */
   class Inventory extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.inventory.Inventory'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.inventory.Inventory'>;
     getClass(): Class<'com.github.synnerz.akutz.api.wrappers.inventory.Inventory'>;
     constructor(inventory: JavaClass<'net.minecraft.inventory.IInventory'>);
     constructor(container: JavaClass<'net.minecraft.inventory.Container'>);
@@ -73,6 +74,7 @@ declare global {
    * * A library that provides useful utilities for Item
    */
   class Item extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.inventory.Item'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.inventory.Item'>;
     getClass(): Class<'com.github.synnerz.akutz.api.wrappers.inventory.Item'>;
     constructor(itemStack: JavaClass<'net.minecraft.item.ItemStack'>);
     constructor(itemName: string);
@@ -163,6 +165,7 @@ declare global {
    * * A library that provides useful utilities for Slot
    */
   class Slot extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.inventory.Slot'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.inventory.Slot'>;
     getClass(): Class<'com.github.synnerz.akutz.api.wrappers.inventory.Slot'>;
     constructor(mcSlot: JavaClass<'net.minecraft.inventory.Slot'>);
     /**

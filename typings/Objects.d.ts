@@ -9,6 +9,7 @@ declare class GuiHandler
   extends EmptyClass
   implements JavaClass<'com.github.synnerz.akutz.api.objects.gui.GuiHandler'>
 {
+  static class: Class<'com.github.synnerz.akutz.api.objects.gui.GuiHandler'>;
   getClass(): Class<'com.github.synnerz.akutz.api.objects.gui.GuiHandler'>;
   onTick(event: JavaClass<'net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent'>): void;
   /**
@@ -22,6 +23,7 @@ declare global {
    * * A library that provides useful utilities for Sound
    */
   class Sound extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.objects.sound.Sound'> {
+    static class: Class<'com.github.synnerz.akutz.api.objects.sound.Sound'>;
     getClass(): Class<'com.github.synnerz.akutz.api.objects.sound.Sound'>;
     constructor(config: {
       source: string;
@@ -87,6 +89,7 @@ declare global {
    * com.chattriggers.ctjs.engine.langs.js.JSDisplay
    */
   class Display extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSDisplay'> {
+    static class: Class<'com.chattriggers.ctjs.engine.langs.js.JSDisplay'>;
     getClass(): Class<'com.chattriggers.ctjs.engine.langs.js.JSDisplay'>;
     constructor(config?: {
       backgroundColor?: number;
@@ -144,6 +147,7 @@ declare global {
     extends EmptyClass
     implements JavaClass<'com.chattriggers.ctjs.minecraft.objects.display.DisplayHandler'>
   {
+    static class: Class<'com.chattriggers.ctjs.minecraft.objects.display.DisplayHandler'>;
     getClass(): Class<'com.chattriggers.ctjs.minecraft.objects.display.DisplayHandler'>;
     static Align: JavaEnum<'LEFT' | 'CENTER' | 'RIGHT'>;
     static Background: JavaEnum<'NONE' | 'FULL' | 'PER_LINE'>;
@@ -161,6 +165,7 @@ declare global {
    * com.chattriggers.ctjs.engine.langs.js.JSDisplayLine
    */
   class DisplayLine extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSDisplayLine'> {
+    static class: Class<'com.chattriggers.ctjs.engine.langs.js.JSDisplayLine'>;
     getClass(): Class<'com.chattriggers.ctjs.engine.langs.js.JSDisplayLine'>;
     constructor(text: string);
     constructor(
@@ -211,6 +216,7 @@ declare global {
    * com.chattriggers.ctjs.engine.langs.js.JSGui
    */
   class Gui extends EmptyClass implements JavaClass<'net.minecraft.client.gui.GuiScreen'> {
+    static class: Class<'net.minecraft.client.gui.GuiScreen'>;
     getClass(): Class<'net.minecraft.client.gui.GuiScreen'>;
     constructor();
 
@@ -274,6 +280,7 @@ declare global {
   }
   const GuiHandler: GuiHandler;
   class KeyBind extends EmptyClass {
+    static class: Class<'com.github.synnerz.akutz.api.objects.keybind.Keybind'>;
     constructor(keyBinding: JavaClass<'net.minecraft.client.settings.KeyBinding'>);
     constructor(description: string, keyCode: number);
     constructor(description: string, keyCode: number, category: string);
@@ -339,6 +346,7 @@ declare global {
    * * A library that provides useful utilities for Message
    */
   class Message extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.message.Message'> {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.message.Message'>;
     getClass(): Class<'com.github.synnerz.akutz.api.wrappers.message.Message'>;
     constructor(event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>);
     constructor(component: JavaClass<'net.minecraft.util.IChatComponent'>);
@@ -439,6 +447,7 @@ declare global {
     extends EmptyClass
     implements JavaClass<'com.github.synnerz.akutz.api.wrappers.message.TextComponent'>
   {
+    static class: Class<'com.github.synnerz.akutz.api.wrappers.message.TextComponent'>;
     getClass(): Class<'com.github.synnerz.akutz.api.wrappers.message.TextComponent'>;
     constructor(text: string);
     constructor(chatComponent: JavaClass<'net.minecraft.util.IChatComponent'>);

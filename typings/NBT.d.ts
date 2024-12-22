@@ -8,6 +8,7 @@ declare global {
     extends EmptyClass
     implements JavaClass<'com.chattriggers.ctjs.minecraft.wrappers.inventory.nbt.NBTTagList'>
   {
+    static class: Class<'com.chattriggers.ctjs.minecraft.wrappers.inventory.nbt.NBTTagList'>;
     getClass(): Class<'com.chattriggers.ctjs.minecraft.wrappers.inventory.nbt.NBTTagList'>;
   }
 }

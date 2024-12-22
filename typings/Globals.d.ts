@@ -54,24 +54,28 @@ declare global {
    * java.util.ArrayList
    */
   class ArrayList extends EmptyClass implements JavaClass<'java.util.ArrayList'> {
+    static class: Class<'java.util.ArrayList'>;
     getClass(): Class<'java.util.ArrayList'>;
   }
   /**
    * java.util.HashMap
    */
   class HashMap extends EmptyClass implements JavaClass<'java.util.HashMap'> {
+    static class: Class<'java.util.HashMap'>;
     getClass(): Class<'java.util.HashMap'>;
   }
   /**
    * net.minecraftforge.fml.relauncher.ReflectionHelper
    */
   class ReflectionHelper extends EmptyClass implements JavaClass<'net.minecraftforge.fml.relauncher.ReflectionHelper'> {
+    static class: Class<'net.minecraftforge.fml.relauncher.ReflectionHelper'>;
     getClass(): Class<'net.minecraftforge.fml.relauncher.ReflectionHelper'>;
   }
   /**
    * org.lwjgl.input.Keyboard
    */
   class Keyboard extends EmptyClass implements JavaClass<'org.lwjgl.input.Keyboard'> {
+    static class: Class<'org.lwjgl.input.Keyboard'>;
     getClass(): Class<'org.lwjgl.input.Keyboard'>;
     private constructor();
     /**
@@ -306,6 +310,7 @@ declare global {
    * * A library that provides useful utilities for Color
    */
   class Color extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.objects.render.Color'> {
+    static class: Class<'com.github.synnerz.akutz.api.objects.render.Color'>;
     getClass(): Class<'com.github.synnerz.akutz.api.objects.render.Color'>;
     static fromRGB(color: number): Color;
     static fromRGBA(color: number): Color;
@@ -357,6 +362,7 @@ declare global {
     extends EmptyClass
     implements JavaClass<'com.github.synnerz.akutz.api.objects.state.StateVar'>, IState<T>
   {
+    static class: Class<'com.github.synnerz.akutz.api.objects.state.StateVar'>;
     getClass(): Class<'com.github.synnerz.akutz.api.objects.state.StateVar'>;
     constructor(initialValue: T);
     get(): T;
@@ -369,6 +375,7 @@ declare global {
    * * The minecraft GlStateManager class
    */
   class GlStateManager extends EmptyClass implements JavaClass<'net.minecraft.client.renderer.GlStateManager'> {
+    static class: Class<'net.minecraft.client.renderer.GlStateManager'>;
     getClass(): Class<'net.minecraft.client.renderer.GlStateManager'>;
     private constructor();
     static pushAttrib(): void;
