@@ -296,7 +296,56 @@ declare global {
     static poll(): void;
   }
   // TODO: finish
-  class Color {}
+  /**
+   * * A library that provides useful utilities for Color
+   */
+  class Color extends JavaClass<"com.github.synnerz.akutz.api.objects.render.Color"> {
+    static fromRGB(color: number): Color
+    static fromRGBA(color: number): Color
+    // alpha defaults to 1
+    static fromRGBA(r: number, g: number, b: number, a: number): Color
+    static fromARGB(color: number): Color
+    static fromAWTColor(color: JavaClass<"java.awt.Color">): Color
+    static BLACK: Color
+    static DARK_BLUE: Color
+    static DARK_GREEN: Color
+    static DARK_AQUA: Color
+    static DARK_RED: Color
+    static DARK_PURPLE: Color
+    static DARK_GRAY: Color
+    static GOLD: Color
+    static GRAY: Color
+    static BLUE: Color
+    static GREEN: Color
+    static AQUA: Color
+    static RED: Color
+    static LIGHT_PURPLE: Color
+    static YELLOW: Color
+    static WHITE: Color
+    static EMPTY: Color
+    /**
+     * * rgba values are 255 by default
+     */
+    constructor(r: number, g: number, b: number, a: number)
+    r: number
+    g: number
+    b: number
+    a: number
+    getRf(): number
+    getGf(): number
+    getBf(): number
+    getAf(): number
+    asRGB(): number
+    asRGBA(): number
+    asARGB(): number
+    asRGBf(): number
+    asRGBAf(): number
+    asARGBf(): number
+    asAWTColor(): JavaClass<"java.awt.Color">
+    asShade(amount: number): Color
+    asTint(amount: number): Color
+    getShadow(amount: number): Color
+  }
   class StateVar {}
   /**
    * * The minecraft GlStateManager class
