@@ -316,33 +316,100 @@ declare global {
     isPressed(): boolean;
   }
   /**
-   * com.chattriggers.ctjs.minecraft.objects.message.Message
+   * * A library that provides useful utilities for Message
    */
-  class Message extends JavaClass<'com.chattriggers.ctjs.minecraft.objects.message.Message'> {
-    constructor(event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>);
-    constructor(component: JavaClass<'net.minecraft.util.IChatComponent'>);
-    constructor(messageParts: (string | TextComponent | Item)[]);
-    constructor(...messageParts: (string | TextComponent | Item)[]);
+  class Message extends JavaClass<"com.github.synnerz.akutz.api.wrappers.message.Message"> {
+    constructor(event: JavaClass<"net.minecraftforge.client.event.ClientChatReceivedEvent">)
+    constructor(component: JavaClass<"net.minecraft.util.IChatComponent">)
+    constructor(messageParts: (string | TextComponent | Item)[])
+    constructor(...messageParts: (string | TextComponent | Item)[])
 
-    actionBar(): void;
-    addTextComponent(component: string | TextComponent): this;
-    addTextComponent(index: number, component: string | TextComponent): this;
-    chat(): void;
-    clone(): Message;
-    copy(): Message;
-    edit(...replacements: Message[]): void;
-    getChatLineId(): number;
-    getChatMessage(): JavaClass<'net.minecraft.util.IChatComponent'>;
-    getFormattedText(): string;
-    getMessageParts(): TextComponent[];
-    getUnformattedText(): string;
-    isFormatted(): boolean;
-    isRecursive(): boolean;
-    setChatLineId(id: number): this;
-    setFormatted(formatted: boolean): this;
-    setRecursive(recursive: boolean): this;
-    setTextComponent(index: number, component: string | TextComponent): this;
-    toString(): string;
+    /**
+     * * Gets the underlying IChatComponent after being parsed
+     * * Note: "parsed" refers to each message part being set to be a sibling of [this] IChatComponent
+     */
+    getChatMessage(): JavaClass<"net.minecraft.util.IChatComponent">
+    /**
+     * * Gets [this] message's formatted text
+     */
+    getFormattedText(): string
+    /**
+     * * Gets [this] message's unformatted text
+     */
+    getUnformattedText(): string
+    /**
+     * * Gets [this] message's parts
+     */
+    getMessageParts(): TextComponent[]
+    /**
+     * * Gets [this] message's chatline id
+     */
+    getChatLineId(): number
+    /**
+     * - Sets [this] message's chatline id
+     */
+    setChatLineId(id: number): this
+    /**
+     * * Checks whether [this] message is recursive
+     */
+    isRecursive(): boolean
+    /**
+     * * Sets [this] message's recursive state
+     */
+    setRecursive(recursive: boolean): this
+    /**
+     * - Checks whether [this] message is formatted
+     */
+    isFormatted(): boolean
+    /**
+     * * Sets [this] message's formatted state
+     */
+    setFormatted(formatted: boolean): this
+    /**
+     * * Sets a [TextComponent] at the specified index
+     * * While using the [messageParts] as the array
+     * * E.g: `setTextComponent(1, "test")` will be `messageParts[1] = new TextComponent("test")`
+     */
+    setTextComponent(index: number, comp: string | TextComponent): this
+    /**
+     * * Adds a new [TextComponent] to the [messageParts]
+     */
+    addTextComponent(comp: string | TextComponent): this
+    /**
+     * * Adds a new [TextComponent] to the [messageParts] using the index
+     */
+    addTextComponent(index: number, comp: string | TextComponent): this
+    /**
+     * * Returns a copy of this [Message]
+     * * Note: this sets the `messageParts`, `formatted`, `recursive` and `chatLineId` to be the same values as this [Message]
+     */
+    copy(): Message
+    /**
+     * * Alias for `copy()`
+     * * Note: this sets the `messageParts`, `formatted`, `recursive` and `chatLineId` to be the same values as this [Message]
+     */
+    clone(): Message
+    /**
+     * * Edits [this] message with the specified replacements
+     */
+    edit(replacements: Message[]): void
+    /**
+     * * Sends [this] message to the player's chat
+     * * Note: this is only client-side
+     */
+    chat(): void
+    /**
+     * * Sends [this] message to the player's action bar
+     * * Note: this is only client-side
+     */
+    actionBar(): void
+    /**
+     * * This method is the same as `getChatMessage()` but without parsing the IChatComponent
+     * * Note: "parsing" refers to each message part being set to be a sibling of [this] IChatComponent
+     * * However if the "parsing" has already occurred it will return the [IChatComponent] parsed
+     */
+    toMC(): JavaClass<"net.minecraft.util.IChatComponent">
+    toString(): string
   }
   /**
    * com.chattriggers.ctjs.minecraft.objects.message.TextComponent
