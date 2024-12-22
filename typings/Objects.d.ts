@@ -266,10 +266,18 @@ declare global {
    */
   class Keybind
     extends JavaClass<"com.github.synnerz.akutz.api.objects.keybind.Keybind">
-    implements StateVar {
+    implements StateVar<boolean> {
     constructor(keyBinding: JavaClass<"net.minecraft.client.settings.KeyBinding">)
     constructor(description: string, keyCode: number)
     constructor(description: string, keyCode: number, category: string)
+    /**
+     * * Gets the current state value for [this] keybind
+     */
+    get(): boolean
+    /**
+     * * Disabled.
+     */
+    set(value: boolean): Error
     /**
      * * The underlying minecraft Keybinding
      */

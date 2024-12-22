@@ -4,6 +4,14 @@ import { JavaClass } from "./External"
 declare class TexGen extends JavaClass<"net.minecraft.client.renderer.GlStateManager.TexGen"> {}
 declare class TexGenCoord extends JavaClass<"net.minecraft.client.renderer.GlStateManager.TexGenCoord"> {}
 
+interface IState<T> {
+  get(): T
+  set(value: T): void
+  listen(cb: () => void): void
+  listen(cb: (newValue: T) => void): void
+  listen(cb: (newValue: T, oldValue: T) => void): void
+}
+
 declare global {
   namespace Java {
     /**
@@ -346,7 +354,14 @@ declare global {
     asTint(amount: number): Color
     getShadow(amount: number): Color
   }
-  class StateVar {}
+  class StateVar<T> extends JavaClass<"com.github.synnerz.akutz.api.objects.state.StateVar"> implements IState<T> {
+    constructor(initialValue: T)
+    get(): T
+    set(value: T): void
+    listen(cb: () => void): void
+    listen(cb: (newValue: T) => void): void
+    listen(cb: (newValue: T, oldValue: T) => void): void
+  }
   /**
    * * The minecraft GlStateManager class
    */
