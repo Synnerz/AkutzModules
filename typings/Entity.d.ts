@@ -1,7 +1,7 @@
-import { EJavaClass, JavaClass } from './External';
+import { EJavaClass, EmptyClass, JavaClass } from './External';
 
 declare global {
-  class Entity {
+  class Entity extends EmptyClass {
     constructor(entity: JavaClass<'net.minecraft.entity.Entity'>);
   }
   /**
@@ -109,7 +109,7 @@ declare global {
      */
     toMC(): JavaClass<'net.minecraft.entity.Entity'>;
   }
-  class EntityLivingBase {
+  class EntityLivingBase extends EmptyClass {
     constructor(entityLivingBase: JavaClass<'net.minecraft.entity.EntityLivingBase'>);
   }
   /**
@@ -146,7 +146,7 @@ declare global {
     isPotionActive(potionEffect: PotionEffect): boolean;
     toString(): string;
   }
-  class PlayerMP {
+  class PlayerMP extends EmptyClass {
     constructor(playerMP: JavaClass<'net.minecraft.entity.player.EntityPlayer'>);
   }
   /**
@@ -180,7 +180,7 @@ declare global {
      */
     getName(): string;
   }
-  class Particle {
+  class Particle extends EmptyClass {
     constructor(particleEntity: JavaClass<'net.minecraft.client.particle.EntityFX'>);
   }
   /**
@@ -232,7 +232,7 @@ declare global {
     remove(): this;
     toString(): string;
   }
-  class TileEntity {
+  class TileEntity extends EmptyClass {
     constructor(tileEntity: JavaClass<'net.minecraft.tileentity.TileEntity'>);
   }
   /**
@@ -273,7 +273,7 @@ declare global {
     toMC(): JavaClass<'net.minecraft.tileentity.TileEntity'>;
     toString(): string;
   }
-  class Team {
+  class Team extends EmptyClass {
     constructor(team: JavaClass<'net.minecraft.scoreboard.ScorePlayerTeam'>);
   }
   /**
