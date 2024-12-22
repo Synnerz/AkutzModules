@@ -262,35 +262,58 @@ declare global {
   }
   const GuiHandler: GuiHandler;
   /**
-   * com.chattriggers.ctjs.engine.langs.js.JSKeyBind
+   * * A library that provides useful utilities for Keybind
    */
-  class KeyBind extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSKeyBind'> {
-    static removeKeyBind(keyBind: KeyBind): void;
-    static clearKeyBinds(): void;
-
-    constructor(keyBinding: JavaClass<'net.minecraft.client.settings.KeyBinding'>);
-    constructor(description: string, keyCode: number);
-    constructor(description: string, keyCode: number, category: string);
-
-    getCategory(): string;
-    getDescription(): string;
-    getKeyCode(): number;
+  class Keybind
+    extends JavaClass<"com.github.synnerz.akutz.api.objects.keybind.Keybind">
+    implements StateVar {
+    constructor(keyBinding: JavaClass<"net.minecraft.client.settings.KeyBinding">)
+    constructor(description: string, keyCode: number)
+    constructor(description: string, keyCode: number, category: string)
     /**
-     * Returns true if the key is pressed (used for continuous querying).
+     * * The underlying minecraft Keybinding
+     */
+    keyBinding: JavaClass<"net.minecraft.client.settings.KeyBinding">
+
+    /**
+     * * Removes the specified [Keybind] from the controls settings
+     */
+    static removeKeybind(keyBind: Keybind): void
+    /**
+     * * Clears all of the [Keybinds] added by Akutz
+     * * Note: this is mostly for internal use.
+     */
+    static clearKeybinds(): void
+
+    /**
+     * * Gets [this] keybind's category
+     */
+    getCategory(): string
+    /**
+     * * Gets [this] keybind's description
+     */
+    getDescription(): string
+    /**
+     * * Gets [this] keybind's keycode
+     */
+    getKeyCode(): number
+    /**
+     * * Adds a listener hook to [this] keybind
+     * * This triggers any time the [isKeyDown] param changes and isn't the same as the [oldValue]
+     */
+    listen(cb: (isKeyDown: boolean, oldValue: boolean) => void): void
+    /**
+     * * Sets [this] keybind's keycode
+     */
+    setKeycode(keycode: number): void
+    /**
+     * * Checks whether [this] keybind is being held down
      */
     isKeyDown(): boolean;
     /**
-     * Returns true on the initial key press. For continuous querying use isKeyDown.
+     * * Checks whether [this] keybind was pressed
      */
     isPressed(): boolean;
-    registerKeyDown(method: () => void): RegularTrigger;
-    registerKeyPress(method: () => void): RegularTrigger;
-    registerKeyRelease(method: () => void): RegularTrigger;
-    setState(pressed: boolean): void;
-    toString(): string;
-    unregisterKeyDown(): this;
-    unregisterKeyPress(): this;
-    unregisterKeyRelease(): this;
   }
   /**
    * com.chattriggers.ctjs.minecraft.objects.message.Message
