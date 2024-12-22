@@ -1,8 +1,8 @@
-import { JavaClass } from './External';
+import { Class, EmptyClass, JavaClass } from './External';
 
 // Enums and i am too lazy
-declare class TexGen extends JavaClass<'net.minecraft.client.renderer.GlStateManager.TexGen'> {}
-declare class TexGenCoord extends JavaClass<'net.minecraft.client.renderer.GlStateManager.TexGenCoord'> {}
+declare interface TexGen extends JavaClass<'net.minecraft.client.renderer.GlStateManager.TexGen'> {}
+declare interface TexGenCoord extends JavaClass<'net.minecraft.client.renderer.GlStateManager.TexGenCoord'> {}
 
 interface IState<T> {
   get(): T;
@@ -53,19 +53,27 @@ declare global {
   /**
    * java.util.ArrayList
    */
-  class ArrayList extends JavaClass<'java.util.ArrayList'> {}
+  class ArrayList extends EmptyClass implements JavaClass<'java.util.ArrayList'> {
+    getClass(): Class<'java.util.ArrayList'>;
+  }
   /**
    * java.util.HashMap
    */
-  class HashMap extends JavaClass<'java.util.HashMap'> {}
+  class HashMap extends EmptyClass implements JavaClass<'java.util.HashMap'> {
+    getClass(): Class<'java.util.HashMap'>;
+  }
   /**
    * net.minecraftforge.fml.relauncher.ReflectionHelper
    */
-  class ReflectionHelper extends JavaClass<'net.minecraftforge.fml.relauncher.ReflectionHelper'> {}
+  class ReflectionHelper extends EmptyClass implements JavaClass<'net.minecraftforge.fml.relauncher.ReflectionHelper'> {
+    getClass(): Class<'net.minecraftforge.fml.relauncher.ReflectionHelper'>;
+  }
   /**
    * org.lwjgl.input.Keyboard
    */
-  class Keyboard extends JavaClass<'org.lwjgl.input.Keyboard'> {
+  class Keyboard extends EmptyClass implements JavaClass<'org.lwjgl.input.Keyboard'> {
+    getClass(): Class<'org.lwjgl.input.Keyboard'>;
+    private constructor();
     /**
      * The special character meaning that no character was translated for the event.
      */
@@ -297,7 +305,8 @@ declare global {
   /**
    * * A library that provides useful utilities for Color
    */
-  class Color extends JavaClass<'com.github.synnerz.akutz.api.objects.render.Color'> {
+  class Color extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.objects.render.Color'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.objects.render.Color'>;
     static fromRGB(color: number): Color;
     static fromRGBA(color: number): Color;
     // alpha defaults to 1
@@ -344,7 +353,11 @@ declare global {
     asTint(amount: number): Color;
     getShadow(amount: number): Color;
   }
-  class StateVar<T> extends JavaClass<'com.github.synnerz.akutz.api.objects.state.StateVar'> implements IState<T> {
+  class StateVar<T>
+    extends EmptyClass
+    implements JavaClass<'com.github.synnerz.akutz.api.objects.state.StateVar'>, IState<T>
+  {
+    getClass(): Class<'com.github.synnerz.akutz.api.objects.state.StateVar'>;
     constructor(initialValue: T);
     get(): T;
     set(value: T): void;
@@ -355,7 +368,9 @@ declare global {
   /**
    * * The minecraft GlStateManager class
    */
-  class GlStateManager extends JavaClass<'net.minecraft.client.renderer.GlStateManager'> {
+  class GlStateManager extends EmptyClass implements JavaClass<'net.minecraft.client.renderer.GlStateManager'> {
+    getClass(): Class<'net.minecraft.client.renderer.GlStateManager'>;
+    private constructor();
     static pushAttrib(): void;
     static popAttrib(): void;
     static disableAlpha(): void;
