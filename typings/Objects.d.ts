@@ -1,11 +1,15 @@
-import { JavaClass, JavaEnum, JavaEnumValueE, StringOrJavaEnumValueE } from './External';
+import { Class, EJavaClass, EmptyClass, JavaClass, JavaEnum, JavaEnumValueE, StringOrJavaEnumValueE } from './External';
 import './NBT';
 import { RegularTrigger } from './IRegister';
 
 /**
  * * A library that provides useful utilities for GuiHandler
  */
-declare class GuiHandler extends JavaClass<'com.github.synnerz.akutz.api.objects.gui.GuiHandler'> {
+declare class GuiHandler
+  extends EmptyClass
+  implements JavaClass<'com.github.synnerz.akutz.api.objects.gui.GuiHandler'>
+{
+  getClass(): Class<'com.github.synnerz.akutz.api.objects.gui.GuiHandler'>;
   onTick(event: JavaClass<'net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent'>): void;
   /**
    * * Sets the specified Gui to be opened
@@ -17,7 +21,8 @@ declare global {
   /**
    * * A library that provides useful utilities for Sound
    */
-  class Sound extends JavaClass<'com.github.synnerz.akutz.api.objects.sound.Sound'> {
+  class Sound extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.objects.sound.Sound'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.objects.sound.Sound'>;
     constructor(config: {
       source: string;
       priority?: boolean;
@@ -81,7 +86,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.engine.langs.js.JSDisplay
    */
-  class Display extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSDisplay'> {
+  class Display extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSDisplay'> {
+    getClass(): Class<'com.chattriggers.ctjs.engine.langs.js.JSDisplay'>;
     constructor(config?: {
       backgroundColor?: number;
       textColor?: number;
@@ -134,7 +140,11 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.objects.display.DisplayHandler
    */
-  class DisplayHandler extends JavaClass<'com.chattriggers.ctjs.minecraft.objects.display.DisplayHandler'> {
+  class DisplayHandler
+    extends EmptyClass
+    implements JavaClass<'com.chattriggers.ctjs.minecraft.objects.display.DisplayHandler'>
+  {
+    getClass(): Class<'com.chattriggers.ctjs.minecraft.objects.display.DisplayHandler'>;
     static Align: JavaEnum<'LEFT' | 'CENTER' | 'RIGHT'>;
     static Background: JavaEnum<'NONE' | 'FULL' | 'PER_LINE'>;
     static Order: JavaEnum<'UP' | 'DOWN'>;
@@ -150,7 +160,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.engine.langs.js.JSDisplayLine
    */
-  class DisplayLine extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSDisplayLine'> {
+  class DisplayLine extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSDisplayLine'> {
+    getClass(): Class<'com.chattriggers.ctjs.engine.langs.js.JSDisplayLine'>;
     constructor(text: string);
     constructor(
       text: string,
@@ -199,7 +210,8 @@ declare global {
   /**
    * com.chattriggers.ctjs.engine.langs.js.JSGui
    */
-  class Gui extends JavaClass<'net.minecraft.client.gui.GuiScreen'> {
+  class Gui extends EmptyClass implements JavaClass<'net.minecraft.client.gui.GuiScreen'> {
+    getClass(): Class<'net.minecraft.client.gui.GuiScreen'>;
     constructor();
 
     addButton(button: JavaClass<'net.minecraft.client.gui.GuiButton'>): this;
@@ -261,13 +273,26 @@ declare global {
     setDoesPauseGame(doesPauseGame: boolean): this;
   }
   const GuiHandler: GuiHandler;
-  /**
-   * * A library that provides useful utilities for Keybind
-   */
-  class Keybind extends JavaClass<'com.github.synnerz.akutz.api.objects.keybind.Keybind'> implements StateVar<boolean> {
+  class KeyBind extends EmptyClass {
     constructor(keyBinding: JavaClass<'net.minecraft.client.settings.KeyBinding'>);
     constructor(description: string, keyCode: number);
     constructor(description: string, keyCode: number, category: string);
+
+    /**
+     * * Removes the specified [Keybind] from the controls settings
+     */
+    static removeKeybind(keyBind: Keybind): void;
+    /**
+     * * Clears all of the [Keybinds] added by Akutz
+     * * Note: this is mostly for internal use.
+     */
+    static clearKeybinds(): void;
+  }
+  /**
+   * * A library that provides useful utilities for Keybind
+   */
+  interface Keybind extends EJavaClass<StateVar<boolean>, 'com.github.synnerz.akutz.api.objects.keybind.Keybind'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.objects.keybind.Keybind'>;
     /**
      * * Gets the current state value for [this] keybind
      */
@@ -280,16 +305,6 @@ declare global {
      * * The underlying minecraft Keybinding
      */
     keyBinding: JavaClass<'net.minecraft.client.settings.KeyBinding'>;
-
-    /**
-     * * Removes the specified [Keybind] from the controls settings
-     */
-    static removeKeybind(keyBind: Keybind): void;
-    /**
-     * * Clears all of the [Keybinds] added by Akutz
-     * * Note: this is mostly for internal use.
-     */
-    static clearKeybinds(): void;
 
     /**
      * * Gets [this] keybind's category
@@ -324,7 +339,8 @@ declare global {
   /**
    * * A library that provides useful utilities for Message
    */
-  class Message extends JavaClass<'com.github.synnerz.akutz.api.wrappers.message.Message'> {
+  class Message extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.message.Message'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.message.Message'>;
     constructor(event: JavaClass<'net.minecraftforge.client.event.ClientChatReceivedEvent'>);
     constructor(component: JavaClass<'net.minecraft.util.IChatComponent'>);
     constructor(messageParts: (string | TextComponent | Item)[]);
@@ -420,7 +436,11 @@ declare global {
   /**
    * * A library that provides useful utilities for TextComponent
    */
-  class TextComponent extends JavaClass<'com.github.synnerz.akutz.api.wrappers.message.TextComponent'> {
+  class TextComponent
+    extends EmptyClass
+    implements JavaClass<'com.github.synnerz.akutz.api.wrappers.message.TextComponent'>
+  {
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.message.TextComponent'>;
     constructor(text: string);
     constructor(chatComponent: JavaClass<'net.minecraft.util.IChatComponent'>);
 
