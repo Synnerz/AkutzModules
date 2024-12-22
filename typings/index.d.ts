@@ -1,7 +1,7 @@
-// https://github.com/Deadrik/TFC2/blob/master/custommappings/methods.csv
+import './Entity';
 import './Globals';
+import './Inventory';
 import './IRegister';
 import './Libs';
 import './Objects';
 import './Wrappers';
-import './Entity';
