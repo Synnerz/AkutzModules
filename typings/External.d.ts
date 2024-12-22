@@ -71,6 +71,19 @@ export type JavaClass<T extends string> = {
   getClass(): Class<T>;
 } & MCClass<T>;
 export type EJavaClass<C extends JavaClass<any>, T extends string> = Omit<C, 'getClass' | 'constructor'> & JavaClass<T>;
+export class EmptyClass {
+  protected constructor();
+
+  private static apply();
+  private static arguments;
+  private static bind();
+  private static call();
+  private static caller;
+  private static length;
+  private static name;
+  private static prototype;
+  private static toString();
+}
 
 export interface Class<T extends string> {
   asSubclass<U extends string>(clazz: Class<U>): Class<U>;
