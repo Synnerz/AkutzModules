@@ -1,11 +1,13 @@
-import { JavaClass } from './External';
+import { Class, EJavaClass, EmptyClass, JavaClass } from './External';
 
 declare global {
+  class Block extends EmptyClass {
+    constructor(mcBlock: JavaClass<'net.minecraft.block.Block'>, mcPos: JavaClass<'net.minecraft.util.BlockPos'>);
+  }
   /**
    * * A library that provides useful utilities for Block
    */
-  class Block extends JavaClass<'com.github.synnerz.akutz.api.wrappers.world.block.Block'> {
-    constructor(mcBlock: JavaClass<'net.minecraft.block.Block'>, mcPos: JavaClass<'net.minecraft.util.BlockPos'>);
+  interface Block extends JavaClass<'com.github.synnerz.akutz.api.wrappers.world.block.Block'> {
     /**
      * * The underlying minecraft block
      */
@@ -37,48 +39,50 @@ declare global {
     /**
      * * A field with useful utilities about the block type
      */
-    type: {
-      /**
-       * * Gets [this] block's ID
-       */
-      getID(): number;
-      /**
-       * * Gets [this] block's RegistryName
-       * * e.g: `minecraft:grass`
-       */
-      getRegistryName(): string;
-      /**
-       * * Gets [this] block's UnlocalizedName
-       * * e.g: `tile.grass`
-       */
-      getUnlocalizedName(): string;
-      /**
-       * * Gets [this] block's name
-       * * e.g: `Grass Block`
-       */
-      getName(): string;
-      /**
-       * * Gets [this] block's default IBlockState
-       */
-      getDefaultState(): JavaClass<'net.minecraft.block.state.IBlockState'>;
-      /**
-       * * Gets [this] block's default metadata
-       */
-      getDefaultStateMetadata(): number;
-      /**
-       * * Checks whether this block is translucent or not
-       */
-      isTranslucent(): boolean;
-      toString(): string;
-    };
+    type: BlockType;
     toString(): string;
   }
-  class BlockType {}
+  interface BlockType extends JavaClass<'what is the path'> {
+    /**
+     * * Gets [this] block's ID
+     */
+    getID(): number;
+    /**
+     * * Gets [this] block's RegistryName
+     * * e.g: `minecraft:grass`
+     */
+    getRegistryName(): string;
+    /**
+     * * Gets [this] block's UnlocalizedName
+     * * e.g: `tile.grass`
+     */
+    getUnlocalizedName(): string;
+    /**
+     * * Gets [this] block's name
+     * * e.g: `Grass Block`
+     */
+    getName(): string;
+    /**
+     * * Gets [this] block's default IBlockState
+     */
+    getDefaultState(): JavaClass<'net.minecraft.block.state.IBlockState'>;
+    /**
+     * * Gets [this] block's default metadata
+     */
+    getDefaultStateMetadata(): number;
+    /**
+     * * Checks whether this block is translucent or not
+     */
+    isTranslucent(): boolean;
+    toString(): string;
+  }
+  class Sign extends EmptyClass {
+    constructor(block: Block);
+  }
   /**
    * * A library that provides useful utilities for Sign
    */
-  class Sign extends Block implements JavaClass<'com.github.synnerz.akutz.api.wrappers.world.block.Sign'> {
-    constructor(block: Block);
+  interface Sign extends EJavaClass<Block, 'com.github.synnerz.akutz.api.wrappers.world.block.Sign'> {
     /**
      * * The underlying minecraft TileEntitySign
      */
@@ -100,7 +104,8 @@ declare global {
   /**
    *  A library that provides useful utilities for Chunk
    */
-  class Chunk extends JavaClass<'com.github.synnerz.akutz.api.wrappers.world.Chunk'> {
+  class Chunk extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.world.Chunk'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.world.Chunk'>;
     constructor(chunk: JavaClass<'net.minecraft.world.chunk.Chunk'>);
     /**
      * * The underlying minecraft Chunk
@@ -149,7 +154,8 @@ declare global {
   /**
    *  A library that provides useful utilities for PotionEffect
    */
-  class PotionEffect extends JavaClass<'com.github.synnerz.akutz.api.wrappers.PotionEffect'> {
+  class PotionEffect extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.wrappers.PotionEffect'> {
+    getClass(): Class<'com.github.synnerz.akutz.api.wrappers.PotionEffect'>;
     constructor(effect: JavaClass<'net.minecraft.potion.PotionEffect'>);
     /**
      * * The underlying minecraft PotionEffect

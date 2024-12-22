@@ -5,4 +5,5 @@ import './IRegister';
 import './Libs';
 import './NBT';
 import './Objects';
+import './World';
 import './Wrappers';
