@@ -1,6 +1,6 @@
 import { MCClasses } from './MCClasses';
 
-export class Vector3f {
+export interface Vector3f extends JavaClass<'org.lwjgl.util.vector.Vector3f'> {
   x: number;
   y: number;
   z: number;
@@ -26,7 +26,7 @@ export class Vector3f {
   translate(x: number, y: number, z: number): Vector3f;
 }
 
-export class Vector2f {
+export interface Vector2f extends JavaClass<'org.lwjgl.util.vector.Vector2f'> {
   x: number;
   y: number;
 
