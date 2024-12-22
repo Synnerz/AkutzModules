@@ -6,9 +6,12 @@ import {
   StringOrJavaEnumValue,
   JavaClass,
   JavaEnum,
-  JavaEnumValueE
+  JavaEnumValueE,
+  EmptyClass,
+  Class,
+  EJavaClass
 } from './External';
-import './Inventoy';
+import './Inventory';
 import './World';
 
 export interface CTEvent {
@@ -26,17 +29,19 @@ export interface CancellableCTEvent extends CTEvent {
   isCancellable(): true;
 }
 
-export class Trigger extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSRegister'> {
+export class Trigger extends EmptyClass {
   constructor(callback: Function);
-
+}
+export interface Trigger extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSRegister'> {
   register(): this;
   unregister(): this;
   trigger(...args: any[]): void;
   setPriority(priority: JavaEnumValueE<typeof Priority>): this;
 }
-export class ChatTrigger extends Trigger {
+export class ChatTrigger extends EmptyClass {
   static Parameter: JavaEnum<'CONTAINS' | 'START' | 'END'>;
-
+}
+export interface ChatTrigger extends EJavaClass<Trigger, 'what is the path'> {
   addParameter(parameter: StringOrJavaEnumValueE<typeof ChatTrigger.Parameter>): this;
   addParameters(...parameters: StringOrJavaEnumValueE<typeof ChatTrigger.Parameter>[]): this;
   setParameter(parameter: StringOrJavaEnumValueE<typeof ChatTrigger.Parameter>): this;
@@ -56,21 +61,22 @@ export class ChatTrigger extends Trigger {
   setStart(): this;
   triggerIfCanceled(bool: boolean): this;
 }
-export abstract class ClassFilterTrigger extends Trigger {
+export interface ClassFilterTrigger extends EJavaClass<Trigger, 'what is the path'> {
   /**
    * @deprecated use `setFilteredClass(clazz);`
    */
-  setPacketClass(clazz: typeof JavaClass): ReturnType<typeof this.setFilteredClasses>;
+  setPacketClass(clazz: Class<any>): ReturnType<typeof this.setFilteredClasses>;
   /**
    * @deprecated use `setFilteredClass([clazzA, clazzB, clazzB]);`
    */
-  setPacketClasses(clazzes: (typeof JavaClass)[]): ReturnType<typeof this.setFilteredClass>;
-  setFilteredClass(clazz: typeof JavaClass): ReturnType<typeof this.setFilteredClasses>;
-  setFilteredClasses(clazzes: (typeof JavaClass)[]): this;
+  setPacketClasses(clazzes: Class<any>[]): ReturnType<typeof this.setFilteredClass>;
+  setFilteredClass(clazz: Class<any>): ReturnType<typeof this.setFilteredClasses>;
+  setFilteredClasses(clazzes: Class<any>[]): this;
 
-  abstract evalTriggerType(args: any[]): any;
+  evalTriggerType(args: any[]): any;
 }
-export class CommandTrigger extends Trigger {
+export class CommandTrigger extends EmptyClass {}
+export interface CommandTrigger extends EJavaClass<Trigger, 'what is the path'> {
   setAliases(...args: string[]): this;
   setCommandName(commandName: string): this;
   /**
@@ -91,26 +97,34 @@ export class CommandTrigger extends Trigger {
    */
   setTabCompletions(callback: (args: string[]) => Array<string>): this;
 }
-export class EventTrigger extends Trigger {
+export class EventTrigger extends EmptyClass {}
+export interface EventTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
   triggerIfCanceled(bool: boolean): this;
 }
-export class ForgeTrigger extends Trigger {}
-export class PacketTrigger extends ClassFilterTrigger {
+export class ForgeTrigger extends EmptyClass {}
+export interface ForgeTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {}
+export class PacketTrigger extends EmptyClass {}
+export interface PacketTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
   evalTriggerType(args: JavaClass<'net.minecraft.network.Packet'>[]): JavaClass<'net.minecraft.network.Packet'>;
 }
-export class RegularTrigger extends Trigger {}
-export class RenderEntityTrigger extends ClassFilterTrigger {
+export class RegularTrigger extends EmptyClass {}
+export interface RegularTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {}
+export class RenderEntityTrigger extends EmptyClass {}
+export interface RenderEntityTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
   evalTriggerType(args: JavaClass<'net.minecraft.entity.Entity'>[]): JavaClass<'net.minecraft.entity.Entity'>;
 }
-export class RenderTileEntityTrigger extends ClassFilterTrigger {
+export class RenderTileEntityTrigger extends EmptyClass {}
+export interface RenderTileEntityTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
   evalTriggerType(
     args: JavaClass<'net.minecraft.tileentity.TileEntity'>[]
   ): JavaClass<'net.minecraft.tileentity.TileEntity'>;
 }
-export class SoundPlayTrigger extends Trigger {
+export class SoundPlayTrigger extends EmptyClass {}
+export interface SoundPlayTrigger extends EJavaClass<Trigger, 'what is the path'> {
   setCriteria(soundNameCriteria: string): this;
 }
-export class StepTrigger extends Trigger {
+export class StepTrigger extends EmptyClass {}
+export interface StepTrigger extends EJavaClass<Trigger, 'what is the path'> {
   /**
    * Sets the delay in seconds between the trigger activation. This has a minimum of one second between steps. This will override setFps.
    */
@@ -124,7 +138,7 @@ export class StepTrigger extends Trigger {
 /**
  * com.chattriggers.ctjs.engine.langs.js.JSRegister
  */
-declare class JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSRegister'> {
+declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSRegister'> {
   register(triggerType: 'actionBar', callback: (...args: Array<string | CancellableCTEvent>) => void): ChatTrigger;
   register(triggerType: 'chat', callback: (...args: Array<string | CancellableCTEvent>) => void): ChatTrigger;
 
