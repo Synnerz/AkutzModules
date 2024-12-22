@@ -1,5 +1,5 @@
 import { Class, EmptyClass, JavaClass, JavaEnumValueE, StringOrJavaEnumValueE, Vector2f, Vector3f } from './External';
-import { CTEvent } from './IRegister';
+import { AZEvent } from './IRegister';
 
 declare global {
   /**
@@ -184,7 +184,7 @@ declare global {
      */
     static colorForNumber(value: number, max: number): string;
   }
-  function cancel(event: CTEvent): boolean;
+  function cancel(event: AZEvent): boolean;
   /**
    * * A library that provides useful utilities for Files
    */

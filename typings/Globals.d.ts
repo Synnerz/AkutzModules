@@ -44,6 +44,10 @@ declare global {
      */
     replaceFormatting(): string;
   }
+  /**
+   * * Prints the specified message into the minecraft logs
+   */
+  function print(message: any): void
   function easeOut(start: number, finish: number, speed: number, jump?: number): number;
   function easeColor(start: number, finish: number, speed: number, jump?: number): number;
   interface Number {

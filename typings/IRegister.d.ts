@@ -14,7 +14,7 @@ import {
 import './Inventory';
 import './World';
 
-export interface CTEvent {
+export interface AZEvent {
   setCanceled(): void;
   setCanceled(newVal: boolean): void;
   setCancelled(): void;
@@ -24,7 +24,7 @@ export interface CTEvent {
   isCanceled(): boolean;
   isCancelled(): boolean;
 }
-export interface CancellableCTEvent extends CTEvent {
+export interface CancelableAZEvent extends AZEvent {
   isCancelable(): true;
   isCancellable(): true;
 }
@@ -159,42 +159,42 @@ export interface StepTrigger extends EJavaClass<Trigger, 'what is the path'> {
  * com.chattriggers.ctjs.engine.langs.js.JSRegister
  */
 declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSRegister'> {
-  register(triggerType: 'actionBar', callback: (...args: Array<string | CancellableCTEvent>) => void): ChatTrigger;
-  register(triggerType: 'chat', callback: (...args: Array<string | CancellableCTEvent>) => void): ChatTrigger;
+  register(triggerType: 'actionBar', callback: (...args: Array<string | CancelableAZEvent>) => void): ChatTrigger;
+  register(triggerType: 'chat', callback: (...args: Array<string | CancelableAZEvent>) => void): ChatTrigger;
 
   register(triggerType: 'command', callback: (...args: string[]) => void): CommandTrigger;
 
   register(
     triggerType: 'attackEntity',
-    callback: (target: Entity, source: PlayerMP, event: CancellableCTEvent) => void
+    callback: (target: Entity, source: PlayerMP, event: CancelableAZEvent) => void
   ): EventTrigger;
-  register(
-    triggerType: 'chatComponentClicked',
-    callback: (component: TextComponent, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  register(
-    triggerType: 'chatComponentHovered',
-    callback: (component: TextComponent, x: number, y: number, event: CancellableCTEvent) => void
-  ): EventTrigger;
+  // register(
+  //   triggerType: 'chatComponentClicked',
+  //   callback: (component: TextComponent, event: CancelableAZEvent) => void
+  // ): EventTrigger;
+  // register(
+  //   triggerType: 'chatComponentHovered',
+  //   callback: (component: TextComponent, x: number, y: number, event: CancelableAZEvent) => void
+  // ): EventTrigger;
   register(
     triggerType: 'drawBlockHighlight',
-    callback: (position: Vector3f, event: CancellableCTEvent) => void
+    callback: (position: Vector3f, event: CancelableAZEvent) => void
   ): EventTrigger;
   register(
     triggerType: 'dropItem',
-    callback: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancellableCTEvent) => void
+    callback: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancelableAZEvent) => void
   ): EventTrigger;
-  register(
-    triggerType: 'guiDrawBackground',
-    callback: (guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>, event: CancellableCTEvent) => void
-  ): EventTrigger;
+  // register(
+  //   triggerType: 'guiDrawBackground',
+  //   callback: (guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>, event: CancelableAZEvent) => void
+  // ): EventTrigger;
   register(
     triggerType: 'guiKey',
     callback: (
       char: string,
       keyCode: number,
       guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
   register(
@@ -204,7 +204,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
       mouseY: number,
       mouseButton: number,
       guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
   register(
@@ -214,7 +214,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
       mouseY: number,
       mouseButton: number,
       guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
   register(
@@ -224,44 +224,44 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
       mouseY: number,
       mouseButton: number,
       guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
-  register(triggerType: 'guiOpened', callback: (event: CancellableCTEvent) => void): EventTrigger;
+  register(triggerType: 'guiOpened', callback: (event: CancelableAZEvent) => void): EventTrigger;
   /**
    * Note: this is not continuously called while the block is being broken, only once when first left clicked.
    */
-  register(triggerType: 'hitBlock', callback: (block: Block, event: CancellableCTEvent) => void): EventTrigger;
+  register(triggerType: 'hitBlock', callback: (block: Block, event: CancelableAZEvent) => void): EventTrigger;
   register(
     triggerType: 'itemTooltip',
-    callback: (lore: string[], stack: JavaClass<'net.minecraft.item.ItemStack'>, event: CancellableCTEvent) => void
+    callback: (lore: string[], stack: JavaClass<'net.minecraft.item.ItemStack'>, event: CancelableAZEvent) => void
   ): EventTrigger;
-  register(triggerType: 'messageSent', callback: (message: string, event: CancellableCTEvent) => void): EventTrigger;
-  register(
-    triggerType: 'noteblockChange',
-    callback: (
-      position: Vector3f,
-      name: JavaEnumValue<
-        'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
-      >,
-      octave: JavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  register(
-    triggerType: 'noteblockPlay',
-    callback: (
-      position: Vector3f,
-      name: JavaEnumValue<
-        'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
-      >,
-      octave: JavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
+  register(triggerType: 'messageSent', callback: (message: string, event: CancelableAZEvent) => void): EventTrigger;
+  // register(
+  //   triggerType: 'noteblockChange',
+  //   callback: (
+  //     position: Vector3f,
+  //     name: JavaEnumValue<
+  //       'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
+  //     >,
+  //     octave: JavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
+  //     event: CancelableAZEvent
+  //   ) => void
+  // ): EventTrigger;
+  // register(
+  //   triggerType: 'noteblockPlay',
+  //   callback: (
+  //     position: Vector3f,
+  //     name: JavaEnumValue<
+  //       'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
+  //     >,
+  //     octave: JavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
+  //     event: CancelableAZEvent
+  //   ) => void
+  // ): EventTrigger;
   register(
     triggerType: 'pickupItem',
-    callback: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancellableCTEvent) => void
+    callback: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancelableAZEvent) => void
   ): EventTrigger;
   /**
    * activates when the player right clicks the air or a block
@@ -271,41 +271,41 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     callback: (
       action: JavaEnumValue<'RIGHT_CLICK_EMPTY' | 'RIGHT_CLICK_BLOCK' | 'UNKNOWN'>,
       position: Vector3f,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
-  register(triggerType: 'renderAir', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderArmor', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderBossHealth', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderChat', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderCrosshair', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderDebug', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderExperience', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderFood', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderHand', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderHealth', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderHelmet', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderHotbar', callback: (event: CancellableCTEvent) => void): EventTrigger;
+  // register(triggerType: 'renderAir', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderArmor', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderBossHealth', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  register(triggerType: 'renderChat', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderCrosshair', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderDebug', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderExperience', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderFood', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderHand', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderHealth', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderHelmet', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderHotbar', callback: (event: CancelableAZEvent) => void): EventTrigger;
   register(
     triggerType: 'renderItemIntoGui',
-    callback: (item: Item, x: number, y: number, event: CancellableCTEvent) => void
+    callback: (item: Item, x: number, y: number, event: CancelableAZEvent) => void
   ): EventTrigger;
   register(
     triggerType: 'renderItemOverlayIntoGui',
-    callback: (item: Item, x: number, y: number, event: CancellableCTEvent) => void
+    callback: (item: Item, x: number, y: number, event: CancelableAZEvent) => void
   ): EventTrigger;
-  register(triggerType: 'renderJumpBar', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderMountHealth', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderOverlay', callback: (event: CTEvent) => void): EventTrigger;
-  register(triggerType: 'renderPlayerList', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderPortal', callback: (event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'renderScoreboard', callback: (event: CancellableCTEvent) => void): EventTrigger;
+  // register(triggerType: 'renderJumpBar', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderMountHealth', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  register(triggerType: 'renderOverlay', callback: (event: AZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderPlayerList', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  // register(triggerType: 'renderPortal', callback: (event: CancelableAZEvent) => void): EventTrigger;
+  register(triggerType: 'renderScoreboard', callback: (event: CancelableAZEvent) => void): EventTrigger;
   register(
     triggerType: 'renderSlot',
     callback: (
       slot: Slot,
       guiContainer: JavaClass<'net.minecraft.client.gui.inventory.GuiContainer'>,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
   register(
@@ -315,15 +315,15 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
       mouseY: number,
       slot: JavaClass<'net.minecraft.inventory.Slot'>,
       guiContainer: JavaClass<'net.minecraft.client.gui.inventory.GuiContainer'>,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
   register(
     triggerType: 'renderTitle',
-    callback: (displayedTitle: string, displayedSubtitle: string, event: CancellableCTEvent) => void
+    callback: (displayedTitle: string, displayedSubtitle: string, event: CancelableAZEvent) => void
   ): EventTrigger;
-  register(triggerType: 'screenshotTaken', callback: (name: string, event: CancellableCTEvent) => void): EventTrigger;
-  register(triggerType: 'serverConnect', callback: (event: CTEvent) => void): EventTrigger;
+  // register(triggerType: 'screenshotTaken', callback: (name: string, event: CancelableAZEvent) => void): EventTrigger;
+  register(triggerType: 'serverConnect', callback: (event: AZEvent) => void): EventTrigger;
   register(
     triggerType: 'spawnParticle',
     callback: (
@@ -372,17 +372,17 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
         | 'WATER_SPLASH'
         | 'WATER_WAKE'
       >,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): EventTrigger;
 
   register(
     triggerType: 'packetReceived',
-    callback: (packet: JavaClass<'net.minecraft.network.Packet'>, event: CancellableCTEvent) => void
+    callback: (packet: JavaClass<'net.minecraft.network.Packet'>, event: CancelableAZEvent) => void
   ): PacketTrigger;
   register(
     triggerType: 'packetSent',
-    callback: (packet: JavaClass<'net.minecraft.network.Packet'>, event: CancellableCTEvent) => void
+    callback: (packet: JavaClass<'net.minecraft.network.Packet'>, event: CancelableAZEvent) => void
   ): PacketTrigger;
 
   register(triggerType: 'blockBreak', callback: (block: Block) => void): RegularTrigger;
@@ -403,8 +403,8 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     triggerType: 'guiRender',
     callback: (mouseX: number, mouseY: number, guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>) => void
   ): RegularTrigger;
-  register(triggerType: 'playerJoined', callback: (player: PlayerMP) => void): RegularTrigger;
-  register(triggerType: 'playerLeft', callback: (player: PlayerMP) => void): RegularTrigger;
+  // register(triggerType: 'playerJoined', callback: (player: PlayerMP) => void): RegularTrigger;
+  // register(triggerType: 'playerLeft', callback: (player: PlayerMP) => void): RegularTrigger;
   register(
     triggerType: 'postGuiRender',
     callback: (mouseX: number, mouseY: number, guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>) => void
@@ -420,7 +420,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
   ): RegularTrigger;
   register(triggerType: 'renderWorld', callback: (partialTicks: number) => void): RegularTrigger;
   register(triggerType: 'scrolled', callback: (x: number, y: number, delta: number) => void): RegularTrigger;
-  register(triggerType: 'serverDisconnect', callback: (event: CTEvent) => void): RegularTrigger;
+  register(triggerType: 'serverDisconnect', callback: (event: AZEvent) => void): RegularTrigger;
   register(triggerType: 'tick', callback: (totalTicks: number) => void): RegularTrigger;
   register(triggerType: 'worldLoad', callback: () => void): RegularTrigger;
   register(triggerType: 'worldUnload', callback: () => void): RegularTrigger;
@@ -431,7 +431,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
   ): RenderEntityTrigger;
   register(
     triggerType: 'renderEntity',
-    callback: (entity: Entity, position: Vector3f, partialTicks: number, event: CancellableCTEvent) => void
+    callback: (entity: Entity, position: Vector3f, partialTicks: number, event: CancelableAZEvent) => void
   ): RenderEntityTrigger;
 
   register(
@@ -440,7 +440,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
   ): RenderTileEntityTrigger;
   register(
     triggerType: 'renderTileEntity',
-    callback: (tileEntity: TileEntity, position: Vector3f, partialTicks: number, event: CancellableCTEvent) => void
+    callback: (tileEntity: TileEntity, position: Vector3f, partialTicks: number, event: CancelableAZEvent) => void
   ): RenderTileEntityTrigger;
 
   register(
@@ -453,282 +453,30 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
       categoryName: StringOrJavaEnumValue<
         'AMBIENT' | 'ANIMALS' | 'BLOCKS' | 'MASTER' | 'MOBS' | 'MUSIC' | 'PLAYERS' | 'RECORDS' | 'WEATHER'
       >,
-      event: CancellableCTEvent
+      event: CancelableAZEvent
     ) => void
   ): SoundPlayTrigger;
 
-  register(triggerType: 'step', callback: (totalSteps: number) => void): StepTrigger;
+  // register(triggerType: 'step', callback: (totalSteps: number) => void): StepTrigger;
 
   // register(triggerType: string, callback: Function): Trigger;
   register(
     triggerType: JavaClass<'net.minecraftforge.fml.common.eventhandler.Event'>,
-    callback: (event: CTEvent) => void
+    callback: (event: AZEvent) => void
   ): RegularTrigger;
-
-  registerActionBar(cb: (...args: Array<string | CancellableCTEvent>) => void): ChatTrigger;
-  registerChat(cb: (...args: Array<string | CancellableCTEvent>) => void): ChatTrigger;
-
-  registerCommand(cb: (...args: string[]) => void): CommandTrigger;
-
-  registerAttackEntity(cb: (target: Entity, event: CancellableCTEvent) => void): EventTrigger;
-  registerChatComponentClicked(cb: (component: TextComponent, event: CancellableCTEvent) => void): EventTrigger;
-  registerChatComponentHovered(
-    cb: (component: TextComponent, x: number, y: number, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  registerDrawBlockHighlight(cb: (position: Vector3f, event: CancellableCTEvent) => void): EventTrigger;
-  registerDropItem(
-    cb: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  registerGuiDrawBackground(
-    cb: (guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  registerGuiKey(
-    cb: (
-      char: string,
-      keyCode: number,
-      guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerGuiMouseClick(
-    cb: (
-      mouseX: number,
-      mouseY: number,
-      mouseButton: number,
-      guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerGuiMouseDrag(
-    cb: (
-      mouseX: number,
-      mouseY: number,
-      mouseButton: number,
-      guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerGuiMouseRelease(
-    cb: (
-      mouseX: number,
-      mouseY: number,
-      mouseButton: number,
-      guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerGuiOpened(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  /**
-   * Note: this is not continuously called while the block is being broken, only once when first left clicked.
-   */
-  registerHitBlock(cb: (block: Block, event: CancellableCTEvent) => void): EventTrigger;
-  registerItemTooltip(
-    cb: (lore: string[], stack: JavaClass<'net.minecraft.item.ItemStack'>, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  registerMessageSent(cb: (message: string, event: CancellableCTEvent) => void): EventTrigger;
-  registerNoteblockChange(
-    cb: (
-      position: Vector3f,
-      name: StringOrJavaEnumValue<
-        'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
-      >,
-      octave: StringOrJavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerNoteblockPlay(
-    cb: (
-      position: Vector3f,
-      name: StringOrJavaEnumValue<
-        'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
-      >,
-      octave: StringOrJavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerPickupItem(
-    cb: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  /**
-   * activates when the player right clicks the air or a block
-   */
-  registerPlayerInteract(
-    cb: (
-      action: StringOrJavaEnumValue<'RIGHT_CLICK_EMPTY' | 'RIGHT_CLICK_BLOCK' | 'UNKNOWN'>,
-      position: Vector3f,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerRenderAir(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderArmor(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderBossHealth(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderChat(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderCrosshair(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderDebug(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderExperience(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderFood(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderHand(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderHealth(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderHelmet(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderHotbar(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderItemIntoGui(cb: (item: Item, x: number, y: number, event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderItemOverlayIntoGui(
-    cb: (item: Item, x: number, y: number, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  registerRenderJumpBar(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderMountHealth(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderOverlay(cb: (event: CTEvent) => void): EventTrigger;
-  registerRenderPlayerList(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderPortal(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderScoreboard(cb: (event: CancellableCTEvent) => void): EventTrigger;
-  registerRenderSlot(
-    cb: (
-      slot: Slot,
-      guiContainer: JavaClass<'net.minecraft.client.gui.inventory.GuiContainer'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerRenderSlotHighlight(
-    cb: (
-      mouseX: number,
-      mouseY: number,
-      slot: JavaClass<'net.minecraft.inventory.Slot'>,
-      guiContainer: JavaClass<'net.minecraft.client.gui.inventory.GuiContainer'>,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-  registerRenderTitle(
-    cb: (displayedTitle: string, displayedSubtitle: string, event: CancellableCTEvent) => void
-  ): EventTrigger;
-  registerScreenshotTaken(cb: (name: string, event: CancellableCTEvent) => void): EventTrigger;
-  registerServerConnect(cb: (event: CTEvent) => void): EventTrigger;
-  registerSpawnParticle(
-    cb: (
-      particle: Particle,
-      id: StringOrJavaEnumValue<
-        | 'BARRIER'
-        | 'BLOCK_CRACK'
-        | 'BLOCK_DUST'
-        | 'CLOUD'
-        | 'CRIT'
-        | 'CRIT_MAGIC'
-        | 'DRIP_LAVA'
-        | 'DRIP_WATER'
-        | 'ENCHANTMENT_TABLE'
-        | 'EXPLOSION_HUGE'
-        | 'EXPLOSION_LARGE'
-        | 'EXPLOSION_NORMAL'
-        | 'FIREWORKS_SPARK'
-        | 'FLAME'
-        | 'FOOTSTEP'
-        | 'HEART'
-        | 'ITEM_CRACK'
-        | 'ITEM_TAKE'
-        | 'LAVA'
-        | 'MOB_APPEARANCE'
-        | 'NOTE'
-        | 'PORTAL'
-        | 'REDSTONE'
-        | 'SLIME'
-        | 'SMOKE_LARGE'
-        | 'SMOKE_NORMAL'
-        | 'SNOW_SHOVEL'
-        | 'SNOWBALL'
-        | 'SPELL'
-        | 'SPELL_INSTANT'
-        | 'SPELL_MOB'
-        | 'SPELL_MOB_AMBIENT'
-        | 'SPELL_WITCH'
-        | 'SUSPENDED'
-        | 'SUSPENDED_DEPTH'
-        | 'TOWN_AURA'
-        | 'VILLAGER_ANGRY'
-        | 'VILLAGER_HAPPY'
-        | 'WATER_BUBBLE'
-        | 'WATER_DROP'
-        | 'WATER_SPLASH'
-        | 'WATER_WAKE'
-      >,
-      event: CancellableCTEvent
-    ) => void
-  ): EventTrigger;
-
-  registerPacketReceived(
-    cb: (packet: JavaClass<'net.minecraft.network.Packet'>, event: CancellableCTEvent) => void
-  ): PacketTrigger;
-  registerPacketSent(
-    cb: (packet: JavaClass<'net.minecraft.network.Packet'>, event: CancellableCTEvent) => void
-  ): PacketTrigger;
-
-  registerBlockBreak(cb: (block: Block) => void): RegularTrigger;
-  registerClicked(cb: (x: number, y: number, button: number, isPressed: boolean) => void): RegularTrigger;
-  registerDragged(cb: (dx: number, dy: number, x: number, y: number) => void): RegularTrigger;
-  registerEntityDamage(cb: (entity: Entity, player: PlayerMP) => void): RegularTrigger;
-  registerEntityDeath(cb: (entity: Entity) => void): RegularTrigger;
-  registerGameLoad(cb: () => void): RegularTrigger;
-  registerGameUnload(cb: () => void): RegularTrigger;
-  registerGuiClosed(cb: (guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>) => void): RegularTrigger;
-  registerGuiRender(
-    cb: (mouseX: number, mouseY: number, guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>) => void
-  ): RegularTrigger;
-  registerPlayerJoined(cb: (player: PlayerMP) => void): RegularTrigger;
-  registerPlayerLeft(cb: (player: PlayerMP) => void): RegularTrigger;
-  registerPostGuiRender(
-    cb: (mouseX: number, mouseY: number, guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>) => void
-  ): RegularTrigger;
-  registerPreItemRender(
-    cb: (
-      mouseX: number,
-      mouseY: number,
-      slot: JavaClass<'net.minecraft.inventory.Slot'>,
-      guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>
-    ) => void
-  ): RegularTrigger;
-  registerRenderWorld(cb: (partialTicks: number) => void): RegularTrigger;
-  registerScrolled(cb: (x: number, y: number, delta: number) => void): RegularTrigger;
-  registerServerDisconnect(cb: (event: CTEvent) => void): RegularTrigger;
-  registerTick(cb: (totalTicks: number) => void): RegularTrigger;
-  registerWorldLoad(cb: () => void): RegularTrigger;
-  registerWorldUnload(cb: () => void): RegularTrigger;
-
-  registerPostRenderEntity(cb: (entity: Entity, position: Vector3f, partialTicks: number) => void): RenderEntityTrigger;
-  registerRenderEntity(
-    cb: (entity: Entity, position: Vector3f, partialTicks: number, event: CancellableCTEvent) => void
-  ): RenderEntityTrigger;
-
-  registerPostRenderTileEntity(
-    cb: (tileEntity: TileEntity, position: Vector3f, partialTicks: number) => void
-  ): RenderTileEntityTrigger;
-  registerRenderTileEntity(
-    cb: (tileEntity: TileEntity, position: Vector3f, partialTicks: number, event: CancellableCTEvent) => void
-  ): RenderTileEntityTrigger;
-
-  registerSoundPlay(
-    cb: (
-      position: Vector3f,
-      name: string,
-      volume: number,
-      pitch: number,
-      categoryName: StringOrJavaEnumValue<
-        'AMBIENT' | 'ANIMALS' | 'BLOCKS' | 'MASTER' | 'MOBS' | 'MUSIC' | 'PLAYERS' | 'RECORDS' | 'WEATHER'
-      >,
-      event: CancellableCTEvent
-    ) => void
-  ): SoundPlayTrigger;
-
-  registerStep(cb: (totalSteps: number) => void): StepTrigger;
 }
 
 declare global {
-  const TriggerRegister: JSRegister;
+  // const TriggerRegister: JSRegister;
+  const EventTrigger: JSRegister
   const register: JSRegister['register'];
-  const onChatTrigger: typeof ChatTrigger;
-  const onCommandTrigger: typeof CommandTrigger;
-  const onRegularTrigger: typeof RegularTrigger;
-  const onRenderTrigger: typeof EventTrigger;
-  const onSoundPlayTrigger: typeof SoundPlayTrigger;
-  const onStepTrigger: typeof StepTrigger;
-  const onTrigger: typeof Trigger;
+  // const onChatTrigger: typeof ChatTrigger;
+  // const onCommandTrigger: typeof CommandTrigger;
+  // const onRegularTrigger: typeof RegularTrigger;
+  // const onRenderTrigger: typeof EventTrigger;
+  // const onSoundPlayTrigger: typeof SoundPlayTrigger;
+  // const onStepTrigger: typeof StepTrigger;
+  // const onTrigger: typeof Trigger;
   const Priority: JavaEnum<'LOWEST' | 'LOW' | 'NORMAL' | 'HIGH' | 'HIGHEST'>;
 }
 export {};

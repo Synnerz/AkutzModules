@@ -3,7 +3,8 @@ import './Globals';
 import './Inventory';
 import './IRegister';
 import './Libs';
-import './NBT';
+// We do not have anything for this currently, so disabling it, it is
+// import './NBT';
 import './Objects';
 import './World';
 import './Wrappers';
