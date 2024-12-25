@@ -30,32 +30,26 @@ export interface CancelableAZEvent extends AZEvent {
 }
 
 export class Trigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.engine.impl.Register'>;
   constructor(callback: Function);
 }
-export interface Trigger extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSRegister'> {
+export interface Trigger extends JavaClass<'com.github.synnerz.akutz.engine.impl.Register'> {
   register(): this;
   unregister(): this;
   trigger(...args: any[]): void;
   setPriority(priority: JavaEnumValueE<typeof Priority>): this;
 }
-export class ChatTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+export class ChatEvent extends EmptyClass {
+  static class: Class<'com.github.synnerz.akutz.api.events.ChatEvent'>;
   static Parameter: JavaEnum<'CONTAINS' | 'START' | 'END'>;
 }
-export interface ChatTrigger extends EJavaClass<Trigger, 'what is the path'> {
-  addParameter(parameter: StringOrJavaEnumValueE<typeof ChatTrigger.Parameter>): this;
-  addParameters(...parameters: StringOrJavaEnumValueE<typeof ChatTrigger.Parameter>[]): this;
-  setParameter(parameter: StringOrJavaEnumValueE<typeof ChatTrigger.Parameter>): this;
-  setParameters(...parameter: StringOrJavaEnumValueE<typeof ChatTrigger.Parameter>[]): this;
-  /**
-   * Sets the chat criteria for matchesChatCriteria. Arguments for the trigger's method can be passed in using `${variable}`. Example: `setChatCriteria('<${name}> ${message}');` Use `${*}` to match a chat message but ignore the pass through.
-   */
-  setChatCriteria(chatCriteria: string): this;
-  /**
-   * Alias for `setChatCriteria`.
-   */
-  setCriteria(chatCriteria: string): this;
+export interface ChatEvent extends EJavaClass<Trigger, 'com.github.synnerz.akutz.api.events.ChatEvent'> {
+  addParameter(parameter: StringOrJavaEnumValueE<typeof ChatEvent.Parameter>): this;
+  addParameters(...parameters: StringOrJavaEnumValueE<typeof ChatEvent.Parameter>[]): this;
+  setParameter(parameter: StringOrJavaEnumValueE<typeof ChatEvent.Parameter>): this;
+  setParameters(...parameter: StringOrJavaEnumValueE<typeof ChatEvent.Parameter>[]): this;
+  setCriteria(criteria: string): this;
+  setCriteria(criteria: RegExp): this;
   setContains(): this;
   setCaseInsensitive(): this;
   setEnd(): this;
@@ -63,34 +57,19 @@ export interface ChatTrigger extends EJavaClass<Trigger, 'what is the path'> {
   setStart(): this;
   triggerIfCanceled(bool: boolean): this;
 }
-export interface ClassFilterTrigger extends EJavaClass<Trigger, 'what is the path'> {
-  /**
-   * @deprecated use `setFilteredClass(clazz);`
-   */
-  setPacketClass(clazz: Class<any>): ReturnType<typeof this.setFilteredClasses>;
-  /**
-   * @deprecated use `setFilteredClass([clazzA, clazzB, clazzB]);`
-   */
-  setPacketClasses(clazzes: Class<any>[]): ReturnType<typeof this.setFilteredClass>;
+export interface ClassFilterTrigger extends EJavaClass<Trigger, 'com.github.synnerz.akutz.api.events.ClassFilterEvent'> {
   setFilteredClass(clazz: Class<any>): ReturnType<typeof this.setFilteredClasses>;
   setFilteredClasses(clazzes: Class<any>[]): this;
-
-  evalTriggerType(args: any[]): any;
 }
 export class CommandTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.CommandEvent'>;
 }
-export interface CommandTrigger extends EJavaClass<Trigger, 'what is the path'> {
+export interface CommandTrigger extends EJavaClass<Trigger, 'com.github.synnerz.akutz.api.events.CommandEvent'> {
   setAliases(...args: string[]): this;
-  setCommandName(commandName: string): this;
   /**
-   * Example: `setCommandName('test')` would result in the command being `/test`
+   * Example: `setname('test')` would result in the command being `/test`
    */
-  setCommandName(commandName: string, overrideExisting: boolean): this;
   setName(commandName: string): this;
-  /**
-   * Alias for setCommandName
-   */
   setName(commandName: string, overrideExisting: boolean): this;
   /**
    * This method must be used before setting the command name, otherwise, the tab completions will not be set.
@@ -102,65 +81,65 @@ export interface CommandTrigger extends EJavaClass<Trigger, 'what is the path'> 
   setTabCompletions(callback: (args: string[]) => Array<string>): this;
 }
 export class EventTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.CancelableEvent'>;
 }
-export interface EventTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
+export interface EventTrigger extends EJavaClass<ClassFilterTrigger, 'com.github.synnerz.akutz.api.events.CancelableEvent'> {
   triggerIfCanceled(bool: boolean): this;
 }
 export class ForgeTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.ForgeEvent'>;
 }
-export interface ForgeTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {}
+export interface ForgeTrigger extends EJavaClass<ClassFilterTrigger, 'com.github.synnerz.akutz.api.events.ForgeEvent'> {}
 export class PacketTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.PacketEvent'>;
 }
-export interface PacketTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
+export interface PacketTrigger extends EJavaClass<ClassFilterTrigger, 'com.github.synnerz.akutz.api.events.PacketEvent'> {
   evalTriggerType(args: JavaClass<'net.minecraft.network.Packet'>[]): JavaClass<'net.minecraft.network.Packet'>;
 }
 export class RegularTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.NormalEvent'>;
 }
-export interface RegularTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {}
+export interface RegularTrigger extends EJavaClass<ClassFilterTrigger, 'com.github.synnerz.akutz.api.events.NormalEvent'> {}
 export class RenderEntityTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.RenderEntityEvent'>;
 }
-export interface RenderEntityTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
+export interface RenderEntityTrigger extends EJavaClass<ClassFilterTrigger, 'com.github.synnerz.akutz.api.events.RenderEntityEvent'> {
   evalTriggerType(args: JavaClass<'net.minecraft.entity.Entity'>[]): JavaClass<'net.minecraft.entity.Entity'>;
 }
 export class RenderTileEntityTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.RenderTileEntityEvent'>;
 }
-export interface RenderTileEntityTrigger extends EJavaClass<ClassFilterTrigger, 'what is the path'> {
+export interface RenderTileEntityTrigger extends EJavaClass<ClassFilterTrigger, 'com.github.synnerz.akutz.api.events.RenderTileEntityEvent'> {
   evalTriggerType(
     args: JavaClass<'net.minecraft.tileentity.TileEntity'>[]
   ): JavaClass<'net.minecraft.tileentity.TileEntity'>;
 }
 export class SoundPlayTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
+  static class: Class<'com.github.synnerz.akutz.api.events.SoundPlayEvent'>;
 }
-export interface SoundPlayTrigger extends EJavaClass<Trigger, 'what is the path'> {
+export interface SoundPlayTrigger extends EJavaClass<Trigger, 'com.github.synnerz.akutz.api.events.SoundPlayEvent'> {
   setCriteria(soundNameCriteria: string): this;
 }
-export class StepTrigger extends EmptyClass {
-  static class: Class<'what is the path'>;
-}
-export interface StepTrigger extends EJavaClass<Trigger, 'what is the path'> {
-  /**
-   * Sets the delay in seconds between the trigger activation. This has a minimum of one second between steps. This will override setFps.
-   */
-  setDelay(delay: number): this;
-  /**
-   * Sets the frames per second that the trigger activates. This has a minimum of one step per second.
-   */
-  setFps(fps: number): this;
-}
+// export class StepTrigger extends EmptyClass {
+//   static class: Class<'what is the path'>;
+// }
+// export interface StepTrigger extends EJavaClass<Trigger, 'what is the path'> {
+//   /**
+//    * Sets the delay in seconds between the trigger activation. This has a minimum of one second between steps. This will override setFps.
+//    */
+//   setDelay(delay: number): this;
+//   /**
+//    * Sets the frames per second that the trigger activates. This has a minimum of one step per second.
+//    */
+//   setFps(fps: number): this;
+// }
 
 /**
  * com.chattriggers.ctjs.engine.langs.js.JSRegister
  */
 declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.langs.js.JSRegister'> {
-  register(triggerType: 'actionBar', callback: (...args: Array<string | CancelableAZEvent>) => void): ChatTrigger;
-  register(triggerType: 'chat', callback: (...args: Array<string | CancelableAZEvent>) => void): ChatTrigger;
+  register(triggerType: 'actionBar', callback: (...args: Array<string | CancelableAZEvent>) => void): ChatEvent;
+  register(triggerType: 'chat', callback: (...args: Array<string | CancelableAZEvent>) => void): ChatEvent;
 
   register(triggerType: 'command', callback: (...args: string[]) => void): CommandTrigger;
 
@@ -168,14 +147,6 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     triggerType: 'attackEntity',
     callback: (target: Entity, source: PlayerMP, event: CancelableAZEvent) => void
   ): EventTrigger;
-  // register(
-  //   triggerType: 'chatComponentClicked',
-  //   callback: (component: TextComponent, event: CancelableAZEvent) => void
-  // ): EventTrigger;
-  // register(
-  //   triggerType: 'chatComponentHovered',
-  //   callback: (component: TextComponent, x: number, y: number, event: CancelableAZEvent) => void
-  // ): EventTrigger;
   register(
     triggerType: 'drawBlockHighlight',
     callback: (position: Vector3f, event: CancelableAZEvent) => void
@@ -184,10 +155,6 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     triggerType: 'dropItem',
     callback: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancelableAZEvent) => void
   ): EventTrigger;
-  // register(
-  //   triggerType: 'guiDrawBackground',
-  //   callback: (guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>, event: CancelableAZEvent) => void
-  // ): EventTrigger;
   register(
     triggerType: 'guiKey',
     callback: (
@@ -237,28 +204,6 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     callback: (lore: string[], stack: JavaClass<'net.minecraft.item.ItemStack'>, event: CancelableAZEvent) => void
   ): EventTrigger;
   register(triggerType: 'messageSent', callback: (message: string, event: CancelableAZEvent) => void): EventTrigger;
-  // register(
-  //   triggerType: 'noteblockChange',
-  //   callback: (
-  //     position: Vector3f,
-  //     name: JavaEnumValue<
-  //       'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
-  //     >,
-  //     octave: JavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
-  //     event: CancelableAZEvent
-  //   ) => void
-  // ): EventTrigger;
-  // register(
-  //   triggerType: 'noteblockPlay',
-  //   callback: (
-  //     position: Vector3f,
-  //     name: JavaEnumValue<
-  //       'A' | 'A_SHARP' | 'B' | 'C' | 'C_SHARP' | 'D' | 'D_SHARP' | 'E' | 'F' | 'F_SHARP' | 'G' | 'G_SHARP'
-  //     >,
-  //     octave: JavaEnumValue<'LOW' | 'MID' | 'HIGH'>,
-  //     event: CancelableAZEvent
-  //   ) => void
-  // ): EventTrigger;
   register(
     triggerType: 'pickupItem',
     callback: (item: Item, player: PlayerMP, position: Vector3f, motion: Vector3f, event: CancelableAZEvent) => void
@@ -274,18 +219,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
       event: CancelableAZEvent
     ) => void
   ): EventTrigger;
-  // register(triggerType: 'renderAir', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderArmor', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderBossHealth', callback: (event: CancelableAZEvent) => void): EventTrigger;
   register(triggerType: 'renderChat', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderCrosshair', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderDebug', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderExperience', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderFood', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderHand', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderHealth', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderHelmet', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderHotbar', callback: (event: CancelableAZEvent) => void): EventTrigger;
   register(
     triggerType: 'renderItemIntoGui',
     callback: (item: Item, x: number, y: number, event: CancelableAZEvent) => void
@@ -294,11 +228,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     triggerType: 'renderItemOverlayIntoGui',
     callback: (item: Item, x: number, y: number, event: CancelableAZEvent) => void
   ): EventTrigger;
-  // register(triggerType: 'renderJumpBar', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderMountHealth', callback: (event: CancelableAZEvent) => void): EventTrigger;
   register(triggerType: 'renderOverlay', callback: (event: AZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderPlayerList', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  // register(triggerType: 'renderPortal', callback: (event: CancelableAZEvent) => void): EventTrigger;
   register(triggerType: 'renderScoreboard', callback: (event: CancelableAZEvent) => void): EventTrigger;
   register(
     triggerType: 'renderSlot',
@@ -322,7 +252,6 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     triggerType: 'renderTitle',
     callback: (displayedTitle: string, displayedSubtitle: string, event: CancelableAZEvent) => void
   ): EventTrigger;
-  // register(triggerType: 'screenshotTaken', callback: (name: string, event: CancelableAZEvent) => void): EventTrigger;
   register(triggerType: 'serverConnect', callback: (event: AZEvent) => void): EventTrigger;
   register(
     triggerType: 'spawnParticle',
@@ -403,8 +332,6 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     triggerType: 'guiRender',
     callback: (mouseX: number, mouseY: number, guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>) => void
   ): RegularTrigger;
-  // register(triggerType: 'playerJoined', callback: (player: PlayerMP) => void): RegularTrigger;
-  // register(triggerType: 'playerLeft', callback: (player: PlayerMP) => void): RegularTrigger;
   register(
     triggerType: 'postGuiRender',
     callback: (mouseX: number, mouseY: number, guiScreen: JavaClass<'net.minecraft.client.gui.GuiScreen'>) => void
@@ -467,16 +394,8 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
 }
 
 declare global {
-  // const TriggerRegister: JSRegister;
   const EventTrigger: JSRegister
   const register: JSRegister['register'];
-  // const onChatTrigger: typeof ChatTrigger;
-  // const onCommandTrigger: typeof CommandTrigger;
-  // const onRegularTrigger: typeof RegularTrigger;
-  // const onRenderTrigger: typeof EventTrigger;
-  // const onSoundPlayTrigger: typeof SoundPlayTrigger;
-  // const onStepTrigger: typeof StepTrigger;
-  // const onTrigger: typeof Trigger;
   const Priority: JavaEnum<'LOWEST' | 'LOW' | 'NORMAL' | 'HIGH' | 'HIGHEST'>;
 }
 export {};
