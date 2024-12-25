@@ -195,10 +195,6 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     ) => void
   ): EventTrigger;
   register(triggerType: 'guiOpened', callback: (event: CancelableAZEvent) => void): EventTrigger;
-  /**
-   * Note: this is not continuously called while the block is being broken, only once when first left clicked.
-   */
-  register(triggerType: 'hitBlock', callback: (block: Block, event: CancelableAZEvent) => void): EventTrigger;
   register(
     triggerType: 'itemTooltip',
     callback: (lore: string[], stack: JavaClass<'net.minecraft.item.ItemStack'>, event: CancelableAZEvent) => void
@@ -348,7 +344,7 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
   register(triggerType: 'renderWorld', callback: (partialTicks: number) => void): RegularTrigger;
   register(triggerType: 'scrolled', callback: (x: number, y: number, delta: number) => void): RegularTrigger;
   register(triggerType: 'serverDisconnect', callback: (event: AZEvent) => void): RegularTrigger;
-  register(triggerType: 'tick', callback: (totalTicks: number) => void): RegularTrigger;
+  register(triggerType: 'tick', callback: () => void): RegularTrigger;
   register(triggerType: 'worldLoad', callback: () => void): RegularTrigger;
   register(triggerType: 'worldUnload', callback: () => void): RegularTrigger;
 
@@ -387,6 +383,22 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
   // register(triggerType: 'step', callback: (totalSteps: number) => void): StepTrigger;
 
   // register(triggerType: string, callback: Function): Trigger;
+
+  register(
+    triggerType: "screenResize",
+    callback: (scaledRes: JavaClass<"net.minecraft.client.gui.ScaledResolution">) => void
+    ): RegularTrigger
+
+  register(
+    triggerType: "spawnEntity",
+    callback: (entity: Entity, event: CancelableAZEvent) => void
+  ): EventTrigger
+
+  register(
+    triggerType: "crashed",
+    callback: () => void
+  ): RegularTrigger
+
   register(
     triggerType: JavaClass<'net.minecraftforge.fml.common.eventhandler.Event'>,
     callback: (event: AZEvent) => void
