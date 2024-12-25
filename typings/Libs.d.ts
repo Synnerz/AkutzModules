@@ -474,249 +474,165 @@ declare global {
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle
    */
-  class Rectangle extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'> {
-    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'>;
-    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'>;
-    constructor(color: number, x: number, y: number, width: number, height: number);
+  // class Rectangle extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'> {
+  //   static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'>;
+  //   getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle'>;
+  //   constructor(color: number, x: number, y: number, width: number, height: number);
 
-    draw(): this;
-    getColor(): number;
-    getHeight(): number;
-    getOutline(): boolean;
-    getOutlineColor(): number;
-    getShadowColor(): number;
-    getShadowOffset(): Vector2f;
-    getShadowOffsetX(): number;
-    getShadowOffsetY(): number;
-    getThickness(): number;
-    getWidth(): number;
-    getX(): number;
-    getY(): number;
-    isShadow(): boolean;
-    setColor(color: number): this;
-    setHeight(height: number): this;
-    setOutline(outline: boolean): this;
-    setOutline(color: number, thickness: number): this;
-    setOutlineColor(color: number): this;
-    setShadow(shadow: boolean): this;
-    setShadow(color: number, x: number, y: number): this;
-    setShadowColor(color: number): this;
-    setShadowOffset(x: number, y: number): this;
-    setShadowOffsetX(x: number): this;
-    setShadowOffsetY(y: number): this;
-    setThickness(thickness: number): this;
-    setWidth(width: number): this;
-    setX(x: number): this;
-    setY(y: number): this;
-  }
+  //   draw(): this;
+  //   getColor(): number;
+  //   getHeight(): number;
+  //   getOutline(): boolean;
+  //   getOutlineColor(): number;
+  //   getShadowColor(): number;
+  //   getShadowOffset(): Vector2f;
+  //   getShadowOffsetX(): number;
+  //   getShadowOffsetY(): number;
+  //   getThickness(): number;
+  //   getWidth(): number;
+  //   getX(): number;
+  //   getY(): number;
+  //   isShadow(): boolean;
+  //   setColor(color: number): this;
+  //   setHeight(height: number): this;
+  //   setOutline(outline: boolean): this;
+  //   setOutline(color: number, thickness: number): this;
+  //   setOutlineColor(color: number): this;
+  //   setShadow(shadow: boolean): this;
+  //   setShadow(color: number, x: number, y: number): this;
+  //   setShadowColor(color: number): this;
+  //   setShadowOffset(x: number, y: number): this;
+  //   setShadowOffsetX(x: number): this;
+  //   setShadowOffsetY(y: number): this;
+  //   setThickness(thickness: number): this;
+  //   setWidth(width: number): this;
+  //   setX(x: number): this;
+  //   setY(y: number): this;
+  // }
   /**
-   * com.chattriggers.ctjs.minecraft.libs.renderer.Renderer
+   * * A library that provides useful utilities for rendering in 2D (screen not world)
    */
-  class Renderer extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'> {
-    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'>;
-    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Renderer'>;
-    static color(red: number, green: number, blue: number): number;
-    static color(red: number, green: number, blue: number, alpha: number): number;
-    static colorize(red: number, green: number, blue: number): void;
-    static colorize(red: number, green: number, blue: number, alpha: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawCircle(color: number, x: number, y: number, radius: number, steps: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawCircle(color: number, x: number, y: number, radius: number, steps: number, drawMode: number): void;
-    static drawImage(image: Image, w: number, y: number, width: number, height: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawLine(color: number, x1: number, y1: number, x2: number, y2: number, thickness: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawLine(
-      color: number,
-      x1: number,
-      y1: number,
-      x2: number,
-      y2: number,
-      thickness: number,
-      drawMode: number
-    ): void;
-    static drawPlayer(player: PlayerMP, x: number, y: number): void;
-    static drawPlayer(player: PlayerMP, x: number, y: number, rotate: boolean): void;
-    static drawPlayer(player: PlayerMP, x: number, y: number, rotate: boolean, showNametag: boolean): void;
-    static drawPlayer(
-      player: PlayerMP,
-      x: number,
-      y: number,
-      rotate: boolean,
-      showNametag: boolean,
-      showArmor: boolean
-    ): void;
-    static drawPlayer(
-      player: PlayerMP,
-      x: number,
-      y: number,
-      rotate: boolean,
-      showNametag: boolean,
-      showArmor: boolean,
-      showCape: boolean
-    ): void;
-    static drawPlayer(
-      player: PlayerMP,
-      x: number,
-      y: number,
-      rotate: boolean,
-      showNametag: boolean,
-      showArmor: boolean,
-      showCape: boolean,
-      showHeldItem: boolean
-    ): void;
-    static drawPlayer(
-      player: PlayerMP,
-      x: number,
-      y: number,
-      rotate: boolean,
-      showNametag: boolean,
-      showArmor: boolean,
-      showCape: boolean,
-      showHeldItem: boolean,
-      showArrows: boolean
-    ): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawRect(color: number, x: number, y: number, width: number, height: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawShape(color: number, vertexes: number[][], drawMode: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawShape(color: number, vertexes: number[][]): void;
-    static drawString(text: string, x: number, y: number): void;
-    static drawString(text: string, x: number, y: number, shadow: boolean): void;
-    static drawStringWithShadow(text: string, x: number, y: number): void;
-    static finishDraw(): void;
-    static fixAlpha(color: number): number;
-    static getColor(color: number): number;
-    static getDrawMode(): number | null;
-    static getFontRenderer(): JavaClass<'net.minecraft.client.gui.FontRenderer'>;
-    static getRainbow(step: number): number;
-    static getRainbow(step: number, speed: number): number;
-    static getRainbowColors(step: number): number[];
-    static getRainbowColors(step: number, speed: number): number[];
-    static getRenderManager(): JavaClass<'net.minecraft.client.renderer.entity.RenderManager'>;
-    static getStringWidth(text: string): number;
-    static retainTransforms(retain: boolean): void;
-    static rotate(angle: number): void;
-    static scale(scale: number): void;
-    static scale(scaleX: number, scaleY: number): void;
-    static setDrawMode(drawMode: number): typeof Renderer;
-    static translate(x: number, y: number): void;
-    static translate(x: number, y: number, z: number): void;
-
-    static AQUA: number;
-    static BLACK: number;
-    static BLUE: number;
-    static colorized: number | null;
-    static DARK_AQUA: number;
-    static DARK_BLUE: number;
-    static DARK_GRAY: number;
-    static DARK_GREEN: number;
-    static DARK_PURPLE: number;
-    static DARK_RED: number;
-    static GOLD: number;
-    static GRAY: number;
-    static GREEN: number;
-    static LIGHT_PURPLE: number;
-    static RED: number;
-    static WHITE: number;
-    static YELLOW: number;
-
+  class Renderer extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.render.Renderer'> {
+    static class: Class<'com.github.synnerz.akutz.api.libs.render.Renderer'>;
+    getClass(): Class<'com.github.synnerz.akutz.api.libs.render.Renderer'>;
+    static getStringWidth(string: string): number
+    static beginDraw(color: Color, pushMatrix: boolean): typeof Renderer
+    static beginDraw(color: Color): typeof Renderer
+    static beginDraw(): typeof Renderer
+    static finishDraw(): typeof Renderer
+    static translate(x: number, y: number): typeof Renderer
+    static translate(x: number, y: number, z: number): typeof Renderer
+    static scale(x: number): typeof Renderer
+    static scale(x: number, y: number): typeof Renderer
+    static rotate(angle: number): typeof Renderer
+    static drawLine(x1: number, y1: number, x2: number, y2: number): typeof Renderer
+    static drawRect(x: number, y: number, width: number, height: number): typeof Renderer
+    static drawRect(x: number, y: number, width: number, height: number, solid: boolean): typeof Renderer
+    static drawRectangle(x: number, y: number, width: number, height: number): typeof Renderer
+    static drawRectangle(x: number, y: number, width: number, height: number, solid: boolean): typeof Renderer
+    static drawArc(x: number, y: number, xr: number, yr: number): typeof Renderer
+    static drawArc(x: number, y: number, xr: number, yr: number, start: number): typeof Renderer
+    static drawArc(x: number, y: number, xr: number, yr: number, start: number, end: number): typeof Renderer
+    static drawArc(x: number, y: number, xr: number, yr: number, start: number, end: number, solid: boolean): typeof Renderer
+    static drawArc(x: number, y: number, xr: number, yr: number, start: number, end: number, solid: boolean, segments: number): typeof Renderer
+    static drawRoundRect(x: number, y: number, width: number, height: number, radius: number): typeof Renderer
+    static drawRoundRect(x: number, y: number, width: number, height: number, radius: number, solid: boolean): typeof Renderer
+    static drawRoundRect(x: number, y: number, width: number, height: number, radius: number, solid: boolean, segments: number): typeof Renderer
+    static drawRoundRectangle(x: number, y: number, width: number, height: number, radius: number): typeof Renderer
+    static drawRoundRectangle(x: number, y: number, width: number, height: number, radius: number, solid: boolean): typeof Renderer
+    static drawRoundRectangle(x: number, y: number, width: number, height: number, radius: number, solid: boolean, segments: number): typeof Renderer
+    static drawString(string: string, x: number, y: number): typeof Renderer
+    static drawString(string: string, x: number, y: number, shadow: boolean): typeof Renderer
+    static drawOutlinedString(string: string, x: number, y: number): typeof Renderer
+    static drawTexturedRect(x: number, y: number, width: number, height: number): typeof Renderer
+    static drawTexturedRect(x: number, y: number, width: number, height: number, uv: number): typeof Renderer
+    static drawTexturedRect(x: number, y: number, width: number, height: number, u: number, v: number): typeof Renderer
+    static drawTexturedRect(x: number, y: number, width: number, height: number, u: number, v: number, twidth: number): typeof Renderer
+    static drawTexturedRect(x: number, y: number, width: number, height: number, u: number, v: number, twidth: number, theight: number): typeof Renderer
+    static drawTexturedRect(x: number, y: number, width: number, height: number, u: number, v: number, twidth: number, theight: number, uwidth: number): typeof Renderer
+    static drawTexturedRect(x: number, y: number, width: number, height: number, u: number, v: number, twidth: number, theight: number, uwidth: number, uheight: number): typeof Renderer
+    static getMouseX(): number
+    static getMouseY(): number
     static screen: {
-      getWidth(): number;
-      getHeight(): number;
-      getScale(): number;
-    };
+      getWidth(): number
+      getHeight(): number,
+      getScale(): number
+    }
   }
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Shape
    */
-  class Shape extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'> {
-    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'>;
-    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'>;
-    constructor(color: number);
+  // class Shape extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'> {
+  //   static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'>;
+  //   getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Shape'>;
+  //   constructor(color: number);
 
-    addVertex(x: number, y: number): this;
-    clone(): Shape;
-    copy(): Shape;
-    draw(): this;
-    getColor(): number;
-    getDrawMode(): number;
-    getVertexes(): Vector2f[];
-    insertVertex(index: number, x: number, y: number): this;
-    removeVertex(index: number): this;
-    setCircle(x: number, y: number, radius: number, steps: number): this;
-    setColor(color: number): this;
-    setDrawMode(drawMode: number): this;
-    setLine(x1: number, y1: number, x2: number, y2: number, thickness: number): this;
-  }
+  //   addVertex(x: number, y: number): this;
+  //   clone(): Shape;
+  //   copy(): Shape;
+  //   draw(): this;
+  //   getColor(): number;
+  //   getDrawMode(): number;
+  //   getVertexes(): Vector2f[];
+  //   insertVertex(index: number, x: number, y: number): this;
+  //   removeVertex(index: number): this;
+  //   setCircle(x: number, y: number, radius: number, steps: number): this;
+  //   setColor(color: number): this;
+  //   setDrawMode(drawMode: number): this;
+  //   setLine(x1: number, y1: number, x2: number, y2: number, thickness: number): this;
+  // }
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Text
    */
-  class Text extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'> {
-    static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'>;
-    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'>;
-    constructor(text: string);
-    constructor(text: string, x: number);
-    constructor(text: string, x: number, y: number);
-    constructor(
-      text: string,
-      config: {
-        color?: `0x${string | number}` | number;
-        formatted?: boolean;
-        shadow?: boolean;
-        align?: StringOrJavaEnumValueE<typeof DisplayHandler.Align>;
-        x?: number;
-        y?: number;
-        maxLines?: number;
-        scale?: number;
-        maxWidth?: number;
-      }
-    );
+  // class Text extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'> {
+  //   static class: Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'>;
+  //   getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.renderer.Text'>;
+  //   constructor(text: string);
+  //   constructor(text: string, x: number);
+  //   constructor(text: string, x: number, y: number);
+  //   constructor(
+  //     text: string,
+  //     config: {
+  //       color?: `0x${string | number}` | number;
+  //       formatted?: boolean;
+  //       shadow?: boolean;
+  //       align?: StringOrJavaEnumValueE<typeof DisplayHandler.Align>;
+  //       x?: number;
+  //       y?: number;
+  //       maxLines?: number;
+  //       scale?: number;
+  //       maxWidth?: number;
+  //     }
+  //   );
 
-    draw(): this;
-    draw(x: number): this;
-    draw(x: number, y: number): this;
-    exceedsMaxLines(): boolean;
-    getAlign(): JavaEnumValueE<typeof DisplayHandler.Align>;
-    getColor(): number;
-    getFormatted(): boolean;
-    getHeight(): number;
-    getLines(): string[];
-    getMaxLines(): number;
-    getMaxWidth(): number;
-    getScale(): number;
-    getShadow(): boolean;
-    getString(): string;
-    getWidth(): number;
-    getX(): number;
-    getY(): number;
-    setAlign(align: StringOrJavaEnumValueE<typeof DisplayHandler.Align>): this;
-    setColor(color: number): this;
-    setFormatted(formatted: boolean): this;
-    setMaxLines(maxLines: number): this;
-    setMaxWidth(maxWidth: number): this;
-    setScale(scale: number): this;
-    setShadow(shadow: boolean): this;
-    setString(string: string): this;
-    setX(x: number): this;
-    setY(y: number): this;
-    toString(): string;
-  }
+  //   draw(): this;
+  //   draw(x: number): this;
+  //   draw(x: number, y: number): this;
+  //   exceedsMaxLines(): boolean;
+  //   getAlign(): JavaEnumValueE<typeof DisplayHandler.Align>;
+  //   getColor(): number;
+  //   getFormatted(): boolean;
+  //   getHeight(): number;
+  //   getLines(): string[];
+  //   getMaxLines(): number;
+  //   getMaxWidth(): number;
+  //   getScale(): number;
+  //   getShadow(): boolean;
+  //   getString(): string;
+  //   getWidth(): number;
+  //   getX(): number;
+  //   getY(): number;
+  //   setAlign(align: StringOrJavaEnumValueE<typeof DisplayHandler.Align>): this;
+  //   setColor(color: number): this;
+  //   setFormatted(formatted: boolean): this;
+  //   setMaxLines(maxLines: number): this;
+  //   setMaxWidth(maxWidth: number): this;
+  //   setScale(scale: number): this;
+  //   setShadow(shadow: boolean): this;
+  //   setString(string: string): this;
+  //   setX(x: number): this;
+  //   setY(y: number): this;
+  //   toString(): string;
+  // }
 }
 export {};

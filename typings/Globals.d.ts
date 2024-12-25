@@ -55,27 +55,6 @@ declare global {
     easeColor(finish: number, speed: number, jump?: number): number;
   }
   /**
-   * java.util.ArrayList
-   */
-  class ArrayList extends EmptyClass implements JavaClass<'java.util.ArrayList'> {
-    static class: Class<'java.util.ArrayList'>;
-    getClass(): Class<'java.util.ArrayList'>;
-  }
-  /**
-   * java.util.HashMap
-   */
-  class HashMap extends EmptyClass implements JavaClass<'java.util.HashMap'> {
-    static class: Class<'java.util.HashMap'>;
-    getClass(): Class<'java.util.HashMap'>;
-  }
-  /**
-   * net.minecraftforge.fml.relauncher.ReflectionHelper
-   */
-  class ReflectionHelper extends EmptyClass implements JavaClass<'net.minecraftforge.fml.relauncher.ReflectionHelper'> {
-    static class: Class<'net.minecraftforge.fml.relauncher.ReflectionHelper'>;
-    getClass(): Class<'net.minecraftforge.fml.relauncher.ReflectionHelper'>;
-  }
-  /**
    * org.lwjgl.input.Keyboard
    */
   class Keyboard extends EmptyClass implements JavaClass<'org.lwjgl.input.Keyboard'> {
