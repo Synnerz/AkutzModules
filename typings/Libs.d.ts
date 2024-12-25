@@ -391,85 +391,46 @@ declare global {
     };
   }
   /**
-   * com.chattriggers.ctjs.minecraft.libs.Tessellator
+   * * A library that provides useful utilities for rendering in 3D (world not screen)
    */
-  class Tessellator extends EmptyClass implements JavaClass<'com.chattriggers.ctjs.minecraft.libs.Tessellator'> {
-    static class: Class<'com.chattriggers.ctjs.minecraft.libs.Tessellator'>;
-    getClass(): Class<'com.chattriggers.ctjs.minecraft.libs.Tessellator'>;
-    static alphaFunc(func: number, ref: number): typeof Tessellator;
-    static begin(): typeof Tessellator;
-    static begin(drawMode: number): typeof Tessellator;
-    static begin(drawMode: number, textured: boolean): typeof Tessellator;
-    static bindTexture(texture: Image): typeof Tessellator;
-    static blendFunc(sourceFactor: number, destFactor: number): typeof Tessellator;
-    static colorize(red: number, green: number, blue: number): typeof Tessellator;
-    static colorize(red: number, green: number, blue: number, alpha: number): typeof Tessellator;
-    static deleteTexture(texture: Image): typeof Tessellator;
-    static depthFunc(depthFunc: number): typeof Tessellator;
-    static depthMask(flagIn: boolean): typeof Tessellator;
-    static disableAlpha(): typeof Tessellator;
-    static disableBlend(): typeof Tessellator;
-    static disableDepth(): typeof Tessellator;
-    static disableLighting(): typeof Tessellator;
-    static disableTexture2D(): typeof Tessellator;
-    static draw(): typeof Tessellator;
-    static drawString(text: string, x: number, y: number, z: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawString(text: string, x: number, y: number, z: number, color: number): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawString(text: string, x: number, y: number, z: number, color: number, renderBlackBox: boolean): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawString(
-      text: string,
-      x: number,
-      y: number,
-      z: number,
-      color: number,
-      renderBlackBox: boolean,
-      scale: number
-    ): void;
-    /**
-     * @param color msb ARGB lsb
-     */
-    static drawString(
-      text: string,
-      x: number,
-      y: number,
-      z: number,
-      color: number,
-      renderBlackBox: boolean,
-      scale: number,
-      increase: boolean
-    ): void;
-    static enableAlpha(): typeof Tessellator;
-    static enableBlend(): typeof Tessellator;
-    static enableDepth(): typeof Tessellator;
-    static enableLighting(): typeof Tessellator;
-    static enableTexture2D(): typeof Tessellator;
-    static getRenderPos(x: number, y: number, z: number): Vector3f;
-    static popMatrix(): typeof Tessellator;
-    static pos(x: number, y: number, z: number): typeof Tessellator;
-    static pushMatrix(): typeof Tessellator;
-    static rotate(angle: number, x: number, y: number, z: number): typeof Tessellator;
-    static scale(scale: number): typeof Tessellator;
-    static scale(x: number, y: number): typeof Tessellator;
-    static scale(x: number, y: number, z: number): typeof Tessellator;
-    static tex(u: number, v: number): typeof Tessellator;
-    static translate(x: number, y: number, z: number): typeof Tessellator;
-    static tryBlendFuncSeparate(
-      sourceFactor: number,
-      destFactor: number,
-      sourceFactorAlpha: number,
-      destFactorAlpha: number
-    ): typeof Tessellator;
-
-    static partialTicks: number;
+  class Tessellator extends EmptyClass implements JavaClass<'com.github.synnerz.akutz.api.libs.render.Tessellator'> {
+    static class: Class<'com.github.synnerz.akutz.api.libs.render.Tessellator'>;
+    getClass(): Class<'com.github.synnerz.akutz.api.libs.render.Tessellator'>;
+    static getRenderX(): number
+    static getRenderY(): number
+    static getRenderZ(): number
+    static beginDraw(color: Color, pushMatrix: boolean, depth: boolean): typeof Tessellator
+    static beginDraw(color: Color, pushMatrix: boolean): typeof Tessellator
+    static beginDraw(color: Color): typeof Tessellator
+    static beginDraw(): typeof Tessellator
+    static finishDraw(): typeof Tessellator
+    static rescaleHomogenous(x: number, y: number, z: number): number[]
+    static scale(scale: number): typeof Tessellator
+    static renderLine(
+      x1: number, y1: number, z1: number,
+      x2: number, y2: number, z2: number
+    ): typeof Tessellator
+    static renderTracer(x: number, y: number, z: number): typeof Tessellator
+    static renderBoxOutline(x: number, y: number, z: number, width: number, height: number): typeof Tessellator
+    static renderBoxOutline(x: number, y: number, z: number, width: number, height: number, centered: boolean): typeof Tessellator
+    static renderBoxFilled(x: number, y: number, z: number, width: number, height: number): typeof Tessellator
+    static renderBoxFilled(x: number, y: number, z: number, width: number, height: number, centered: boolean): typeof Tessellator
+    static renderBeaconBeam(x: number, y: number, z: number): typeof Tessellator
+    static renderBeaconBeam(x: number, y: number, z: number, centered: boolean): typeof Tessellator
+    static renderBeaconBeam(x: number, y: number, z: number, centered: boolean, height: number): typeof Tessellator
+    static renderString(string: string, x: number, y: number, z: number, scale: number): typeof Tessellator
+    static renderString(string: string, x: number, y: number, z: number, scale: number, renderBlackBox: boolean): typeof Tessellator
+    static renderString(string: string, x: number, y: number, z: number, scale: number, renderBlackBox: boolean, shadow: boolean): typeof Tessellator
+    static getPartialTicks(): number
+    static getTessellator(): Class<"net.minecraft.client.renderer.Tessellator">
+    static getWorldRenderer(): Class<"net.minecraft.client.renderer.WorldRenderer">
+    static getFontRenderer(): Class<"net.minecraft.client.gui.FontRenderer">
+    static getRenderManager(): Class<"net.minecraft.client.renderer.entity.RenderManager">
+    static color(color: Color): typeof Tessellator
+    static color(r: number, g: number, b: number): typeof Tessellator
+    static color(r: number, g: number, b: number, a: number): typeof Tessellator
+    static setColor(color: Color): typeof Tessellator
+    static lineWidth(width: number): typeof Tessellator
   }
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Rectangle
@@ -558,6 +519,16 @@ declare global {
       getHeight(): number,
       getScale(): number
     }
+    static getPartialTicks(): number
+    static getTessellator(): Class<"net.minecraft.client.renderer.Tessellator">
+    static getWorldRenderer(): Class<"net.minecraft.client.renderer.WorldRenderer">
+    static getFontRenderer(): Class<"net.minecraft.client.gui.FontRenderer">
+    static getRenderManager(): Class<"net.minecraft.client.renderer.entity.RenderManager">
+    static color(color: Color): typeof Renderer
+    static color(r: number, g: number, b: number): typeof Renderer
+    static color(r: number, g: number, b: number, a: number): typeof Renderer
+    static setColor(color: Color): typeof Renderer
+    static lineWidth(width: number): typeof Renderer
   }
   /**
    * com.chattriggers.ctjs.minecraft.libs.renderer.Shape
