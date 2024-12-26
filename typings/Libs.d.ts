@@ -1,4 +1,4 @@
-import { Class, EmptyClass, JavaClass, JavaEnumValueE, StringOrJavaEnumValueE, Vector2f, Vector3f } from './External';
+import { Class, EmptyClass, JavaClass } from './External';
 import { AZEvent } from './IRegister';
 
 declare global {

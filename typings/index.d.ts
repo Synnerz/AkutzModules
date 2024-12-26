@@ -8,3 +8,4 @@ import './Libs';
 import './Objects';
 import './World';
 import './Wrappers';
+import './Shaders';
