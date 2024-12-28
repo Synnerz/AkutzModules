@@ -279,7 +279,7 @@ declare global {
     setDoesPauseGame(doesPauseGame: boolean): this;
   }
   const GuiHandler: GuiHandler;
-  class KeyBind extends EmptyClass {
+  class Keybind extends EmptyClass {
     static class: Class<'com.github.synnerz.akutz.api.objects.keybind.Keybind'>;
     constructor(keyBinding: JavaClass<'net.minecraft.client.settings.KeyBinding'>);
     constructor(description: string, keyCode: number);
