@@ -498,10 +498,10 @@ declare global {
     static drawArc(x: number, y: number, xr: number, yr: number, start: number, end: number, solid: boolean, segments: number): typeof Renderer
     static drawRoundRect(x: number, y: number, width: number, height: number, radius: number): typeof Renderer
     static drawRoundRect(x: number, y: number, width: number, height: number, radius: number, solid: boolean): typeof Renderer
-    static drawRoundRect(x: number, y: number, width: number, height: number, radius: number, solid: boolean, segments: number): typeof Renderer
+    static drawRoundRect(x: number, y: number, width: number, height: number, radius: number, solid: boolean, lineWidth: number): typeof Renderer
     static drawRoundRectangle(x: number, y: number, width: number, height: number, radius: number): typeof Renderer
     static drawRoundRectangle(x: number, y: number, width: number, height: number, radius: number, solid: boolean): typeof Renderer
-    static drawRoundRectangle(x: number, y: number, width: number, height: number, radius: number, solid: boolean, segments: number): typeof Renderer
+    static drawRoundRectangle(x: number, y: number, width: number, height: number, radius: number, solid: boolean, lineWidth: number): typeof Renderer
     static drawString(string: string, x: number, y: number): typeof Renderer
     static drawString(string: string, x: number, y: number, shadow: boolean): typeof Renderer
     static drawOutlinedString(string: string, x: number, y: number): typeof Renderer
