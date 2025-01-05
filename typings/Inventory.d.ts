@@ -193,6 +193,10 @@ declare global {
      */
     getItem(): Item;
     /**
+     * * Checks whether this slot is a creative slot or not
+     */
+    isCreativeSlot(): boolean
+    /**
      * * Gets the underlying minecraft Slot
      */
     toMC(): JavaClass<'net.minecraft.inventory.Slot'>;
