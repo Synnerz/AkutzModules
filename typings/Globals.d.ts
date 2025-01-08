@@ -45,7 +45,7 @@ declare global {
     replaceFormatting(): string;
   }
   /**
-   * * Prints the specified message into the minecraft logs
+   * * Prints the specified message into the Akutz console
    */
   function print(message: any): void
   function easeOut(start: number, finish: number, speed: number, jump?: number): number;
