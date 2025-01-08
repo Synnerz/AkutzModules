@@ -389,6 +389,25 @@ declare global {
 
       normalize(x: number, y: number, z: number, newLength: number): number[];
     };
+    /** * Field that contains roman numerals utilities */
+    static roman: {
+      /**
+       * * Field that contains a map of numerals
+       * * i.e. `"M"` mapped to `1000`
+       */
+      numerals: Map<string, number>
+      /**
+       * * "Encodes" an (integer) number into a roman numeral
+       * * i.e. `1` becomes `"I"`
+       */
+      encode(number: number): string
+      /**
+       * * "Decodes" a roman numeral into an (integer) number
+       * * i.e. `"I"` becomes `1`
+       * * Note: this does not check if the given numeral is a valid roman numeral or not
+       */
+      decode(numeral: string): number
+    }
   }
   /**
    * * A library that provides useful utilities for rendering in 3D (world not screen)
