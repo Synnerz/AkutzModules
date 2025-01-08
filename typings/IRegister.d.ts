@@ -249,10 +249,53 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     callback: (displayedTitle: string, displayedSubtitle: string, event: CancelableAZEvent) => void
   ): EventTrigger;
   register(triggerType: 'serverConnect', callback: (event: AZEvent) => void): EventTrigger;
+  /** * Note: The block breaking/attack particle uses a fake EntityFX created by Akutz so it is not a real [EntityDiggingFX] */
   register(
     triggerType: 'spawnParticle',
     callback: (
       particle: Particle,
+      name: 'BARRIER'
+      | 'BLOCK_CRACK'
+      | 'BLOCK_DUST'
+      | 'CLOUD'
+      | 'CRIT'
+      | 'CRIT_MAGIC'
+      | 'DRIP_LAVA'
+      | 'DRIP_WATER'
+      | 'ENCHANTMENT_TABLE'
+      | 'EXPLOSION_HUGE'
+      | 'EXPLOSION_LARGE'
+      | 'EXPLOSION_NORMAL'
+      | 'FIREWORKS_SPARK'
+      | 'FLAME'
+      | 'FOOTSTEP'
+      | 'HEART'
+      | 'ITEM_CRACK'
+      | 'ITEM_TAKE'
+      | 'LAVA'
+      | 'MOB_APPEARANCE'
+      | 'NOTE'
+      | 'PORTAL'
+      | 'REDSTONE'
+      | 'SLIME'
+      | 'SMOKE_LARGE'
+      | 'SMOKE_NORMAL'
+      | 'SNOW_SHOVEL'
+      | 'SNOWBALL'
+      | 'SPELL'
+      | 'SPELL_INSTANT'
+      | 'SPELL_MOB'
+      | 'SPELL_MOB_AMBIENT'
+      | 'SPELL_WITCH'
+      | 'SUSPENDED'
+      | 'SUSPENDED_DEPTH'
+      | 'TOWN_AURA'
+      | 'VILLAGER_ANGRY'
+      | 'VILLAGER_HAPPY'
+      | 'WATER_BUBBLE'
+      | 'WATER_DROP'
+      | 'WATER_SPLASH'
+      | 'WATER_WAKE',
       id: JavaEnumValue<
         | 'BARRIER'
         | 'BLOCK_CRACK'
