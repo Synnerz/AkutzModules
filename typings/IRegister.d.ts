@@ -442,6 +442,22 @@ declare interface JSRegister extends JavaClass<'com.chattriggers.ctjs.engine.lan
     callback: () => void
   ): RegularTrigger
 
+  /**
+   * * Triggers right after the engine was setup and all the modules were loaded
+   */
+  register(
+    triggerType: "load",
+    callback: () => void
+  ): RegularTrigger
+
+  /**
+   * * Triggers before the engine is fully shut down
+   */
+  register(
+    triggerType: "unload",
+    callback: () => void
+  ): RegularTrigger
+
   register(
     triggerType: JavaClass<'net.minecraftforge.fml.common.eventhandler.Event'>,
     callback: (event: AZEvent) => void
