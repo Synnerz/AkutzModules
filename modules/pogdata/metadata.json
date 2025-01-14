@@ -1,0 +1,7 @@
+{
+  "name": "PogData",
+  "creator": "SirHyperNova",
+  "description": "Persistent Data solution. ported from Chattriggers' PogData",
+  "version": "1.0.0",
+  "entry": "index.js"
+}
