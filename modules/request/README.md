@@ -8,11 +8,11 @@ A simple GET request
 
 ```js
 request('https://google.com')
-    .then(function(response) {
+    .then((response) {
         // Will print raw HTML
         print(response);
     })
-    .catch(function(error) {
+    .catch((error) {
         // If anything goes wrong
         print(error);
     });
@@ -25,7 +25,7 @@ request({
     url: 'https://jsonplaceholder.typicode.com/comments?postId=1',
     json: true
 })
-    .then(function(response) {
+    .then((response) {
         // If the website does not return valid JSON data, 
         // then the parsing will fail and the catch block
         // will run
@@ -40,7 +40,7 @@ request({
     url: 'https://jsonplaceholder.typicode.com/comments?postId=1',
     resolveWithFullResponse: true
 })
-    .then(function(response) {
+    .then((response) {
         print(JSON.stringify(response, null, 2));
         /* {
              statusCode: 200,
