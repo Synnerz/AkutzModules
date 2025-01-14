@@ -1,0 +1,7 @@
+{
+  "name": "request",
+  "creator": "Ecolsson (uploaded by McPqndq)",
+  "description": "Ported from ChatTriggers' requestV2",
+  "version": "1.0.0",
+  "entry": "index.js"
+}
