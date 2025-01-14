@@ -269,7 +269,6 @@ declare global {
      */
     static read(fileLocation: string): string | null;
     /**
-     * relative to ct modules folder
      * * Reads the specified file from a module directory and returns it's value as string or null
      * * NOTE: You can use `./` for the `.minecraft` folder
      */
